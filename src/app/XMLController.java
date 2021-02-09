@@ -43,7 +43,7 @@ public class XMLController {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            File inputFile = new File("Dr.Me-Capstone-2-MJG/resources/Pathogens.xml");
+            File inputFile = new File("resources/Pathogens.xml");
             Document doc = db.parse(inputFile);
             doc.getDocumentElement().normalize();
            // System.out.println("Root Element:  " + doc.getDocumentElement().getNodeName());
@@ -88,7 +88,7 @@ public class XMLController {
        try {
            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
            DocumentBuilder db = dbf.newDocumentBuilder();
-           File inputFile = new File("Dr.Me-Capstone-2-MJG/resources/Cell.xml");
+           File inputFile = new File("resources/Cell.xml");
            Document doc = db.parse(inputFile);
            doc.getDocumentElement().normalize();
            nodeList = doc.getElementsByTagName("cell");

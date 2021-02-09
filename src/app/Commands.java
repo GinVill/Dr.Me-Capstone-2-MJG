@@ -52,7 +52,7 @@ public class Commands {
     private static boolean handleValidCommand(List<String> task, String name) {
         // Check for commands that don't have second command line arguments
         if (task.contains("help")) {
-            ReadFile.read("Dr.Me-Capstone-2-MJG/resources/Help.txt"); // this tells user what cells they have to fight the pathogens with
+            ReadFile.read("resources/Help.txt"); // this tells user what cells they have to fight the pathogens with
             return true;
         } else if (task.contains("hint")) {
             hint(name); // this will print the hint from the Pathogen Class
@@ -187,7 +187,7 @@ public class Commands {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            File inputFile = new File("Dr.Me-Capstone-2-MJG/resources/Word.xml");
+            File inputFile = new File("resources/Word.xml");
             Document doc = db.parse(inputFile);
             doc.getDocumentElement().normalize();
 
