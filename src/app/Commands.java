@@ -201,7 +201,7 @@ public class Commands {
                 }
             }
         } catch (Exception e) {
-            System.out.println("An Error Occured while loading the synonym list.");
+            System.out.println("An Error Occurred while loading the synonym list.");
             e.printStackTrace();
         }
         // XXX this is a test to be removed
