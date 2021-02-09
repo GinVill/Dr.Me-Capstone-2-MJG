@@ -8,6 +8,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import util.Colors;
 import util.Output;
+import util.ReadFile;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -51,12 +52,16 @@ public class Commands {
     private static boolean handleValidCommand(List<String> task, String name) {
         // Check for commands that don't have second command line arguments
         if (task.contains("help")) {
-            help(); // this tells user what cells they have to fight the pathogens with
+            ReadFile.read("Dr.Me-Capstone-2-MJG/resources/Help.txt"); // this tells user what cells they have to fight the pathogens with
             return true;
         } else if (task.contains("hint")) {
-            hint(name); // this will print the hint from the Pothogen Class
+            hint(name); // this will print the hint from the Pathogen Class
             return true;
-        } else {
+        }else if(task.contains("cells")){
+            cells();
+            return true;
+        }
+        else {
             // Bad input received
             return false;
 //            return handleMultipleArgumentCommand(task); // Send to appropriate command and method
@@ -103,7 +108,7 @@ public class Commands {
 //        return false;
 //    }
 
-    private static boolean help() { // this tells player what Tools(cells) they have to fight the Pathogens with
+    private static boolean cells() { // this tells player what Tools(cells) they have to fight the Pathogens with
         Output.printColor("Here are the Fighting Cells you have at your disposal,", Colors.ANSI_GREEN, true);
         Output.printColor("and their descriptions.", Colors.ANSI_GREEN, true);
         // DONE check name to find location to give to user
@@ -182,7 +187,7 @@ public class Commands {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            File inputFile = new File("resources/Word.xml");
+            File inputFile = new File("Dr.Me-Capstone-2-MJG/resources/Word.xml");
             Document doc = db.parse(inputFile);
             doc.getDocumentElement().normalize();
 

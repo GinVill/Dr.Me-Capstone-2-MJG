@@ -1,10 +1,10 @@
 package app;
+
 import entities.Player;
 import util.Colors;
-import util.GameConstants;
 import util.Output;
 
-import java.util.*;
+import java.util.Scanner;
 
 
 public class DoctorMeApp {
@@ -31,16 +31,16 @@ public class DoctorMeApp {
         // difficulty represented as 50
         Game game = new Game(player, DIFFICULTY);
 
-       // game.playIntroduction(playerName);
+        // game.playIntroduction(playerName);
         // Read and Load Word XML file
         Commands.loadWordXMLfile();
 
         // Read and load Cell XML file
         XMLController.readCellXML();
 
-        // Read in the XML file
-        XMLController xmlc = new XMLController();
-        game.play(WINNING_POINTS_REQUIRED, HEALTHVALUE, xmlc.readXML());
+
+        System.out.println();
+        game.play(WINNING_POINTS_REQUIRED, HEALTHVALUE, XMLController.readXML());
 
     }
 

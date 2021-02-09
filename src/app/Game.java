@@ -35,6 +35,13 @@ public class Game {
 
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
         // Initiate primary game loop, check game ending conditions each time
+        String userAnswer = "";
+        try {
+            playIntroduction(player.getName());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
             // here we present scenario and let the Dr fight the pathogens
             // Handle the current threat's scenario and question
@@ -51,7 +58,8 @@ public class Game {
             // Get players answer
             // askPathogenQuestion(currentThreat);
             //String userAnswer = sc.next().strip();
-            String userAnswer = sc.nextLine().strip();
+            userAnswer = sc.nextLine().strip();
+
             if (checkAnswer(currentThreat, userAnswer, chances)) {
                 // Correct answer, add to player points
                 this.getPlayer().addPoints(currentThreat.getPoints());
@@ -71,18 +79,23 @@ public class Game {
             return false;
         }
 
-
         // if correct answer, break out
         if (isCorrect(pathogen, userAnswer)) {
             return true;
         } else if (isValidUserInput(pathogen, userAnswer, chances)) {
-          //  Output.printColor(" Input is valid", Colors.ANSI_YELLOW, true);
+            //  Output.printColor(" Input is valid", Colors.ANSI_YELLOW, true);
 
             // Handles the command and then asks for input again.
             Output.printColor("Please enter your answer >> ",
                     Colors.ANSI_YELLOW, false);
             userAnswer = sc.nextLine().strip(); // Get the user answer again
-            checkAnswer(pathogen, userAnswer, chances);
+            if (userAnswer.equalsIgnoreCase("quit")) {
+                quitGame();
+            } else {
+                checkAnswer(pathogen, userAnswer, chances);
+            }
+
+
         } else {
 
             chances--; // Answer is wrong, decrement chances
@@ -92,7 +105,11 @@ public class Game {
             Output.printColor("Please enter your answer >> ",
                     Colors.ANSI_YELLOW, false);
             userAnswer = sc.nextLine().strip(); //
-            checkAnswer(pathogen, userAnswer, chances);
+            if (userAnswer.equalsIgnoreCase("quit")) {
+                quitGame();
+            } else {
+                checkAnswer(pathogen, userAnswer, chances);
+            }
         }
 
         return false;
@@ -114,7 +131,7 @@ public class Game {
 //         userAnswer = sc.nextLine().strip();
 
         boolean result = Commands.handleCommand(userAnswer, pathogenName);
-      //  System.out.println("Line 22: HandleCommand Result " + result);
+        //  System.out.println("Line 22: HandleCommand Result " + result);
         return result;
 
     }
@@ -184,7 +201,12 @@ public class Game {
         }
     }
 
-    // Accessors
+
+    private void quitGame() {
+        System.out.println("\nThank you for playing our game. See you soon! ");
+        System.exit(0);
+    }
+
     public Player getPlayer() {
         return player;
     }
