@@ -11,11 +11,13 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class Game {
+    // Fields
     private int id = UUID.randomUUID().hashCode();
     private static Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
 
+    // Ctors
     public Game() {
         super();
     }
@@ -26,6 +28,7 @@ public class Game {
         setDifficulty(difficulty);
     }
 
+    // Methods
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
@@ -33,7 +36,7 @@ public class Game {
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
         // Initiate primary game loop, check game ending conditions each time
         while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
-            // here we present scenerio and let the Dr fight the pathogens
+            // here we present scenario and let the Dr fight the pathogens
             // Handle the current threat's scenario and question
             int randomIndex = getRandomNumber(0, pathogenList.size() - 1);
             Pathogen currentThreat = pathogenList.get(randomIndex);
@@ -181,7 +184,7 @@ public class Game {
         }
     }
 
-
+    // Accessors
     public Player getPlayer() {
         return player;
     }

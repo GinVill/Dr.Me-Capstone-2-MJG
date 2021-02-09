@@ -106,17 +106,20 @@ public class Commands {
     private static boolean help() { // this tells player what Tools(cells) they have to fight the Pathogens with
         Output.printColor("Here are the Fighting Cells you have at your disposal,", Colors.ANSI_GREEN, true);
         Output.printColor("and their descriptions.", Colors.ANSI_GREEN, true);
-        // TODO check name to find location to give to user
+        // DONE check name to find location to give to user
         // Pathogen pathogen = new Pathogen();
         Cell cell = new Cell();
-        // String pathLocation;
+        //String pathLocation;
+        String cellLocation;
         String cellName;
         String cellDescription;
         String result;
         for (Cell c : Cell.getCellList()) {
             cellName = c.getName();
             cellDescription = c.getDescription();
+            cellLocation = c.getLocation();
             Output.printColor(cellName, Colors.ANSI_RED, true);
+            Output.printColor(cellLocation, Colors.ANSI_RED, true);
             Output.printColor(cellDescription, Colors.ANSI_RED, true);
         }
         return false;
