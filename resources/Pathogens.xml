@@ -1,57 +1,100 @@
 <?xml version="1.0"?>
 <list>
     <pathogen>
-        <name>E. coli</name>
-        <description>A coliform, rod-shaped bacterium, Escherichia coli are commonly found in the gut.</description>
-        <hint>Many strains of E. coli are part of the gut's normal microbiota. It's probably okay to ignore it.</hint>
-        <location>small intestine</location>
-        <question>It's just normal E. coli. Enter "okay" to continue.</question>
-        <correctAnswer>okay</correctAnswer>
+        <name>Gingivitis</name>
+        <description>Look at that gumline! It is red and inflamed, so much so that the gums
+        likely bleed when this body brushes its teeth. This appears to be a case of gingivitis.</description>
+        <hint>As periodontitis progresses, it can spread infection to the jaw and bones.</hint>
+        <location>mouth</location>
+        <question>What do you recommend?
+        a. Careful flossing and gentle brushing twice daily should slowly improve the situation.
+        b. That's far too tender...leave that mess alone until it improves.
+        c. Soft foods will help. Luckily dietary supplement drinks, mashed potatoes, baby food are all delicious.</question>
+        <antibiotic>doxycycline, azithromycin</antibiotic>
+        <correctAnswer>a</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Salmonella</name>
-        <description>A capsular bacterium that uses its many flagella to travel from place to place, Salmonella targets the stomach.</description>
-        <hint>It looks like this pathogen is able to produce energy regardless of its surroundings. Perhaps a general attack can do the trick.</hint>
-        <location>stomach</location>
-        <question>Salmonella is wreaking havoc. A pyrrhic victory is still a victory. Call the help of which self-sacrificing cell?</question>
-        <correctAnswer>nk cell,b cell</correctAnswer>
+        <name>Mouth Ulcers</name>
+        <description>That huge pit in the skin looks painful. It's edges are irregular, the pit is varying
+         shades of red and white. Mouth ulcers can be caused by a number of things: accidentally biting
+         yourself, certain medications, infections and other medical conditions.</description>
+        <hint>If you see mouth ulcers frequently, or they don't clear up in 2 weeks, you should see
+         a doctor. This is especially important if you use tobacco and/or alcohol products frequently.</hint>
+        <location>mouth</location>
+        <question>What can this body do?
+         a. Keep an eye on it. It should go away in a few weeks.
+         b. Pack it with salt to help fight bacteria.
+         c. Have a strong drink. Alcohol kills lots of things.</question>
+        <antibiotic>doxycycline</antibiotic>
+        <correctAnswer>a</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>C. difficile</name>
-        <description>Clostridiodes difficile, a motile, drumstick-shaped bacteria.</description>
-        <hint>C. difficile is spore-forming. Better not take too long fighting it.</hint>
-        <location>colon</location>
-        <question>This requires immediate action. Which cells of the innate immune system should be used?</question>
-        <correctAnswer>granulocyte,nk cell,b cell</correctAnswer>
+        <name>Caries</name>
+        <description>Is that tooth discolored? It looks like it could be cracked.
+         It might even be sensitive to hot or cold temperatures, or aching. </description>
+        <hint>Cavities, or caries, are permanent and won't go away. In fact, they can spread
+         infection and cause tooth loss. Brush and floss daily to prevent cavities.</hint>
+        <location>mouth</location>
+        <question>What do you recommend this body do?
+         a. Try some special toothpaste that reduces tooth sensitivity.
+         b. See a dentist.
+         c. Chewing gum is soft and will stick those crumbs of tooth together.</question>
+        <antibiotic>azithromycin, clindamycin</antibiotic>
+        <correctAnswer>b</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Chlamydia psittaci</name>
-        <description>Psittaci, a zoonotic bacterium responsible for parrot fever, presents chiefly as an atypical pneumonia that can lead to a coma.</description>
-        <hint>It looks like it might be susceptible to bacteriophages.</hint>
-        <location>lungs</location>
-        <question>This typically requires tetracyclines. In the mean time, which cells should take action?</question>
-        <correctAnswer>macrophage,granulocyte,nk cell,b cell</correctAnswer>
+        <name>Esophagitis</name>
+        <description>This esophagus looks irritated and inflamed. It is probably painful and difficult to swallow.
+            This body has probably been experiencing heartburn, chest pain or maybe even a cough.
+            It looks like esophagitis, which could be caused by acid reflux, allergies, medications
+            or a hiatal hernia, among other things. </description>
+        <hint>Certain foods and behaviors can make symptoms worse. Eat low-fat, healthy foods.
+            Sometimes, antacids can help, but frequent pain should be checked by a doctor.</hint>
+        <location>throat</location>
+        <question>What might improve these symptoms?
+        a. Lose some weight. Even 5 or 10 pounds could help. Don't lie down within 3 hours of eating.
+        b. Eating foods high in fat will coat the esophagus and ease pain. Cheeseburgers and shakes - woo hoo!
+        c. Life is pain. You'll get used to it. </question>
+        <antibiotic>famotidine, omeprazole, pantoprazole</antibiotic>
+        <correctAnswer>a</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Fungal Meningitis</name>
-        <description>An altered state of mind, nausea clouding your head.  When did the lights become so intense?  The spore-forming fungal meningitis blends into the pellucid cerebrospinal fluid as it finishes its travel from the lungs.</description>
-        <hint>The fungus boasts a mortality rate of 10-20% amongst its afflicted. Fortunately, it's not transmissible between humans. It'll take a while to defeat this.</hint>
-        <location>brain</location>
-        <question>The blood-brain barrier makes this especially tricky. Which cells should be used to extirpate the fungal fury?</question>
-        <correctAnswer>B cell</correctAnswer>
+        <name>Tonsillitis</name>
+        <description>2.	Tonsils are lymph glands at the back of the throat on either side. They are an
+            important defense again germs that come in through the nose and mouth. These tonsils appear
+            red and inflamed, with some whitish streaks and patches. And the breath in here is bad.</description>
+        <hint>This is not normal, this is tonsillitis. While viral infections usually clear on their
+            own in about a week, some bacterial infections may require medication. Chronic tonsillitis
+            can lead to a peritonsillar abcess, which is a pocket of infection around the tonsil. Yup,
+            the human body is disgusting.</hint>
+        <location>throat</location>
+        <question>Is this normal?
+        a. Yes, this is totally normal. The human body is disgusting.
+        b. Meh. Use gargles or lozenges to ease the pain and most viral infections clear up in a week or two.
+        c. No, this is not normal. Have some crunchy sushi roll with wasabi, a natural antibacterial.</question>
+        <antibiotic>penicillin, amoxicillin</antibiotic>
+        <correctAnswer>b</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Prion</name>
-        <description>The harbinger of many transmissible neurodegenerative pathogens (e.g., Creutzfeldt-Jakob pathogen, Chronic Wasting pathogen, spongiform encephalopathy), prions denature the brain's proteins, invariably leading to death.</description>
-        <hint>Prions are durable, proteinaceous extremophiles. Beyond the host's life, these proteins remain virulent. Death is ineluctable.</hint>
-        <location>brain</location>
-        <question>Nothing can be done. Accept death and make amends. Play again?</question>
-        <correctAnswer>Yes</correctAnswer>
+        <name>Strep</name>
+        <description>3.	The throat is the tube that connects the mouth to your esophagus and windpipe.
+            Normal throats are pink and lined with mucosa. This throat is cherry-red, swollen and painful.
+            So are those tonsils. And there are spotty white patches all over the place. Could this body
+            be experiencing strep throat? </description>
+        <hint>Left untreated, strep throat could get very serious. Rheumatic fever and rheumatic heart
+            disease could occur and could even become life threatening. Beware the Streptococcus.</hint>
+        <location>throat</location>
+        <question>What do you recommend?
+        a. You have some old pills from the last sickness. Just take those and have some tea.
+        b. Drink plenty of fluids, take ibuprofen for the fever and aches. Get rest and it will go away.
+        c. Definitely see a doctor. This looks serious and could need medication to improve.</question>
+        <antibiotic>penicillin, clindamycin, cephalosporin</antibiotic>
+        <correctAnswer>c</correctAnswer>
         <points>20</points>
     </pathogen>
 </list>
