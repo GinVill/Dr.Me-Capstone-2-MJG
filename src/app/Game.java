@@ -57,7 +57,9 @@ public class Game {
             // askPathogenQuestion(currentThreat);
             //String userAnswer = sc.next().strip();
             userAnswer = sc.nextLine().strip();
-
+            if (userAnswer.equalsIgnoreCase("quit")) {
+                quitGame();
+            }
             if (checkAnswer(currentThreat, userAnswer, chances)) {
                 // Correct answer, add to player points
                 this.getPlayer().addPoints(currentThreat.getPoints());
@@ -65,7 +67,6 @@ public class Game {
                 // Wrong answer, subtract player health
                 currentThreat.attack(this.getPlayer());
             }
-
 
         }
     }
