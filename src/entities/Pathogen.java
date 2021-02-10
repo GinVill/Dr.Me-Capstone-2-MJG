@@ -15,7 +15,7 @@ public class Pathogen extends CombatEntity {
     private static ArrayList<Pathogen> pathogenList;
 
     public Pathogen(){
-        super(20, 40);
+        super(20, 30);
     }
 
 
