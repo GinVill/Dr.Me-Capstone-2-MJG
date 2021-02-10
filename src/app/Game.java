@@ -148,8 +148,8 @@ public class Game {
                     }
                   }
         }
-        return false;
-=======
+        //return false;
+
 //        //if chances < 1, return false
 //        if (chances <= 1) {
 //            return false;
@@ -189,7 +189,6 @@ public class Game {
 //        }
 //
         return isCorrect(pathogen, userAnswer);
->>>>>>> fa9ed975ed41ee19e4eee7be00072bb6570102f6
     }
     private void askPathogenQuestion(Pathogen currentThreat) {
         String location = currentThreat.getLocation();
