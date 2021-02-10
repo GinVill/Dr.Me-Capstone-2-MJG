@@ -32,46 +32,65 @@ public class Game {
     }
 
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
-        // Initiate primary game loop, check game ending conditions each time
-        String userAnswer = "";
-        try {
-            playIntroduction(player.getName());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            String userInput = "";
+            Iterator<Pathogen> itr = null;
+            // Initiate primary game loop, check game ending conditions each time
+            while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
+                boolean stay = true;
+                do {
+                    try {
+                        playIntroduction(player.getName());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                List<Pathogen> pathogens;
 
-        while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
-            boolean stay = true;
-            do {
-                promptDirection();
-
-
-            } while (stay);
-
+                userInput = sc.nextLine().strip();
+                pathogens = pathogensInOrgan(pathogenList, userInput);
+                itr = pathogens.listIterator();
+                for (Pathogen pathogen : pathogens) {
+                 if (itr.hasNext()){
+                     int chances = 3;
+                     askPathogenQuestion(pathogen);
+                     if (userInput.equalsIgnoreCase("quit")) {
+                         quitGame();
+                     } else if (userInput.equalsIgnoreCase("exit")) {
+                         //exitOrgan();
+                         break;
+                     }
+                     if (checkAnswer(pathogen, userInput, chances)) {
+                         // Correct answer, add to player points
+                         this.getPlayer().addPoints(pathogen.getPoints());
+                     } else {
+                         // Wrong answer, subtract player health
+                         pathogen.attack(this.getPlayer());
+                     }
+                 } else {
+                     System.out.println("\nCongrats, you heal the entire " + pathogen.getLocation() + ". \n");
+                 }
+                }
+            } while (stay) ;
         }
     }
 
-    private String promptDirection(){
-        String userInput = "";
-
-
-        return userInput;
+    private boolean exitOrgan(){
+        return false;
     }
 
-    private Pathogen setCurrentThreat(ArrayList<Pathogen> pathogenList, String organ) {
-        Pathogen currentThreat = null;
-        List<String> organslist = new ArrayList<>();
-        organslist = Arrays.asList("brain","mouth","lungs","heart","liver","stomach","small intestine","colon");
+    private List<Pathogen> pathogensInOrgan(ArrayList<Pathogen> pathogenList, String organ) {
+        List<Pathogen> currentOrganList = new ArrayList<>();
+        List<String> organslist;
+        organslist = Arrays.asList("brain","mouth","throat","lungs","heart","liver","stomach","small intestine","colon");
 
         if (organslist.contains(organ)) { // if the organs is valid organ.
             // iterate through PathogenList
             for (Pathogen pathogen : pathogenList) {
                 if (pathogen.getLocation().equals(organ)){
-                    currentThreat = pathogen;
+                    currentOrganList.add(pathogen);
                 }
             }
         }
-        return currentThreat;
+        return currentOrganList;
     }
 
     private boolean checkAnswer(Pathogen pathogen, String userAnswer, int chances) {
@@ -139,8 +158,8 @@ public class Game {
 
     public void playIntroduction(String playerName) throws InterruptedException {
         // Display game introduction related information
-        Output.printColor("Hello welcome to Dr Me ", Colors.ANSI_RED, false);
-        Output.printColor(playerName, Colors.ANSI_RED, true);
+        Output.printColor("Hello "+ playerName +". welcome to Dr Me ", Colors.ANSI_RED, true);
+        //Output.printColor(playerName, Colors.ANSI_RED, true);
 
         // Prints a loading display sequence
         //Output.printLoading(3);
@@ -154,8 +173,6 @@ public class Game {
         Output.printColor(">>", Colors.ANSI_BLUE, false);
         //Output.printLoading(5);
     }
-
-    //
 
     private boolean isGameEnd(Player player, int requiredPoints) {
         if (isWin(player, requiredPoints)) {

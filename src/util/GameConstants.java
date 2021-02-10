@@ -11,6 +11,7 @@ public class GameConstants {
                     "     HINT  -  gives you a hint on what to do next\n" +
                     "     GET <item>  -  gets the item from your inventory to see if its useful\n" +
                     "     INVENTORY  -  displays the items you have\n"+
+                    "     EXIT  -  to exit from current organ\n"+
                     "     QUIT  -  to quit game\n"+
                     "     _________________________________________________________________________\n";
 
@@ -19,6 +20,6 @@ public class GameConstants {
                     "     As you look around, you notice the walls have many folds--rugae, perhaps?\n" +
                     "     The floor bubbling with acid, you realize you're inside the human body.\n" +
                     "     you can choose where you want to start by entering one of the following locations\n" +
-                    "     [brain, mouth, lungs, heart, liver, stomach, small intestine, colon]\n" +
+                    "     [brain, mouth, throat, lungs, heart, liver, stomach, small intestine, colon]\n" +
                     "     _________________________________________________________________________\n";
 }
