@@ -4,6 +4,7 @@ import entities.Pathogen;
 import entities.Player;
 import util.Colors;
 import util.GameConstants;
+import util.MusicPlayer;
 import util.Output;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Game {
     private static Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
-
+    private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
 
     public Game() {
         super();
@@ -34,38 +35,68 @@ public class Game {
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
         // Initiate primary game loop, check game ending conditions each time
         String userAnswer = "";
-        try {
-            playIntroduction(player.getName());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // mpTheme.startMusic();
+//        try {
+//            playIntroduction(player.getName());
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
-            // here we present scenerio and let the Dr fight the pathogens
+            boolean isAsking = true;
+            // here we present scenario and let the Dr fight the pathogens
             // Handle the current threat's scenario and question
             int randomIndex = getRandomNumber(0, pathogenList.size() - 1);
+            System.out.printf("%100s%n%n", player.getPoints());
             Pathogen currentThreat = pathogenList.get(randomIndex);
             askPathogenQuestion(currentThreat);
+
 
             // If we do not receive a primary command
             // like hint or help or a synonym to those
             // Then we assume that is their answer to the question
 
-            int chances = 3;
+            int chances = 2;
             // Continue waiting until valid command/answer has been entered
             // Get players answer
             // askPathogenQuestion(currentThreat);
             //String userAnswer = sc.next().strip();
-            userAnswer = sc.nextLine().strip();
-            if (userAnswer.equalsIgnoreCase("quit")) {
-                quitGame();
-            }
-            if (checkAnswer(currentThreat, userAnswer, chances)) {
-                // Correct answer, add to player points
-                this.getPlayer().addPoints(currentThreat.getPoints());
-            } else {
-                // Wrong answer, subtract player health
-                currentThreat.attack(this.getPlayer());
+            userAnswer = sc.nextLine().strip().toLowerCase();
+//            if (userAnswer.equalsIgnoreCase("quit")) {
+//                quitGame();
+//            }
+            switch (userAnswer) {
+                case "quit":
+                    quitGame();
+                    break;
+                case "hint":
+                case "cells":
+                case "help":
+                    isValidUserInput(currentThreat, userAnswer, chances);
+                    break;
+                default:
+
+                    System.out.println(player.getHealth());
+                    while (chances > 0) {
+                        if (checkAnswer(currentThreat, userAnswer, chances)) {
+                            // Correct answer, add to player points
+                            this.getPlayer().addPoints(currentThreat.getPoints());
+                            this.getPlayer().setHealth(120);
+                            break;
+                        } else {
+                            chances--;
+                            // Wrong answer, subtract player health
+                            currentThreat.attack(this.getPlayer());
+                            if (!(chances == 0)) {
+                                Output.printColor("Incorrect. Be careful your health is "
+                                                + player.getHealth() + " enter your answer >> ",
+                                        Colors.ANSI_YELLOW, true);
+                                userAnswer = sc.nextLine().strip();
+
+                            }
+
+                        }
+                    }
             }
 
         }
@@ -73,45 +104,45 @@ public class Game {
 
     private boolean checkAnswer(Pathogen pathogen, String userAnswer, int chances) {
 
-        //if chances < 1, return false
-        if (chances <= 1) {
-            return false;
-        }
-
-        // if correct answer, break out
-        if (isCorrect(pathogen, userAnswer)) {
-            return true;
-        } else if (isValidUserInput(pathogen, userAnswer, chances)) {
-            //  Output.printColor(" Input is valid", Colors.ANSI_YELLOW, true);
-
-            // Handles the command and then asks for input again.
-            Output.printColor("Please enter your answer >> ",
-                    Colors.ANSI_YELLOW, false);
-            userAnswer = sc.nextLine().strip(); // Get the user answer again
-            if (userAnswer.equalsIgnoreCase("quit")) {
-                quitGame();
-            } else {
-                checkAnswer(pathogen, userAnswer, chances);
-            }
-
-
-        } else {
-
-            chances--; // Answer is wrong, decrement chances
-            Output.printColor(chances + " chances remaining to answer the question" +
-                            " correctly",
-                    Colors.ANSI_CYAN, true);
-            Output.printColor("Please enter your answer >> ",
-                    Colors.ANSI_YELLOW, false);
-            userAnswer = sc.nextLine().strip(); //
-            if (userAnswer.equalsIgnoreCase("quit")) {
-                quitGame();
-            } else {
-                checkAnswer(pathogen, userAnswer, chances);
-            }
-        }
-
-        return false;
+//        //if chances < 1, return false
+//        if (chances <= 1) {
+//            return false;
+//        }
+//
+//        // if correct answer, break out
+//        if (isCorrect(pathogen, userAnswer)) {
+//            return true;
+//        } else if (isValidUserInput(pathogen, userAnswer, chances)) {
+//            //  Output.printColor(" Input is valid", Colors.ANSI_YELLOW, true);
+//
+//            // Handles the command and then asks for input again.
+//            Output.printColor("Please enter your answer >> ",
+//                    Colors.ANSI_YELLOW, false);
+//            userAnswer = sc.nextLine().strip(); // Get the user answer again
+//            if (userAnswer.equalsIgnoreCase("quit")) {
+//                quitGame();
+//            } else {
+//                checkAnswer(pathogen, userAnswer, chances);
+//            }
+//
+//
+//        } else {
+//
+//            chances--; // Answer is wrong, decrement chances
+//            Output.printColor(chances + " chances remaining to answer the question" +
+//                            " correctly",
+//                    Colors.ANSI_CYAN, true);
+//            Output.printColor("Please enter your answer >> ",
+//                    Colors.ANSI_YELLOW, false);
+//            userAnswer = sc.nextLine().strip(); //
+//            if (userAnswer.equalsIgnoreCase("quit")) {
+//                quitGame();
+//            } else {
+//                checkAnswer(pathogen, userAnswer, chances);
+//            }
+//        }
+//
+        return isCorrect(pathogen, userAnswer);
     }
 
 
@@ -120,6 +151,7 @@ public class Game {
         Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
         Output.printColor("Where you find:  " + currentThreat.getDescription() + "\n", Colors.ANSI_BLUE, true);
         Output.printColor(currentThreat.getQuestion() + "\n Type your answer >> ", Colors.ANSI_YELLOW, false);
+
     }
 
     // Gets the user raw input and sends to handler

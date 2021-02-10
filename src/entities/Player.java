@@ -1,15 +1,12 @@
 package entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Player extends CombatEntity {
 
     private String name;
     private int points;
 
     public Player(){
-        super(100, 50);
+        super(120, 50);
     }
 
     public Player(String name) {
@@ -47,7 +44,7 @@ public class Player extends CombatEntity {
         return health;
     }
 
-    private void setHealth(int health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 
