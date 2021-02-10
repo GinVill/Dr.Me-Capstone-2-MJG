@@ -1,23 +1,25 @@
-        ~~ Welcome to Dr. Me ~~
 
-The objective of this interactive pathogen fighting
-game is to defend the body of harmful disease. You'll use
-your knowledge of the innate immune system to correctly
-select which cells to send into combat.
 
-Good luck, Doctor!
+                ~~ Welcome to Dr. Me ~~
 
-        ~~ Useful Commands ~~
+        The objective of this interactive pathogen fighting
+        game is to defend the body of harmful disease. You'll use
+        your knowledge of the innate immune system to correctly
+        select which cells to send into combat.
 
-Cells - displays detailed information on "weapons" you have at your disposal
+        Good luck, Doctor!
 
-Hint - gives you a hint on what to do next or how best to combat the pathogen
+                ~~ Useful Commands ~~
 
-Get <item> - gets the item from your inventory to see if its useful
+        Cells - displays detailed information on "weapons" you have at your disposal
 
-Inventory - displays the player's inventory
+        Hint - gives you a hint on what to do next or how best to combat the pathogen
 
-Quit - Allows player to quit game
+        Get <item> - gets the item from your inventory to see if its useful
+
+        Inventory - displays the player's inventory
+
+        Quit - Allows player to quit game
 
 
 

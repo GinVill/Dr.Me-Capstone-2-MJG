@@ -1,8 +1,5 @@
 package entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Player extends CombatEntity {
     // Fields
     private String name;
@@ -10,7 +7,7 @@ public class Player extends CombatEntity {
 
     // Ctor
     public Player(){
-        super(100, 50);
+        super(120, 50);
     }
 
     public Player(String name) {
@@ -50,7 +47,7 @@ public class Player extends CombatEntity {
         return health;
     }
 
-    private void setHealth(int health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 

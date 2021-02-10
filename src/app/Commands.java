@@ -122,9 +122,13 @@ public class Commands {
         for (Cell c : Cell.getCellList()) {
             cellName = c.getName();
             cellDescription = c.getDescription();
+
             cellLocation = c.getLocation();
             Output.printColor(cellName, Colors.ANSI_RED, true);
             Output.printColor(cellLocation, Colors.ANSI_RED, true);
+
+            Output.printColor("\n" + cellName, Colors.ANSI_RED, true);
+
             Output.printColor(cellDescription, Colors.ANSI_RED, true);
         }
         return false;
