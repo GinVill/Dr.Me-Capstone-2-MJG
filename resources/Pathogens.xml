@@ -7,9 +7,9 @@
         <hint>As periodontitis progresses, it can spread infection to the jaw and bones.</hint>
         <location>mouth</location>
         <question>What do you recommend?
-        a. Careful flossing and gentle brushing twice daily should slowly improve the situation.
-        b. That's far too tender...leave that mess alone until it improves.
-        c. Soft foods will help. Luckily dietary supplement drinks, mashed potatoes, baby food are all delicious.</question>
+        A. Careful flossing and gentle brushing twice daily should slowly improve the situation.
+        B. That's far too tender...leave that mess alone until it improves.
+        C. Soft foods will help. Luckily dietary supplement drinks, mashed potatoes, baby food are all delicious.</question>
         <antibiotic>doxycycline, azithromycin</antibiotic>
         <correctAnswer>a</correctAnswer>
         <points>20</points>
@@ -23,9 +23,9 @@
          a doctor. This is especially important if you use tobacco and/or alcohol products frequently.</hint>
         <location>mouth</location>
         <question>What can this body do?
-         a. Keep an eye on it. It should go away in a few weeks.
-         b. Pack it with salt to help fight bacteria.
-         c. Have a strong drink. Alcohol kills lots of things.</question>
+         A. Keep an eye on it. It should go away in a few weeks.
+         B. Pack it with salt to help fight bacteria.
+         C. Have a strong drink. Alcohol kills lots of things.</question>
         <antibiotic>doxycycline</antibiotic>
         <correctAnswer>a</correctAnswer>
         <points>20</points>
@@ -38,9 +38,9 @@
          infection and cause tooth loss. Brush and floss daily to prevent cavities.</hint>
         <location>mouth</location>
         <question>What do you recommend this body do?
-         a. Try some special toothpaste that reduces tooth sensitivity.
-         b. See a dentist.
-         c. Chewing gum is soft and will stick those crumbs of tooth together.</question>
+         A. Try some special toothpaste that reduces tooth sensitivity.
+         B. See a dentist.
+         C. Chewing gum is soft and will stick those crumbs of tooth together.</question>
         <antibiotic>azithromycin, clindamycin</antibiotic>
         <correctAnswer>b</correctAnswer>
         <points>20</points>
@@ -55,9 +55,9 @@
             Sometimes, antacids can help, but frequent pain should be checked by a doctor.</hint>
         <location>throat</location>
         <question>What might improve these symptoms?
-        a. Lose some weight. Even 5 or 10 pounds could help. Don't lie down within 3 hours of eating.
-        b. Eating foods high in fat will coat the esophagus and ease pain. Cheeseburgers and shakes - woo hoo!
-        c. Life is pain. You'll get used to it. </question>
+        A. Lose some weight. Even 5 or 10 pounds could help. Don't lie down within 3 hours of eating.
+        B. Eating foods high in fat will coat the esophagus and ease pain. Cheeseburgers and shakes - woo hoo!
+        C. Life is pain. You'll get used to it. </question>
         <antibiotic>famotidine, omeprazole, pantoprazole</antibiotic>
         <correctAnswer>a</correctAnswer>
         <points>20</points>
@@ -73,9 +73,9 @@
             the human body is disgusting.</hint>
         <location>throat</location>
         <question>Is this normal?
-        a. Yes, this is totally normal. The human body is disgusting.
-        b. Meh. Use gargles or lozenges to ease the pain and most viral infections clear up in a week or two.
-        c. No, this is not normal. Have some crunchy sushi roll with wasabi, a natural antibacterial.</question>
+        A. Yes, this is totally normal. The human body is disgusting.
+        B. Meh. Use gargles or lozenges to ease the pain and most viral infections clear up in a week or two.
+        C. No, this is not normal. Have some crunchy sushi roll with wasabi, a natural antibacterial.</question>
         <antibiotic>penicillin, amoxicillin</antibiotic>
         <correctAnswer>b</correctAnswer>
         <points>20</points>
@@ -90,9 +90,9 @@
             disease could occur and could even become life threatening. Beware the Streptococcus.</hint>
         <location>throat</location>
         <question>What do you recommend?
-        a. You have some old pills from the last sickness. Just take those and have some tea.
-        b. Drink plenty of fluids, take ibuprofen for the fever and aches. Get rest and it will go away.
-        c. Definitely see a doctor. This looks serious and could need medication to improve.</question>
+        A. You have some old pills from the last sickness. Just take those and have some tea.
+        B. Drink plenty of fluids, take ibuprofen for the fever and aches. Get rest and it will go away.
+        C. Definitely see a doctor. This looks serious and could need medication to improve.</question>
         <antibiotic>penicillin, clindamycin, cephalosporin</antibiotic>
         <correctAnswer>c</correctAnswer>
         <points>20</points>
@@ -108,10 +108,10 @@
         treated immediately.</hint>
         <location>brain</location>
         <question>
-            What are your recommendations for this body?
-            A. Drink plenty of water....and SEE A DOCTOR NOW.
-            B. Immediately see a doctor. They may need to do a spinal tap to determine how to treat this.
-            C. Get to a doctor or hospital, like now.
+        What are your recommendations for this body?
+        A. Drink plenty of water....and SEE A DOCTOR NOW.
+        B. Immediately see a doctor. They may need to do a spinal tap to determine how to treat this.
+        C. Get to a doctor or hospital, like now.
         </question>
         <antibiotic>acyclovir, doxycycline, penicillin, dexamethasone, cephalosporin</antibiotic>
         <correctAnswer>A, a, B, b, C, c</correctAnswer>
@@ -145,7 +145,7 @@
         B. See a doctor, who can try to monitor secondary issues like blood pressure, etc.
         C. Go to the hospital, where they will monitor you and try to minimize your symptoms.</question>
         <antibiotic>NONE</antibiotic>
-        <correctAnswer></correctAnswer>
+        <correctAnswer>A, a, B, b, C, c</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
