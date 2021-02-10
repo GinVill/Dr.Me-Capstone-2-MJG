@@ -32,28 +32,27 @@ public class Game {
     }
 
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
-            String userInput = "";
-            String playerPickedOrgan = "";
-            Iterator<Pathogen> itr = null;
+        try {
+                    playIntroduction(player.getName());
+        } catch (InterruptedException e) {
+                    e.printStackTrace();
+        }
             // Initiate primary game loop, check game ending conditions each time
             while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
-                // display intro
-
-
-
-                while(flag){
-
-                }
-
+                String input = "";
+                List<Pathogen> questionsInOrgan;
+                input = sc.nextLine().strip();
+                questionsInOrgan = questionsInCurrentOrgan(pathogenList,input);
+                a
             }
     }
 
 
 
-    private List<Pathogen> pathogensInOrgan(ArrayList<Pathogen> pathogenList, String organ) {
+    private List<Pathogen> questionsInCurrentOrgan(ArrayList<Pathogen> pathogenList, String organ) {
         List<Pathogen> currentOrganList = new ArrayList<>();
         List<String> organslist;
-        organslist = Arrays.asList("brain","mouth","throat","lungs","heart","liver","stomach","small intestine","colon");
+        organslist = Arrays.asList("brain","mouth","throat","lungs","heart","liver","stomach","colon");
 
         if (organslist.contains(organ)) { // if the organs is valid organ.
             // iterate through PathogenList
@@ -70,8 +69,6 @@ public class Game {
         if (isValidUserInput(pathogen, userAnswer, chances)) {
             if (userAnswer.equalsIgnoreCase("quit")) {
                 quitGame();
-            } else if (userAnswer.equalsIgnoreCase("exit")) {
-                exitOrgan(false);
             } else {
                 checkAnswer(pathogen, userAnswer, chances);
                 //if chances < 1, return false
