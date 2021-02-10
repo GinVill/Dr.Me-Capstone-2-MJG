@@ -36,46 +36,49 @@ public class Game {
             Iterator<Pathogen> itr = null;
             // Initiate primary game loop, check game ending conditions each time
             while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
-                boolean stay = true;
-                do {
+
+                    //display game intro and get player name.
                     try {
                         playIntroduction(player.getName());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                List<Pathogen> pathogens;
-
-                userInput = sc.nextLine().strip();
-                pathogens = pathogensInOrgan(pathogenList, userInput);
-                itr = pathogens.listIterator();
-                for (Pathogen pathogen : pathogens) {
-                 if (itr.hasNext()){
-                     int chances = 3;
-                     askPathogenQuestion(pathogen);
-                     if (userInput.equalsIgnoreCase("quit")) {
-                         quitGame();
-                     } else if (userInput.equalsIgnoreCase("exit")) {
-                         //exitOrgan();
-                         break;
-                     }
-                     if (checkAnswer(pathogen, userInput, chances)) {
-                         // Correct answer, add to player points
-                         this.getPlayer().addPoints(pathogen.getPoints());
-                     } else {
-                         // Wrong answer, subtract player health
-                         pathogen.attack(this.getPlayer());
-                     }
-                 } else {
-                     System.out.println("\nCongrats, you heal the entire " + pathogen.getLocation() + ". \n");
-                 }
-                }
-            } while (stay) ;
+                boolean flag =  exitOrgan(true);
+                do {
+                    //ArrayList to hold questions in current organ.
+                    List<Pathogen> pathogens;
+                    // get the organ that player want to go.
+                    userInput = sc.nextLine().strip();
+                    // get a list of all related questions to that organ.
+                    pathogens = pathogensInOrgan(pathogenList, userInput);
+                    // a iterator instance of the question list for that organ.
+                    itr = pathogens.listIterator();
+                    // iterate through the question list of current organ.
+                    for (Pathogen pathogen : pathogens) {
+                         // if there are still question in the list, continue.
+                         if (itr.hasNext()){
+                             // player has 3 chances to answer per question.
+                             int chances = 3;
+                             // through question to player.
+                             askPathogenQuestion(pathogen);
+                             userInput = sc.nextLine().strip(); // Get the user answer again
+                             if (checkAnswer(pathogen, userInput, chances)) {
+                                 // Correct answer, add to player points
+                                 this.getPlayer().addPoints(pathogen.getPoints());
+                             } else {
+                                 // Wrong answer, subtract player health
+                                 pathogen.attack(this.getPlayer());
+                             }
+                         } else {
+                             System.out.println("\nCongrats, you heal the entire " + pathogen.getLocation() + ". \n");
+                             exitOrgan(false);
+                         }
+                    }
+                } while (flag) ;
         }
     }
 
-    private boolean exitOrgan(){
-        return false;
-    }
+
 
     private List<Pathogen> pathogensInOrgan(ArrayList<Pathogen> pathogenList, String organ) {
         List<Pathogen> currentOrganList = new ArrayList<>();
@@ -94,48 +97,37 @@ public class Game {
     }
 
     private boolean checkAnswer(Pathogen pathogen, String userAnswer, int chances) {
-
-        //if chances < 1, return false
-        if (chances <= 1) {
-            return false;
-        }
-
-        // if correct answer, break out
-        if (isCorrect(pathogen, userAnswer)) {
-            return true;
-        } else if (isValidUserInput(pathogen, userAnswer, chances)) {
-            //  Output.printColor(" Input is valid", Colors.ANSI_YELLOW, true);
-
-            // Handles the command and then asks for input again.
-            Output.printColor("Please enter your answer >> ",
-                    Colors.ANSI_YELLOW, false);
-            userAnswer = sc.nextLine().strip(); // Get the user answer again
+        if (isValidUserInput(pathogen, userAnswer, chances)) {
             if (userAnswer.equalsIgnoreCase("quit")) {
                 quitGame();
+            } else if (userAnswer.equalsIgnoreCase("exit")) {
+                exitOrgan(false);
             } else {
                 checkAnswer(pathogen, userAnswer, chances);
-            }
+                //if chances < 1, return false
+                if (chances <= 1) {
+                    System.out.println("You are running out of chance"); // TODO:delete after testing
+                    return false;
+                }
+                // if correct answer, break out
+                if (isCorrect(pathogen, userAnswer)) {
+                    System.out.println("You are Right"); // TODO:delete after testing
+                    return true;
+                } else {
 
-
-        } else {
-
-            chances--; // Answer is wrong, decrement chances
-            Output.printColor(chances + " chances remaining to answer the question" +
-                            " correctly",
-                    Colors.ANSI_CYAN, true);
-            Output.printColor("Please enter your answer >> ",
-                    Colors.ANSI_YELLOW, false);
-            userAnswer = sc.nextLine().strip(); //
-            if (userAnswer.equalsIgnoreCase("quit")) {
-                quitGame();
-            } else {
-                checkAnswer(pathogen, userAnswer, chances);
-            }
+                    chances--; // Answer is wrong, decrement chances
+                    Output.printColor(chances + " chances remaining to answer the question" +
+                                    " correctly",
+                            Colors.ANSI_CYAN, true);
+                    Output.printColor("Please enter your answer >> ",
+                            Colors.ANSI_YELLOW, false);
+                    userAnswer = sc.nextLine().strip();
+                    checkAnswer(pathogen, userAnswer, chances);
+                    }
+                  }
         }
-
         return false;
     }
-
     private void askPathogenQuestion(Pathogen currentThreat) {
         String location = currentThreat.getLocation();
         Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
@@ -225,6 +217,11 @@ public class Game {
     private void quitGame() {
         System.out.println("\nThank you for playing our game. See you soon! ");
         System.exit(0);
+    }
+
+    private boolean exitOrgan(boolean flag){
+        boolean result = flag;
+        return result;
     }
 
     public Player getPlayer() {
