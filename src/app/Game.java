@@ -17,6 +17,7 @@ public class Game {
     private Scanner sc = new Scanner(System.in);
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
 
+
     public Game() {
         super();
     }
@@ -42,7 +43,6 @@ public class Game {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-
 
         while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
             boolean isAsking = true;
@@ -98,9 +98,9 @@ public class Game {
                                                         + player.getHealth() + " enter your answer \n>> ",
                                                 Colors.ANSI_YELLOW, false);
                                         userAnswer = sc.nextLine().strip();
-
                                     }
                                 }
+
                             }
                     }
                 }
