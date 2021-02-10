@@ -167,6 +167,14 @@ public class Game {
 
     }
 
+    // public method used to test private method of questionsInCurrentOrgan.
+    public int questionsInOrgan(ArrayList<Pathogen> pathogenList, String organ){
+        if(questionsInCurrentOrgan(pathogenList, organ) != null){
+         return questionsInCurrentOrgan(pathogenList, organ).size();
+        }
+        return 1;
+    }
+
     private List<Pathogen> questionsInCurrentOrgan(ArrayList<Pathogen> pathogenList, String organ) {
         List<Pathogen> currentOrganList = new ArrayList<>();
         List<String> organslist;
