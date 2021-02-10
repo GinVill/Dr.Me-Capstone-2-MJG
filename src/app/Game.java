@@ -18,6 +18,7 @@ public class Game {
     private Scanner sc = new Scanner(System.in);
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
 
+
     public Game() {
         super();
     }
@@ -35,20 +36,21 @@ public class Game {
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
         // Initiate primary game loop, check game ending conditions each time
         String userAnswer = "";
-        // mpTheme.startMusic();
-//        try {
-//            playIntroduction(player.getName());
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+         mpTheme.startMusic();
+        try {
+            playIntroduction(player.getName());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Pathogen currentThreat = pathogenList.get(getRandomNumber(0, pathogenList.size() - 1));
 
         while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
             boolean isAsking = true;
             // here we present scenario and let the Dr fight the pathogens
             // Handle the current threat's scenario and question
-            int randomIndex = getRandomNumber(0, pathogenList.size() - 1);
+            //        int randomIndex = getRandomNumber(0, pathogenList.size() - 1);
             System.out.printf("%100s%n%n", player.getPoints());
-            Pathogen currentThreat = pathogenList.get(randomIndex);
+            //    Pathogen currentThreat = pathogenList.get(randomIndex);
             askPathogenQuestion(currentThreat);
 
 
@@ -82,6 +84,7 @@ public class Game {
                             // Correct answer, add to player points
                             this.getPlayer().addPoints(currentThreat.getPoints());
                             this.getPlayer().setHealth(120);
+                            currentThreat = pathogenList.get(getRandomNumber(0, pathogenList.size() - 1));
                             break;
                         } else {
                             chances--;
@@ -92,7 +95,8 @@ public class Game {
                                                 + player.getHealth() + " enter your answer >> ",
                                         Colors.ANSI_YELLOW, true);
                                 userAnswer = sc.nextLine().strip();
-
+                            } else {
+                                currentThreat = pathogenList.get(getRandomNumber(0, pathogenList.size() - 1));
                             }
 
                         }
