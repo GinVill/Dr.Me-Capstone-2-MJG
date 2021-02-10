@@ -33,49 +33,19 @@ public class Game {
 
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
             String userInput = "";
+            String playerPickedOrgan = "";
             Iterator<Pathogen> itr = null;
             // Initiate primary game loop, check game ending conditions each time
             while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
+                // display intro
 
-                    //display game intro and get player name.
-                    try {
-                        playIntroduction(player.getName());
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                boolean flag =  exitOrgan(true);
-                do {
-                    //ArrayList to hold questions in current organ.
-                    List<Pathogen> pathogens;
-                    // get the organ that player want to go.
-                    userInput = sc.nextLine().strip();
-                    // get a list of all related questions to that organ.
-                    pathogens = pathogensInOrgan(pathogenList, userInput);
-                    // a iterator instance of the question list for that organ.
-                    itr = pathogens.listIterator();
-                    // iterate through the question list of current organ.
-                    for (Pathogen pathogen : pathogens) {
-                         // if there are still question in the list, continue.
-                         if (itr.hasNext()){
-                             // player has 3 chances to answer per question.
-                             int chances = 3;
-                             // through question to player.
-                             askPathogenQuestion(pathogen);
-                             userInput = sc.nextLine().strip(); // Get the user answer again
-                             if (checkAnswer(pathogen, userInput, chances)) {
-                                 // Correct answer, add to player points
-                                 this.getPlayer().addPoints(pathogen.getPoints());
-                             } else {
-                                 // Wrong answer, subtract player health
-                                 pathogen.attack(this.getPlayer());
-                             }
-                         } else {
-                             System.out.println("\nCongrats, you heal the entire " + pathogen.getLocation() + ". \n");
-                             exitOrgan(false);
-                         }
-                    }
-                } while (flag) ;
-        }
+
+
+                while(flag){
+
+                }
+
+            }
     }
 
 
