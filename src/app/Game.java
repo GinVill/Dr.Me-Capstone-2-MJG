@@ -6,9 +6,7 @@ import util.Colors;
 import util.GameConstants;
 import util.Output;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public class Game {
     // Fields
@@ -43,34 +41,37 @@ public class Game {
         }
 
         while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
-            // here we present scenario and let the Dr fight the pathogens
-            // Handle the current threat's scenario and question
-            int randomIndex = getRandomNumber(0, pathogenList.size() - 1);
-            Pathogen currentThreat = pathogenList.get(randomIndex);
-            askPathogenQuestion(currentThreat);
+            boolean stay = true;
+            do {
+                promptDirection();
 
-            // If we do not receive a primary command
-            // like hint or help or a synonym to those
-            // Then we assume that is their answer to the question
 
-            int chances = 3;
-            // Continue waiting until valid command/answer has been entered
-            // Get players answer
-            // askPathogenQuestion(currentThreat);
-            //String userAnswer = sc.next().strip();
-            userAnswer = sc.nextLine().strip();
-            if (userAnswer.equalsIgnoreCase("quit")) {
-                quitGame();
-            }
-            if (checkAnswer(currentThreat, userAnswer, chances)) {
-                // Correct answer, add to player points
-                this.getPlayer().addPoints(currentThreat.getPoints());
-            } else {
-                // Wrong answer, subtract player health
-                currentThreat.attack(this.getPlayer());
-            }
+            } while (stay);
 
         }
+    }
+
+    private String promptDirection(){
+        String userInput = "";
+
+
+        return userInput;
+    }
+
+    private Pathogen setCurrentThreat(ArrayList<Pathogen> pathogenList, String organ) {
+        Pathogen currentThreat = null;
+        List<String> organslist = new ArrayList<>();
+        organslist = Arrays.asList("brain","mouth","lungs","heart","liver","stomach","small intestine","colon");
+
+        if (organslist.contains(organ)) { // if the organs is valid organ.
+            // iterate through PathogenList
+            for (Pathogen pathogen : pathogenList) {
+                if (pathogen.getLocation().equals(organ)){
+                    currentThreat = pathogen;
+                }
+            }
+        }
+        return currentThreat;
     }
 
     private boolean checkAnswer(Pathogen pathogen, String userAnswer, int chances) {
@@ -116,7 +117,6 @@ public class Game {
         return false;
     }
 
-
     private void askPathogenQuestion(Pathogen currentThreat) {
         String location = currentThreat.getLocation();
         Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
@@ -143,17 +143,19 @@ public class Game {
         Output.printColor(playerName, Colors.ANSI_RED, true);
 
         // Prints a loading display sequence
-        Output.printLoading(3);
+        //Output.printLoading(3);
 
         // Start printing the games story
         Output.printColor(GameConstants.GAME_INTRODUCTION, Colors.ANSI_BLUE, true);
 
-        Output.printLoading(5);
+        //Output.printLoading(5);
 
         Output.printColor(GameConstants.GAME_INTRODUCTION_TWO, Colors.ANSI_BLUE, true);
-
-        Output.printLoading(5);
+        Output.printColor(">>", Colors.ANSI_BLUE, false);
+        //Output.printLoading(5);
     }
+
+    //
 
     private boolean isGameEnd(Player player, int requiredPoints) {
         if (isWin(player, requiredPoints)) {

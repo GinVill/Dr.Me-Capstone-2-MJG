@@ -200,7 +200,7 @@ public class Commands {
                     Element eElement = (Element) node;
                     String action = eElement.getElementsByTagName("action").item(0).getTextContent();
                     String synonym = eElement.getElementsByTagName("synonym").item(0).getTextContent();
-                    // TODO seperate synonym into pars breaking on comma, then add to tempArr, the put into HashMap
+                    // DONE separate synonym into pars breaking on comma, then add to tempArr, the put into HashMap
                     tempArr = Arrays.asList(synonym.split(","));
                     wordList.put(action, tempArr);
                 }
@@ -210,7 +210,7 @@ public class Commands {
             e.printStackTrace();
         }
         // XXX this is a test to be removed
-        // System.out.println(wordList+"  wordList TEST");
+        //System.out.println(wordList+"  wordList TEST");
 
         return wordList;
     }
