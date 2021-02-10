@@ -1,10 +1,11 @@
 package entities;
 
 public class Player extends CombatEntity {
-
+    // Fields
     private String name;
     private int points;
 
+    // Ctor
     public Player(){
         super(120, 50);
     }
@@ -15,6 +16,7 @@ public class Player extends CombatEntity {
         setPoints(0);
     }
 
+    // Methods
     @Override
     public boolean attack(CombatEntity threat) {
         threat.deductHealth(this.getStrength());
@@ -25,6 +27,7 @@ public class Player extends CombatEntity {
         }
     }
 
+    // Accessors
     public String getName() {
         return name;
     }

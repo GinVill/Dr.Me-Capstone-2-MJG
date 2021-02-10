@@ -111,17 +111,24 @@ public class Commands {
     private static boolean cells() { // this tells player what Tools(cells) they have to fight the Pathogens with
         Output.printColor("Here are the Fighting Cells you have at your disposal,", Colors.ANSI_GREEN, true);
         Output.printColor("and their descriptions.", Colors.ANSI_GREEN, true);
-        // TODO check name to find location to give to user
+        // DONE check name to find location to give to user
         // Pathogen pathogen = new Pathogen();
         Cell cell = new Cell();
-        // String pathLocation;
+        //String pathLocation;
+        String cellLocation;
         String cellName;
         String cellDescription;
         String result;
         for (Cell c : Cell.getCellList()) {
             cellName = c.getName();
             cellDescription = c.getDescription();
+
+            cellLocation = c.getLocation();
+            Output.printColor(cellName, Colors.ANSI_RED, true);
+            Output.printColor(cellLocation, Colors.ANSI_RED, true);
+
             Output.printColor("\n" + cellName, Colors.ANSI_RED, true);
+
             Output.printColor(cellDescription, Colors.ANSI_RED, true);
         }
         return false;
@@ -197,17 +204,17 @@ public class Commands {
                     Element eElement = (Element) node;
                     String action = eElement.getElementsByTagName("action").item(0).getTextContent();
                     String synonym = eElement.getElementsByTagName("synonym").item(0).getTextContent();
-                    // TODO seperate synonym into pars breaking on comma, then add to tempArr, the put into HashMap
+                    // DONE separate synonym into pars breaking on comma, then add to tempArr, the put into HashMap
                     tempArr = Arrays.asList(synonym.split(","));
                     wordList.put(action, tempArr);
                 }
             }
         } catch (Exception e) {
-            System.out.println("An Error Occured while loading the synonym list.");
+            System.out.println("An Error Occurred while loading the synonym list.");
             e.printStackTrace();
         }
         // XXX this is a test to be removed
-        // System.out.println(wordList+"  wordList TEST");
+        //System.out.println(wordList+"  wordList TEST");
 
         return wordList;
     }
