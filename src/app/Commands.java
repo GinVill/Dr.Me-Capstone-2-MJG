@@ -25,11 +25,12 @@ public class Commands {
 
 
     public static boolean handleCommand(String command, String name) { // Get args and set flag
-        List<String> args;
+        List<String> args = new ArrayList<>();
         List<String> task = new ArrayList<>();
-        args = Arrays.asList(command.split("\\s+").clone()).stream().map(String::toLowerCase)
-                .collect(Collectors.toList());
+
         if (args != null && args.size() > 0) {
+            args = Arrays.asList(command.split("\\s+").clone()).stream().map(String::toLowerCase)
+                    .collect(Collectors.toList());
             for (int i = 0; i < args.size(); i++) {
                 task.add(args.get(i));
             }
