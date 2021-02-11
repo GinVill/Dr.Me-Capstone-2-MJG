@@ -34,7 +34,7 @@ public class Game {
         // Initiate primary game loop, check game ending conditions each time
         String userAnswer = "";
         List<Pathogen> pathogensForChosenOrgan;
-        // mpTheme.startMusic();
+         mpTheme.startMusic();
 //        try {
 //            playIntroduction(player.getName());
 //        } catch (InterruptedException e) {

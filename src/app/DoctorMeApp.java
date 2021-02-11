@@ -1,13 +1,18 @@
 package app;
 
 import entities.Player;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import util.Colors;
 import util.Output;
 
 import java.util.Scanner;
 
 
-public class DoctorMeApp {
+public class DoctorMeApp extends Application{
 
     // Game constants per instance
     private final int WINNING_POINTS_REQUIRED = 100;
@@ -18,7 +23,16 @@ public class DoctorMeApp {
 
     public static void main(String[] args) throws InterruptedException {
         DoctorMeApp app = new DoctorMeApp();
-        app.playDrMe();
+        launch(args);
+       // app.playDrMe();
+
+    }
+
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/GUIMain.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
     }
 
     public void playDrMe() throws InterruptedException {
