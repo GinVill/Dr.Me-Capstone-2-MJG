@@ -52,9 +52,9 @@ public class Game {
             pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, chosenOrgan);
 
             int counter = pathogensForChosenOrgan.size();
-            for (Pathogen question: pathogensForChosenOrgan) {
-                if (counter > 0 ) {
-                    System.out.println("\n"+counter);
+            for (Pathogen question : pathogensForChosenOrgan) {
+                if (counter > 0) {
+                    System.out.println("\n" + counter);
                     System.out.printf("questions remain in " + question.getLocation() + ":[" + (counter - 1) + "]");
                     System.out.printf("%70s%n%n", player.getPoints());
 
@@ -108,14 +108,11 @@ public class Game {
 //                    System.out.println("you are exit the " + question.getLocation() + "now\n");
 //                    break;
 //                }
-                counter-- ;
+                counter--;
             }
 
         }
     }
-
-
-
 
 
     private boolean checkAnswer(Pathogen pathogen, String userAnswer, int chances) {
@@ -156,9 +153,13 @@ public class Game {
 //                checkAnswer(pathogen, userAnswer, chances);
 //            }
 //        }
-//
-        return isCorrect(pathogen, userAnswer);
+
+        if (userAnswer.length() > 0) {
+            return isCorrect(pathogen, userAnswer);
+        }
+        return false;
     }
+
     private void askPathogenQuestion(Pathogen currentThreat) {
         String location = currentThreat.getLocation();
         Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
@@ -168,9 +169,9 @@ public class Game {
     }
 
     // public method used to test private method of questionsInCurrentOrgan.
-    public int questionsInOrgan(ArrayList<Pathogen> pathogenList, String organ){
-        if(questionsInCurrentOrgan(pathogenList, organ) != null){
-         return questionsInCurrentOrgan(pathogenList, organ).size();
+    public int questionsInOrgan(ArrayList<Pathogen> pathogenList, String organ) {
+        if (questionsInCurrentOrgan(pathogenList, organ) != null) {
+            return questionsInCurrentOrgan(pathogenList, organ).size();
         }
         return 1;
     }
@@ -178,12 +179,12 @@ public class Game {
     private List<Pathogen> questionsInCurrentOrgan(ArrayList<Pathogen> pathogenList, String organ) {
         List<Pathogen> currentOrganList = new ArrayList<>();
         List<String> organslist;
-        organslist = Arrays.asList("brain","mouth","throat","lungs","heart","liver","stomach","colon");
+        organslist = Arrays.asList("brain", "mouth", "throat", "lungs", "heart", "liver", "stomach", "colon");
 
         if (organslist.contains(organ)) { // if the organs is valid organ.
             // iterate through PathogenList
             for (Pathogen pathogen : pathogenList) {
-                if (pathogen.getLocation().equals(organ)){
+                if (pathogen.getLocation().equals(organ)) {
                     currentOrganList.add(pathogen);
                 }
             }
@@ -206,7 +207,7 @@ public class Game {
 
     public void playIntroduction(String playerName) throws InterruptedException {
         // Display game introduction related information
-        Output.printColor("Hello "+ playerName +". welcome to Dr Me ", Colors.ANSI_RED, true);
+        Output.printColor("Hello " + playerName + ". welcome to Dr Me ", Colors.ANSI_RED, true);
         //Output.printColor(playerName, Colors.ANSI_RED, true);
 
         // Prints a loading display sequence
@@ -275,7 +276,7 @@ public class Game {
         System.exit(0);
     }
 
-    private boolean exitOrgan(boolean flag){
+    private boolean exitOrgan(boolean flag) {
         boolean result = flag;
         return result;
     }
