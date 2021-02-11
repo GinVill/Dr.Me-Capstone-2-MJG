@@ -28,20 +28,5 @@ public class ReadFile {
         }
     }
 
-//    private void displaySnowmanImage() throws IOException {
-//        //It will display the full snowman as soon as showBoard - Game
-//        /* so our thought process is:
-//        String snowmanImage = Files.readString(Path.of("resources","snowman-0.txt"));
-//        should be in showBoard() in Game class
-//        */
-//        if (incorrectCount == 0) {
-//            String snowmanImage = Files.readString(Path.of("resources", "snowman-0.txt"));
-//            System.out.println(snowmanImage);
-//        } else {
-//            //Displaying the snowman Images when the user makes incorrect guesses
-//            System.out.println("You made " + incorrectCount + " wrong guesses! You have " + (TOTAL_CHANCES - incorrectCount) + " guesses left!");
-//            String snowmanImage = Files.readString(Path.of("resources", "snowman-" + incorrectCount + ".txt"));
-//            System.out.println(snowmanImage);
-//        }
-//    }
+
 }
