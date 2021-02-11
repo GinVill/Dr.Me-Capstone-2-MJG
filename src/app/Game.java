@@ -2,10 +2,7 @@ package app;
 
 import entities.Pathogen;
 import entities.Player;
-import util.Colors;
-import util.GameConstants;
-import util.MusicPlayer;
-import util.Output;
+import util.*;
 
 import java.util.*;
 
@@ -48,6 +45,7 @@ public class Game {
             boolean isAsking = true;
             Output.printColor("\nwhere you want to go next? \n[brain, mouth, throat, lungs, heart, liver, colon]\n>> ", Colors.ANSI_YELLOW, false);
             String chosenOrgan = sc.nextLine().strip();
+//            ReadFile.displayBodyMap(chosenOrgan);
             Output.printColor("Now you are in the " + chosenOrgan, Colors.ANSI_YELLOW, false);
             pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, chosenOrgan);
 
