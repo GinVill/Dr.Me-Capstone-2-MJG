@@ -47,6 +47,7 @@ public class GUIMainController {
     public void submitInputBox(ActionEvent keyEvent) {
 
         String text = inputBox.getText();
+        game.checkAnswer(text, labelPlayer, player);
        // game.setUserAnswer(text);
         inputBox.clear();
 
