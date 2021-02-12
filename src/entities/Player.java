@@ -4,6 +4,7 @@ public class Player extends CombatEntity {
     // Fields
     private String name;
     private int points;
+    //private int health;
 
     // Ctor
     public Player(){
@@ -70,7 +71,7 @@ public class Player extends CombatEntity {
 
     @Override
     public String toString() {
-        return "model.Player's name is: " + name;
+        return "Health: " + getHealth() + "\nCurrent points: " + getPoints();
     }
 
 
