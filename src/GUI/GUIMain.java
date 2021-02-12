@@ -27,7 +27,7 @@ public class GUIMain extends Application {
     // All subclasses of the JavaFXApplication class must implement the abstract start() method of the Application class.
     public void start(Stage primaryStage) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/GUIMain.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/openingScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/GUIMain.fxml"));
         primaryStage.setTitle("Doctor Me");
         primaryStage.setScene(new Scene(root, 750, 700));
         primaryStage.show(); // make primaryStage visible.
