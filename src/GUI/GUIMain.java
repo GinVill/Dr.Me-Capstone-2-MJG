@@ -32,5 +32,4 @@ public class GUIMain extends Application {
         primaryStage.show(); // make primaryStage visible.
     }
 
-
 }
