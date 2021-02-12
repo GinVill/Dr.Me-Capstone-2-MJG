@@ -27,7 +27,7 @@ public class XMLController {
     }
 
     // read xml, not sure if this is needed, maybe just use as private
-    public static ArrayList<Pathogen> readXML() {
+    public static ArrayList<Pathogen> readPathogenXML() {
 
         NodeList nodeList;
         String name;
