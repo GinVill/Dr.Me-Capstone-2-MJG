@@ -180,7 +180,7 @@ public class Game {
                 player.addPoints(pathogen.getPoints());
                 playerStatus.setText(player.toString());
             }else{
-                System.out.println("wrong");
+                System.out.println("wrongg");
             }
         }
         return false;
