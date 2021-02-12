@@ -22,14 +22,15 @@ public class GUIMainController {
 
 
     public void onClickOne(MouseEvent mouseEvent) {
-        System.out.println("button 1 pressed");
+        game.checkAnswer("A", labelPlayer, player, storyBox, playerLocation);
     }
 
     public void onClickTwo(MouseEvent mouseEvent) {
-        labelPlayer.setText("hello");
+        game.checkAnswer("B", labelPlayer, player, storyBox, playerLocation);
     }
 
     public void onClickThree(MouseEvent mouseEvent) {
+        game.checkAnswer("C", labelPlayer, player, storyBox, playerLocation);
     }
 
     public void startGame(MouseEvent mouseEvent) {
@@ -41,13 +42,13 @@ public class GUIMainController {
         Commands.loadWordXMLfile();
         // Read and load Cell XML file
         XMLController.readCellXML();
-        game.play(100, 120, XMLController.readXML(), storyBox, inputBox, labelPlayer, playerLocation, player);
+        game.play(100, 120, XMLController.readPathogenXML(), storyBox, inputBox, labelPlayer, playerLocation, player);
     }
 
     public void submitInputBox(ActionEvent keyEvent) {
 
         String text = inputBox.getText();
-        game.checkAnswer(text, labelPlayer, player);
+        game.checkAnswer(text, labelPlayer, player, storyBox, playerLocation);
        // game.setUserAnswer(text);
         inputBox.clear();
 

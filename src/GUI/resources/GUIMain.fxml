@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -20,9 +20,18 @@
       <TilePane focusTraversable="true" prefHeight="200.0" prefWidth="200.0" />
       <ButtonBar layoutX="217.0" layoutY="359.0" prefHeight="84.0" prefWidth="243.0">
         <buttons>
-          <Button mnemonicParsing="false" onMouseClicked="#onClickOne" text="Button" />
-            <Button mnemonicParsing="false" onMouseClicked="#onClickTwo" text="Button" />
-            <Button mnemonicParsing="false" onMouseClicked="#onClickThree" text="Button" />
+          <Button mnemonicParsing="false" onMouseClicked="#onClickOne" text="A">
+               <font>
+                  <Font name="Calibri Bold Italic" size="18.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onMouseClicked="#onClickTwo" text="B">
+               <font>
+                  <Font name="Calibri Bold Italic" size="18.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onMouseClicked="#onClickThree" text="C">
+               <font>
+                  <Font name="Calibri Bold Italic" size="18.0" />
+               </font></Button>
         </buttons>
       </ButtonBar>
       <TextArea fx:id="storyBox" editable="false" focusTraversable="false" layoutX="53.0" layoutY="22.0" prefHeight="337.0" prefWidth="657.0" promptText="Story" wrapText="true">
