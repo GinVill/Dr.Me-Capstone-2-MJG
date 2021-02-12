@@ -5,11 +5,13 @@ public abstract class CombatEntity {
     public int health;
     public int strength;
 
+    // Ctor
     public CombatEntity(int health, int strength) {
         setHealth(health);
         setStrength(strength);
     }
 
+    // Methods
     public abstract boolean attack(CombatEntity threat);
 
     public void deductHealth(int amount) {
@@ -21,6 +23,7 @@ public abstract class CombatEntity {
         }
     }
 
+    // Accessors
     public int getHealth() {
         return health;
     }

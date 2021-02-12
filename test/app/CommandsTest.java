@@ -1,12 +1,13 @@
 package app;
 
-import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.*;
 
 
 public class CommandsTest {
@@ -22,9 +23,26 @@ public class CommandsTest {
     }
 
     @Test
-    public void handleCommand() {
+    public void handleCommandWithEmptyString() {
+        String cmd = "";
+        String pathname = "";
 
+
+        assertFalse(Commands.handleCommand(cmd,pathname));
+        System.out.println("empty");
     }
+
+    @Test
+    public void handleCommandWithNullString(){
+        String cmd = null;
+        String pathname = null;
+
+
+        assertFalse(Commands.handleCommand(cmd, pathname));
+        System.out.println("null");
+    }
+
+
     @Test
     public void hintTest(){
         String name = "Salmonella";

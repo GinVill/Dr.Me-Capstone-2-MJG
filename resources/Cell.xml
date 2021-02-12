@@ -2,7 +2,8 @@
 <list>
     <cell>
         <name>NK Cell</name>
-        <description>Natural Killer (NK) cells 'shake hands' with other cells to check for abnormalities.  Cells unable to 'shake' back are deemed unsafe. The NK cell will kill itself in order to destroy the target cell.</description>
+        <description>Natural Killer (NK) cells 'shake hands' with other cells to check for abnormalities.
+            Cells unable to 'shake' back are deemed unsafe. The NK cell will kill itself in order to destroy the target cell.</description>
         <delay>False</delay>
         <self-damage>True</self-damage>
         <defeats>salmonella,c. difficile,chlamydia psittaci</defeats>

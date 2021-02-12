@@ -8,6 +8,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import util.Colors;
 import util.Output;
+import util.ReadFile;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -24,11 +25,15 @@ public class Commands {
 
 
     public static boolean handleCommand(String command, String name) { // Get args and set flag
-        List<String> args;
+
         List<String> task = new ArrayList<>();
-        args = Arrays.asList(command.split("\\s+").clone()).stream().map(String::toLowerCase)
-                .collect(Collectors.toList());
-        if (args != null && args.size() > 0) {
+
+
+        if (command != null && command.length() > 0) {
+            List<String> args;
+            args = Arrays.asList(command.split("\\s+").clone()).stream().map(String::toLowerCase)
+                    .collect(Collectors.toList());
+
             for (int i = 0; i < args.size(); i++) {
                 task.add(args.get(i));
             }
@@ -51,12 +56,16 @@ public class Commands {
     private static boolean handleValidCommand(List<String> task, String name) {
         // Check for commands that don't have second command line arguments
         if (task.contains("help")) {
-            help(); // this tells user what cells they have to fight the pathogens with
+            ReadFile.read("resources/Help.txt"); // this tells user what cells they have to fight the pathogens with
             return true;
         } else if (task.contains("hint")) {
-            hint(name); // this will print the hint from the Pothogen Class
+            hint(name); // this will print the hint from the Pathogen Class
             return true;
-        } else {
+        }else if(task.contains("cells")){
+            cells();
+            return true;
+        }
+        else {
             // Bad input received
             return false;
 //            return handleMultipleArgumentCommand(task); // Send to appropriate command and method
@@ -103,20 +112,27 @@ public class Commands {
 //        return false;
 //    }
 
-    private static boolean help() { // this tells player what Tools(cells) they have to fight the Pathogens with
+    private static boolean cells() { // this tells player what Tools(cells) they have to fight the Pathogens with
         Output.printColor("Here are the Fighting Cells you have at your disposal,", Colors.ANSI_GREEN, true);
         Output.printColor("and their descriptions.", Colors.ANSI_GREEN, true);
-        // TODO check name to find location to give to user
+        // DONE check name to find location to give to user
         // Pathogen pathogen = new Pathogen();
         Cell cell = new Cell();
-        // String pathLocation;
+        //String pathLocation;
+        String cellLocation;
         String cellName;
         String cellDescription;
         String result;
         for (Cell c : Cell.getCellList()) {
             cellName = c.getName();
             cellDescription = c.getDescription();
+
+            cellLocation = c.getLocation();
             Output.printColor(cellName, Colors.ANSI_RED, true);
+            Output.printColor(cellLocation, Colors.ANSI_RED, true);
+
+            Output.printColor("\n" + cellName, Colors.ANSI_RED, true);
+
             Output.printColor(cellDescription, Colors.ANSI_RED, true);
         }
         return false;
@@ -192,17 +208,17 @@ public class Commands {
                     Element eElement = (Element) node;
                     String action = eElement.getElementsByTagName("action").item(0).getTextContent();
                     String synonym = eElement.getElementsByTagName("synonym").item(0).getTextContent();
-                    // TODO seperate synonym into pars breaking on comma, then add to tempArr, the put into HashMap
+                    // DONE separate synonym into pars breaking on comma, then add to tempArr, the put into HashMap
                     tempArr = Arrays.asList(synonym.split(","));
                     wordList.put(action, tempArr);
                 }
             }
         } catch (Exception e) {
-            System.out.println("An Error Occured while loading the synonym list.");
+            System.out.println("An Error Occurred while loading the synonym list.");
             e.printStackTrace();
         }
         // XXX this is a test to be removed
-        // System.out.println(wordList+"  wordList TEST");
+        //System.out.println(wordList+"  wordList TEST");
 
         return wordList;
     }

@@ -1,57 +1,289 @@
 <?xml version="1.0"?>
 <list>
     <pathogen>
-        <name>E. coli</name>
-        <description>A coliform, rod-shaped bacterium, Escherichia coli are commonly found in the gut.</description>
-        <hint>Many strains of E. coli are part of the gut's normal microbiota. It's probably okay to ignore it.</hint>
-        <location>small intestine</location>
-        <question>It's just normal E. coli. Enter "okay" to continue.</question>
-        <correctAnswer>okay</correctAnswer>
+        <name>Gingivitis</name>
+        <description>Look at that gumline! It is red and inflamed, so much so that the gums
+        likely bleed when this body brushes its teeth. This appears to be a case of gingivitis.</description>
+        <hint>As periodontitis progresses, it can spread infection to the jaw and bones.</hint>
+        <location>mouth</location>
+        <question>What do you recommend?
+        A. Careful flossing and gentle brushing twice daily should slowly improve the situation.
+        B. That's far too tender...leave that mess alone until it improves.
+        C. Soft foods will help. Luckily dietary supplement drinks, mashed potatoes, baby food are all delicious.</question>
+        <antibiotic>doxycycline, azithromycin</antibiotic>
+        <correctAnswer>a</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Salmonella</name>
-        <description>A capsular bacterium that uses its many flagella to travel from place to place, Salmonella targets the stomach.</description>
-        <hint>It looks like this pathogen is able to produce energy regardless of its surroundings. Perhaps a general attack can do the trick.</hint>
-        <location>stomach</location>
-        <question>Salmonella is wreaking havoc. A pyrrhic victory is still a victory. Call the help of which self-sacrificing cell?</question>
-        <correctAnswer>nk cell,b cell</correctAnswer>
+        <name>Mouth Ulcers</name>
+        <description>That huge pit in the skin looks painful. It's edges are irregular, the pit is varying
+         shades of red and white. Mouth ulcers can be caused by a number of things: accidentally biting
+         yourself, certain medications, infections and other medical conditions.</description>
+        <hint>If you see mouth ulcers frequently, or they don't clear up in 2 weeks, you should see
+         a doctor. This is especially important if you use tobacco and/or alcohol products frequently.</hint>
+        <location>mouth</location>
+        <question>What can this body do?
+         A. Keep an eye on it. It should go away in a few weeks.
+         B. Pack it with salt to help fight bacteria.
+         C. Have a strong drink. Alcohol kills lots of things.</question>
+        <antibiotic>doxycycline</antibiotic>
+        <correctAnswer>a</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>C. difficile</name>
-        <description>Clostridiodes difficile, a motile, drumstick-shaped bacteria.</description>
-        <hint>C. difficile is spore-forming. Better not take too long fighting it.</hint>
-        <location>colon</location>
-        <question>This requires immediate action. Which cells of the innate immune system should be used?</question>
-        <correctAnswer>granulocyte,nk cell,b cell</correctAnswer>
+        <name>Caries</name>
+        <description>Is that tooth discolored? It looks like it could be cracked.
+         It might even be sensitive to hot or cold temperatures, or aching. </description>
+        <hint>Cavities, or caries, are permanent and won't go away. In fact, they can spread
+         infection and cause tooth loss. Brush and floss daily to prevent cavities.</hint>
+        <location>mouth</location>
+        <question>What do you recommend this body do?
+         A. Try some special toothpaste that reduces tooth sensitivity.
+         B. See a dentist.
+         C. Chewing gum is soft and will stick those crumbs of tooth together.</question>
+        <antibiotic>azithromycin, clindamycin</antibiotic>
+        <correctAnswer>b</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Chlamydia psittaci</name>
-        <description>Psittaci, a zoonotic bacterium responsible for parrot fever, presents chiefly as an atypical pneumonia that can lead to a coma.</description>
-        <hint>It looks like it might be susceptible to bacteriophages.</hint>
+        <name>Esophagitis</name>
+        <description>This esophagus looks irritated and inflamed. It is probably painful and difficult to swallow.
+            This body has probably been experiencing heartburn, chest pain or maybe even a cough.
+            It looks like esophagitis, which could be caused by acid reflux, allergies, medications
+            or a hiatal hernia, among other things. </description>
+        <hint>Certain foods and behaviors can make symptoms worse. Eat low-fat, healthy foods.
+            Sometimes, antacids can help, but frequent pain should be checked by a doctor.</hint>
+        <location>throat</location>
+        <question>What might improve these symptoms?
+        A. Lose some weight. Even 5 or 10 pounds could help. Don't lie down within 3 hours of eating.
+        B. Eating foods high in fat will coat the esophagus and ease pain. Cheeseburgers and shakes - woo hoo!
+        C. Life is pain. You'll get used to it. </question>
+        <antibiotic>famotidine, omeprazole, pantoprazole</antibiotic>
+        <correctAnswer>a</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Tonsillitis</name>
+        <description>2.	Tonsils are lymph glands at the back of the throat on either side. They are an
+            important defense again germs that come in through the nose and mouth. These tonsils appear
+            red and inflamed, with some whitish streaks and patches. And the breath in here is bad.</description>
+        <hint>This is not normal, this is tonsillitis. While viral infections usually clear on their
+            own in about a week, some bacterial infections may require medication. Chronic tonsillitis
+            can lead to a peritonsillar abcess, which is a pocket of infection around the tonsil. Yup,
+            the human body is disgusting.</hint>
+        <location>throat</location>
+        <question>Is this normal?
+        A. Yes, this is totally normal. The human body is disgusting.
+        B. Meh. Use gargles or lozenges to ease the pain and most viral infections clear up in a week or two.
+        C. No, this is not normal. Have some crunchy sushi roll with wasabi, a natural antibacterial.</question>
+        <antibiotic>penicillin, amoxicillin</antibiotic>
+        <correctAnswer>b</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Streptococci</name>
+        <description>The throat is the tube that connects the mouth to your esophagus and windpipe.
+            Normal throats are pink and lined with mucosa. This throat is cherry-red, swollen and painful.
+            So are those tonsils. And there are spotty white patches all over the place. Could this body
+            be experiencing strep throat? </description>
+        <hint>Left untreated, strep throat could get very serious. Rheumatic fever and rheumatic heart
+            disease could occur and could even become life threatening. Beware the Streptococcus.</hint>
+        <location>throat</location>
+        <question>What do you recommend?
+        A. You have some old pills from the last sickness. Just take those and have some tea.
+        B. Drink plenty of fluids, take ibuprofen for the fever and aches. Get rest and it will go away.
+        C. Definitely see a doctor. This looks serious and could need medication to improve.</question>
+        <antibiotic>penicillin, clindamycin, cephalosporin</antibiotic>
+        <correctAnswer>c</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Meningococcal</name>
+        <description>This body has a super high fever, a severe headache and a stiff neck.
+        The body has also been sensitive to light and a little confused. That and the swelling
+        of the brain membranes has you thinking Meningitis, which is inflammation of the fluid and membranes
+        surrounding your brain and spinal cord.</description>
+        <hint>Really?! You need a hint for a disease related to your brain AND spinal cord?
+        While there are several different pathogens that can cause meningitis, it should be
+        treated immediately.</hint>
+        <location>brain</location>
+        <question>
+        What are your recommendations for this body?
+        A. Drink plenty of water....and SEE A DOCTOR NOW.
+        B. Immediately see a doctor. They may need to do a spinal tap to determine how to treat this.
+        C. Get to a doctor or hospital, like now.
+        </question>
+        <antibiotic>acyclovir, doxycycline, penicillin, dexamethasone, cephalosporin</antibiotic>
+        <correctAnswer>A, a, B, b, C, c</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Herpes Simplex Virus 1</name>
+        <description>This brain has some serious issues. Fever, headache, seizures and unusual behaviors
+        have invaded this body. The brain AND the membranes appear inflamed. Considering this body's
+        frequent bouts with cold sores, you are thinking this could be herpes meningoencephalitis.</description>
+        <hint>I can't believe you need a hint. It's the brain...THE BRAIN!!</hint>
+        <location>brain</location>
+        <question>You strongly suspect herpes meningoencephalitis, so what should this body do?
+        A. While you like these unusual behaviors, this body should see a doctor ASAP.
+        B. Get to a doctor...fast.
+        C. Maybe try some....getting to the hospital immediately.</question>
+        <antibiotic>acyclovir</antibiotic>
+        <correctAnswer>A, a, B, b, C, c</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>West Nile</name>
+        <description>This brain has been attacked. It and its membranes are inflamed. It's definitely an infection.
+        The body has experienced tremors, muscle weakness, fever, headache and numbness. Considering the fact that
+        it's late summer and this body has several mosquito bites, you think it is West Nile encephalitis, caused by
+        the West Nile Virus transmitted via mosquitoes. </description>
+        <hint>Hints?!?! When a brain and spinal cord are at stake? Dude.</hint>
+        <location>brain</location>
+        <question>What should this body do besides freak out?
+        A. Get checked by a doctor, but there is no treatment or vaccine yet.
+        B. See a doctor, who can try to monitor secondary issues like blood pressure, etc.
+        C. Go to the hospital, where they will monitor you and try to minimize your symptoms.</question>
+        <antibiotic>NONE</antibiotic>
+        <correctAnswer>A, a, B, b, C, c</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Pneumonia</name>
+        <description>These are lungs? These lungs have inflamed air sacks and a huge puddle of fluid, pus
+        and cellular debris. Nice. There is a severe cough with thick, green mucous and bluish lips and nails.
+        Was that a stabbing chest pain followed by chills? This looks like a case of pneumococcal pneumonia,
+        most likely caused by exposure to infected respiratory droplets from another person. Eeew.</description>
+        <hint>While some pneumonia improves on its own in a few weeks, others can cause permanent damage.
+        Certain situations, like chronic lung diseases, smoking, drug and alcohol abuse can complicate
+        matters significantly.</hint>
         <location>lungs</location>
-        <question>This typically requires tetracyclines. In the mean time, which cells should take action?</question>
-        <correctAnswer>macrophage,granulocyte,nk cell,b cell</correctAnswer>
+        <question>What should this body do to deal with this pneumonia?
+        A. If the lips and fingertips are blue, hurry to the doctor.
+        B. Unless your symptoms are severe, rest up with plenty of fluids and be ready to get to the hospital.
+        C. You aren't really sure, so vape on it. Said no doctor ever.</question>
+        <antibiotic>amoxicillin, ceftriaxone</antibiotic>
+        <correctAnswer>A, a</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Fungal Meningitis</name>
-        <description>An altered state of mind, nausea clouding your head.  When did the lights become so intense?  The spore-forming fungal meningitis blends into the pellucid cerebrospinal fluid as it finishes its travel from the lungs.</description>
-        <hint>The fungus boasts a mortality rate of 10-20% amongst its afflicted. Fortunately, it's not transmissible between humans. It'll take a while to defeat this.</hint>
-        <location>brain</location>
-        <question>The blood-brain barrier makes this especially tricky. Which cells should be used to extirpate the fungal fury?</question>
-        <correctAnswer>B cell</correctAnswer>
+        <name>Pertussis</name>
+        <description>These lungs don't look so great. This body has had cold-like symptoms for a few days, including
+        a fever and a mild cough. But these coughs don't sound mild to you. They are deep, consistent and quick,
+        followed by a high-pitched whoop as the body struggles to inhale. It's been long enough to know that this
+        body isn't getting better, it's getting worse. It looks an awful lot like pertussis, also known as
+        whooping cough. </description>
+        <hint>While some lung infections heal on their own, pertussis likely won't. And it can be spread easily to
+        others...with all that coughing this body is doing.</hint>
+        <location>lungs</location>
+        <question>Your standard recommendation for suspected pertussis is:
+        A. Ah, you have smoked and vaped for 10 years. You'll be fine.
+        B. See a doctor for some treatment, after all, you've smoked and vaped for 10 years.
+        C. Have some tea, rub some Vicks on your chest and wait it out. Maybe invite some friends over.</question>
+        <antibiotic>azithromycin, clarithromycin, erythromycin</antibiotic>
+        <correctAnswer>B, b</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Prion</name>
-        <description>The harbinger of many transmissible neurodegenerative pathogens (e.g., Creutzfeldt-Jakob pathogen, Chronic Wasting pathogen, spongiform encephalopathy), prions denature the brain's proteins, invariably leading to death.</description>
-        <hint>Prions are durable, proteinaceous extremophiles. Beyond the host's life, these proteins remain virulent. Death is ineluctable.</hint>
-        <location>brain</location>
-        <question>Nothing can be done. Accept death and make amends. Play again?</question>
-        <correctAnswer>Yes</correctAnswer>
+        <name>COVID-19</name>
+        <description>Uh oh. These lungs have seen better days. This body has a fever, chills, cough and
+        shortness of breath. It seemed like a cold, but now this body has lost its senses of taste and
+        smell. What's that horrible smell? It could be THIS body, but it doesn't know that. Considering
+        this body doesn't like to wear masks and doesn't like to stay home, you suspect COVID-19.</description>
+        <hint>Anytime there is difficulty breathing, it is better to be safe than sorry.</hint>
+        <location>lungs</location>
+        <question>What could this body possibly do?
+        A. Wait in a mega-line to get tested, isolate yourself and seek treatment if you have difficulty breathing.
+        B. You are young and fairly healthy. You will be fine. Keep your bingo gig at the senior center.
+        C. A good, heavy workout will help kick your immune system into gear. Head to the gym.</question>
+        <antibiotic>remdesivir</antibiotic>
+        <correctAnswer>A, a</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Staphylococci</name>
+        <description>This heart has some issues with its inner lining. It looks infected and inflamed. On top
+        of that, these heart valves are abnormal. And is that a pacemaker lead? Hmmmm, you are thinking endocarditis.
+        Although heart infections are rare, this heart has a few risk factors to consider with those symptoms.</description>
+        <hint>While heart infections are rare because the constant flow of blood usually prevents infectious cells
+        from adhering, once an infection has started, it will likely need treatment ASAP.</hint>
+        <location>heart</location>
+        <question>What in the world does a body do for endocarditis?
+        A. Pfft, your body is a machine. Go have a steak and a stiff drink.
+        B. Take some baby aspirin, right? People take baby aspirin for their heart?
+        C. Get it checked out ASAP. Heart infections are difficult to treat as they are rare.</question>
+        <antibiotic>penicillin, ampicillin, ceftriaxone</antibiotic>
+        <correctAnswer>C, c</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Hepatitis</name>
+        <description>This liver is looking pretty shady. The urine is dark and the body is fatigued.
+            These factors, coupled with the nausea and vomiting, have you thinking Hepatitis A, B or C.
+            Come to think of it, this body looked a little jaundiced on your way in, and wasn't that a
+            fresh tattoo?
+        </description>
+        <hint>While not all Hepatitis viruses are the same, some can lead to liver failure, cirrhosis
+            or liver cancer. </hint>
+        <location>liver</location>
+        <question>What is the treatment for Hepatitis C?
+            A. Plenty of water, no more booze and a regular exercise regimen should fix it..
+            B. A doctor can prescribe medication to suppress the virus, but it cannot be cured.
+            C. Just slap a little ointment on that tattoo and this body will be fine in a few days.</question>
+        <antibiotic>sofosbuvir, interferon, ribavirin</antibiotic>
+        <correctAnswer>B, b</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Norovirus</name>
+        <description>Not that the lower digestive tract is a great place, but this one is especially bad.
+            Everywhere you look, you see diarrhea, nausea and vomiting. This body is even feverish and dizzy.
+            The stomach lining is inflamed and this place is a madhouse. It seems like that cruise ship vacation
+            wasn't so cheap after all. Somehow this body ingested a trace amount of feces or vomit that contained
+            a norovirus.
+             </description>
+        <hint>Norovirus has a duration of about 3 days, with symptoms starting after a day or two.</hint>
+        <location>colon</location>
+        <question>Hmmm, what should this body do for norovirus?
+            A. Definitely see a doctor right away. This game has made you a hypochondriac.
+            B. Plenty of cheese, don't drink any coffee and manage norovirus like a rockstar...of mediocrity.
+            C. Drink lots of water, rest up and this body will be better in a few days.</question>
+        <antibiotic>NONE</antibiotic>
+        <correctAnswer>C, c</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Giardia lamblia</name>
+        <description>This colon is a wreck. There is diarrhea, bleeding and cramping.
+            Back in the stomach there was nausea and vomiting. Ugh. Many different pathogens
+            affect the digestive system in the same way, but parasitic infections are extra
+            disgusting. Could that swim in the public pool have exposed you to Giardia lamblia? This
+            pathogen, which is found in feces, is chlorine-tolerant, after all. </description>
+        <hint>This parasite, which is contracted by contact with feces in some form, can last
+            2 to 6 weeks. It could delay physical and mental development in children. </hint>
+        <location>colon</location>
+        <question>How would you treat giardiasis?
+            A. It's also called beaver fever because they pollute lakes with their feces. It's just nature!
+            B. Lots of water, to avoid dehydration, and a visit to the doctor.
+            C. Do nothing and it will clear itself up in about a month. Like a cleanse.</question>
+        <antibiotic>nitazoxanide, tinidazole, metronidazole</antibiotic>
+        <correctAnswer>B, b</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Helicobacter pylori</name>
+        <description>This stomach looks irritated. Even though it is empty, there is aching, burning and nausea.
+        Was that a huge burp?  I hope so, considering the alternatives in this area. It was likely caused
+        by this bloating. Helicobacter pylori is present in more than 50% of the world population.
+        </description>
+        <hint>Left untreated, H. pylori could cause inflammation of the stomach lining, ulcers or cancer.</hint>
+        <location>stomach</location>
+        <question>How would you treat H. pylori?
+            A. Good old Pepto Bismol solves all your stomach problems. Just chug away.
+            B. Coating the stomach will be soothing, and nothing soothes like a creamy, thick milkshake.
+            C. Definitely see a doctor. This looks serious and might need two different antibiotics.</question>
+        <antibiotic>omeprazole, pantoprazole, cimetidine</antibiotic>
+        <correctAnswer>C, c</correctAnswer>
         <points>20</points>
     </pathogen>
 </list>

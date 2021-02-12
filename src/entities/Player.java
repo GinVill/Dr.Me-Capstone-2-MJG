@@ -1,15 +1,14 @@
 package entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Player extends CombatEntity {
-
+    // Fields
     private String name;
     private int points;
+    //private int health;
 
+    // Ctor
     public Player(){
-        super(100, 50);
+        super(120, 50);
     }
 
     public Player(String name) {
@@ -18,6 +17,7 @@ public class Player extends CombatEntity {
         setPoints(0);
     }
 
+    // Methods
     @Override
     public boolean attack(CombatEntity threat) {
         threat.deductHealth(this.getStrength());
@@ -28,6 +28,7 @@ public class Player extends CombatEntity {
         }
     }
 
+    // Accessors
     public String getName() {
         return name;
     }
@@ -47,7 +48,7 @@ public class Player extends CombatEntity {
         return health;
     }
 
-    private void setHealth(int health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 
@@ -70,7 +71,7 @@ public class Player extends CombatEntity {
 
     @Override
     public String toString() {
-        return "model.Player's name is: " + name;
+        return "Health: " + getHealth() + "\nCurrent points: " + getPoints();
     }
 
 

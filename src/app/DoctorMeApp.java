@@ -1,13 +1,15 @@
 package app;
+
 import entities.Player;
 import util.Colors;
-import util.GameConstants;
 import util.Output;
 
-import java.util.*;
+import java.util.Scanner;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.application.Application;
 
-
-public class DoctorMeApp {
+public class DoctorMeApp{
 
     // Game constants per instance
     private final int WINNING_POINTS_REQUIRED = 100;
@@ -15,11 +17,6 @@ public class DoctorMeApp {
     private final int DIFFICULTY = 50;
 
     private Scanner sc = new Scanner(System.in);
-
-    public static void main(String[] args) throws InterruptedException {
-        DoctorMeApp app = new DoctorMeApp();
-        app.playDrMe();
-    }
 
     public void playDrMe() throws InterruptedException {
         Output.printColor("Hello! What is your name? \n>> ", Colors.ANSI_YELLOW, false);
@@ -29,18 +26,18 @@ public class DoctorMeApp {
 
         // Create the game object, passing in one player with "normal"
         // difficulty represented as 50
-        Game game = new Game(player, DIFFICULTY);
+       // Game game = new Game(player, DIFFICULTY);
 
-       // game.playIntroduction(playerName);
+        // game.playIntroduction(playerName);
         // Read and Load Word XML file
         Commands.loadWordXMLfile();
 
         // Read and load Cell XML file
         XMLController.readCellXML();
 
-        // Read in the XML file
-        XMLController xmlc = new XMLController();
-        game.play(WINNING_POINTS_REQUIRED, HEALTHVALUE, xmlc.readXML());
+
+        System.out.println();
+      //  game.play(WINNING_POINTS_REQUIRED, HEALTHVALUE, XMLController.readXML());
 
     }
 
