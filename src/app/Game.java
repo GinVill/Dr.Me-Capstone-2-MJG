@@ -2,14 +2,21 @@ package app;
 
 import entities.Pathogen;
 import entities.Player;
-import util.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import util.Colors;
+import util.GameConstants;
+import util.MusicPlayer;
+import util.Output;
 
 import java.util.*;
 
 public class Game {
+    private static Player player;
     // Fields
     private int id = UUID.randomUUID().hashCode();
-    private static Player player;
+   // private Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
@@ -19,10 +26,10 @@ public class Game {
         super();
     }
 
-    public Game(Player player, int difficulty) {
+    public Game(Player player) {
         this();
         setPlayer(player);
-        setDifficulty(difficulty);
+
     }
 
     // Methods
@@ -30,21 +37,25 @@ public class Game {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList) {
+    public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList,
+                     TextArea text, TextField field, Label playerStatus, Label playerLocal, Player player) {
         // Initiate primary game loop, check game ending conditions each time
         String userAnswer = "";
         List<Pathogen> pathogensForChosenOrgan;
-         mpTheme.startMusic();
+ //       mpTheme.startMusic();
+        Game.player = player;
+        player.setHealth(120);
 //        try {
 //            playIntroduction(player.getName());
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
 
-        while (!isGameEnd(this.getPlayer(), winningPointsRequired)) {
+        while (!isGameEnd(getPlayer(), winningPointsRequired)) {
             boolean isAsking = true;
             Output.printColor("\nwhere you want to go next? \n[brain, mouth, throat, lungs, heart, liver, colon]\n>> ", Colors.ANSI_YELLOW, false);
-            String chosenOrgan = sc.nextLine().strip();
+            //  String chosenOrgan = sc.nextLine().strip();
+            String chosenOrgan = "mouth";
 //            ReadFile.displayBodyMap(chosenOrgan);
             Output.printColor("Now you are in the " + chosenOrgan, Colors.ANSI_YELLOW, false);
             pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, chosenOrgan);
@@ -57,16 +68,19 @@ public class Game {
                     System.out.printf("%70s%n%n", player.getPoints());
 
                     Pathogen currentThreat = question;
-                    askPathogenQuestion(currentThreat);
+                    askPathogenQuestion(currentThreat, text);
+                    playerStatus.setText(player.toString());
+
                     int chances = 2;
                     // Continue waiting until valid command/answer has been entered
                     // Get players answer
                     // askPathogenQuestion(currentThreat);
                     //String userAnswer = sc.next().strip();
-                    userAnswer = sc.nextLine().strip().toLowerCase();
+                    //  userAnswer = sc.nextLine().strip().toLowerCase();
 //            if (userAnswer.equalsIgnoreCase("quit")) {
 //                quitGame();
 //            }
+
                     switch (userAnswer) {
                         case "quit":
                             quitGame();
@@ -95,7 +109,7 @@ public class Game {
                                         Output.printColor("Incorrect. Be careful your health is "
                                                         + player.getHealth() + " enter your answer \n>> ",
                                                 Colors.ANSI_YELLOW, false);
-                                        userAnswer = sc.nextLine().strip();
+                                        // userAnswer = sc.nextLine().strip();
                                     }
                                 }
 
@@ -158,12 +172,13 @@ public class Game {
         return false;
     }
 
-    private void askPathogenQuestion(Pathogen currentThreat) {
+    private void askPathogenQuestion(Pathogen currentThreat, TextArea textarea) {
         String location = currentThreat.getLocation();
-        Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
-        Output.printColor("Where you find:  " + currentThreat.getDescription() + "\n", Colors.ANSI_BLUE, true);
-        Output.printColor(currentThreat.getQuestion() + "\n Type your answer >> ", Colors.ANSI_YELLOW, false);
-
+//        Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
+//        Output.printColor("Where you find:  " + currentThreat.getDescription() + "\n", Colors.ANSI_BLUE, true);
+//        Output.printColor(currentThreat.getQuestion() + "\n Type your answer >> ", Colors.ANSI_YELLOW, false);
+        textarea.setText(currentThreat.getDescription());
+        textarea.appendText("\n" +currentThreat.getQuestion());
     }
 
     // public method used to test private method of questionsInCurrentOrgan.
@@ -279,7 +294,7 @@ public class Game {
         return result;
     }
 
-    public Player getPlayer() {
+    public static Player getPlayer() {
         return player;
     }
 
