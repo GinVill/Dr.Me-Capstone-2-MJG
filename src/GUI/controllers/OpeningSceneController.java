@@ -13,5 +13,4 @@ public class OpeningSceneController {
         startButton.setDisable(false);
         System.out.println("Start button clicked!");
     }
-
 }
