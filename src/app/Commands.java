@@ -12,7 +12,7 @@ import util.ReadFile;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
+import java.io.InputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -61,11 +61,10 @@ public class Commands {
         } else if (task.contains("hint")) {
             hint(name); // this will print the hint from the Pathogen Class
             return true;
-        }else if(task.contains("cells")){
+        } else if (task.contains("cells")) {
             cells();
             return true;
-        }
-        else {
+        } else {
             // Bad input received
             return false;
 //            return handleMultipleArgumentCommand(task); // Send to appropriate command and method
@@ -191,12 +190,15 @@ public class Commands {
 
     public static HashMap loadWordXMLfile() {
         List<String> tempArr = new ArrayList<>();
+        ClassLoader cl = Commands.class.getClassLoader();
 
         try {
+
+            InputStream xmlFile = cl.getResourceAsStream("resources/Word.xml");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            File inputFile = new File("resources/Word.xml");
-            Document doc = db.parse(inputFile);
+            //   File inputFile = new File("resources/Word.xml");
+            Document doc = db.parse(xmlFile);
             doc.getDocumentElement().normalize();
 
             NodeList nodeList = doc.getElementsByTagName("verb");

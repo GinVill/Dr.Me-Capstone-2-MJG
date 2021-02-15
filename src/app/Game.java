@@ -7,7 +7,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import util.Colors;
 import util.GameConstants;
-import util.MusicPlayer;
 import util.Output;
 
 import java.util.*;
@@ -19,7 +18,7 @@ public class Game {
     // private Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
-    private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
+   // private final MusicPlayer mpTheme = new MusicPlayer("extras/Away - Patrick Patrikios.wav");
     private Pathogen pathogen;
     private int winningPointsReq;
 

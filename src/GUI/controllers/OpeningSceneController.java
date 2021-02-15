@@ -29,7 +29,7 @@ public class OpeningSceneController {
     @FXML
     public void changeScreenButtonPushed(ActionEvent e) throws IOException {
         try {
-            Parent openingSceneFXML = FXMLLoader.load(getClass().getResource("../resources/GUIMain.fxml"));
+            Parent openingSceneFXML = FXMLLoader.load(getClass().getResource("/GUI/resources/GUIMain.fxml"));
         Scene questioningScene = new Scene(openingSceneFXML);
 
         // gets the stage information.
