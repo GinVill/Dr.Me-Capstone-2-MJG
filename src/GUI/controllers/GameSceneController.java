@@ -25,12 +25,8 @@ public class GameSceneController {
     public String playerInfo;
     public TextField inputBox;
     public TextArea storyBox;
-<<<<<<< HEAD:src/GUI/controllers/GameSceneController.java
-    public Label playerLocation;
-    public String currentOrgan;
-=======
 
->>>>>>> 22bf12221bf4494781aac3d03a2307f973991337:src/GUI/controllers/GUIMainController.java
+    public String currentOrgan;
     Player player = new Player();
     Game game = new Game(player);
 
