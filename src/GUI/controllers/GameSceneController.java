@@ -4,15 +4,16 @@ import app.Commands;
 import app.Game;
 import app.XMLController;
 import entities.Player;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
+import util.MusicPlayer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -25,10 +26,24 @@ public class GameSceneController {
     public String playerInfo;
     public TextField inputBox;
     public TextArea storyBox;
+    public Slider volumeSlider;
+    private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
 
     private String currentOrgan;
     Player player = new Player();
     Game game = new Game(player);
+
+
+    @FXML
+    void adjustVolume(){
+       // volumeSlider.setValue(mpTheme.getVolume() * 100);
+        volumeSlider.valueProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                mpTheme.setVolume((float) volumeSlider.getValue());
+            }
+        });
+    }
 
     @FXML
     void onClickOne(MouseEvent mouseEvent) {
@@ -54,8 +69,8 @@ public class GameSceneController {
         // Read and load Cell XML file
         XMLController.readCellXML();
         //Calls play() to load the game screen
-        System.out.println("current organ set to: " +  MenuSceneController.getCurrentOrgan());
-        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player);
+
+        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player, mpTheme);
     }
 
     @FXML
@@ -66,6 +81,9 @@ public class GameSceneController {
     @FXML
     public String getCurrentOrgan() {
         return currentOrgan;
+
+       // game.play(100, 120, XMLController.readPathogenXML(), storyBox, inputBox, labelPlayer,  player, mpTheme);
+
     }
 
     @FXML

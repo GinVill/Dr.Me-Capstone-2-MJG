@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import util.Colors;
 import util.GameConstants;
+import util.MusicPlayer;
 import util.Output;
 
 import java.util.*;
@@ -18,8 +19,13 @@ public class Game {
     // private Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
+
    // private final MusicPlayer mpTheme = new MusicPlayer("extras/Away - Patrick Patrikios.wav");
     private Pathogen currentPathogen;
+
+
+    //private Pathogen pathogen;
+
     private int winningPointsReq;
 
     public Game() {
@@ -37,12 +43,18 @@ public class Game {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
+//<<<<<<< HEAD
+//    public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
+//                     TextArea text, TextField field, Label playerStatus, Player player) {
+//=======
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
-                     TextArea text, TextField field, Label playerStatus, Player player) {
+                     TextArea text, TextField field, Label playerStatus, Player player, MusicPlayer mpTheme) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         List<Pathogen> pathogensForChosenOrgan;
-        //       mpTheme.startMusic();
+
+        mpTheme.startMusic();
+
         this.player = player;
         // return questions specific to the organ that player pick from the menu scene.
         System.out.println(currentOrgan);
@@ -182,6 +194,7 @@ public class Game {
 
                 if (isWin(player, winningPointsReq)) {
                     storyBox.setText("WINNER");
+                    PopupBox.popUp("WINNER!", "If you would like to play again select YES otherwise select NO", player);
                 }
 
             } else {
@@ -191,6 +204,7 @@ public class Game {
                 System.out.println("wrong");
                 if (isLose(player)) {
                     storyBox.setText("Game Over!");
+                    PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
                 }
 
             }

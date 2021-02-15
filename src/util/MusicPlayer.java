@@ -1,13 +1,16 @@
 package util;
 
 import javax.sound.sampled.*;
-import java.io.File;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class MusicPlayer {
 
     private Clip clip;
     private FloatControl controller;
+    private ClassLoader cl = MusicPlayer.class.getClassLoader();
+
 
     /**
      * This class takes a .wav file and allows music to be applied to your application. Ensure that when using this
@@ -25,11 +28,14 @@ public class MusicPlayer {
         {
             try {
 
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(filepath));
+                InputStream musicPath = cl.getResourceAsStream(filepath);
+                assert musicPath != null;
+                InputStream bufferedIn = new BufferedInputStream(musicPath);
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
                 clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 controller = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            } catch (UnsupportedAudioFileException | LineUnavailableException | NullPointerException | IOException e) {
                 e.printStackTrace();
             }
         }
