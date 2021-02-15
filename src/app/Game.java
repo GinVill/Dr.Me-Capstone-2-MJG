@@ -19,7 +19,7 @@ public class Game {
     // private Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
-    private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
+
     private Pathogen pathogen;
     private int winningPointsReq;
 
@@ -39,11 +39,13 @@ public class Game {
     }
 
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList,
-                     TextArea text, TextField field, Label playerStatus, Player player) {
+                     TextArea text, TextField field, Label playerStatus, Player player, MusicPlayer mpTheme) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         List<Pathogen> pathogensForChosenOrgan;
-               mpTheme.startMusic();
+
+        mpTheme.startMusic();
+
         this.player = player;
         //  player.setHealth(120);
         pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, "mouth");
