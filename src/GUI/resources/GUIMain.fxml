@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.paint.Color?>
@@ -67,19 +66,24 @@
             <Font name="Berlin Sans FB" size="14.0" />
          </font>
          <items>
-            <MenuItem fx:id="brain" onAction="#handleLocation" mnemonicParsing="false" text="brain" />
-            <MenuItem fx:id="colon" onAction="#handleLocation" mnemonicParsing="false" text="colon" />
-            <MenuItem fx:id="heart" onAction="#handleLocation" mnemonicParsing="false" text="heart" />
-            <MenuItem fx:id="lungs" onAction="#handleLocation" mnemonicParsing="false" text="lungs" />
-            <MenuItem fx:id="liver" onAction="#handleLocation" mnemonicParsing="false" text="liver" />
-            <MenuItem fx:id="mouth" onAction="#handleLocation" mnemonicParsing="false" text="mouth" />
-            <MenuItem fx:id="throat" onAction="#handleLocation" mnemonicParsing="false" text="throat" />
+            <MenuItem fx:id="brain" mnemonicParsing="false" onAction="#handleLocation" text="brain" />
+            <MenuItem fx:id="colon" mnemonicParsing="false" onAction="#handleLocation" text="colon" />
+            <MenuItem fx:id="heart" mnemonicParsing="false" onAction="#handleLocation" text="heart" />
+            <MenuItem fx:id="lungs" mnemonicParsing="false" onAction="#handleLocation" text="lungs" />
+            <MenuItem fx:id="liver" mnemonicParsing="false" onAction="#handleLocation" text="liver" />
+            <MenuItem fx:id="mouth" mnemonicParsing="false" onAction="#handleLocation" text="mouth" />
+            <MenuItem fx:id="throat" mnemonicParsing="false" onAction="#handleLocation" text="throat" />
          </items>
       </MenuButton>
       <Button fx:id="startGame" layoutX="307.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#startGame" text="Start Game" textAlignment="CENTER" underline="true">
          <font>
             <Font size="18.0" />
          </font></Button>
+      <ImageView fx:id="bodyMap" fitHeight="192.0" fitWidth="158.0" layoutX="566.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@whole.png" />
+         </image>
+      </ImageView>
    </children>
    <opaqueInsets>
       <Insets top="100.0" />

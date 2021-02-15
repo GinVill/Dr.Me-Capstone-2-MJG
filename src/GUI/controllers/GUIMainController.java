@@ -71,7 +71,7 @@ public class GUIMainController {
     @FXML
     private void handleLocation(ActionEvent event) throws FileNotFoundException {
         String organ = ((MenuItem) event.getSource()).getText();
-        //System.out.println(organ); // helped me to test whether the action event was capturing data
+        System.out.println(organ); // helped me to test whether the action event was capturing data
 
         try {
             InputStream stream = new FileInputStream("src/GUI/resources/" + organ + ".png");
