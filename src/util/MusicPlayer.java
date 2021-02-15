@@ -1,6 +1,7 @@
 package util;
 
 import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -29,7 +30,8 @@ public class MusicPlayer {
 
                 InputStream musicPath = cl.getResourceAsStream(filepath);
                 assert musicPath != null;
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicPath);
+                InputStream bufferedIn = new BufferedInputStream(musicPath);
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
                 clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 controller = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
