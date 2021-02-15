@@ -8,28 +8,39 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MenuSceneController {
-
-    private Button menuItemButton = new Button();
-    GameSceneController gameCtr = new GameSceneController();
-
+    private static String currentOrgan;
+    public Label labelPlayer;
+    public String playerInfo;
+    public TextField inputBox;
+    public TextArea storyBox;
+    Button btn;
     /*
     * //TODO: button border change to color red after being ever selected.
     * */
     @FXML
-    public void menuItemSelected(Event e){
-       // menuItemButton.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
-       // System.out.println(e.getSource()); // return current node info
-        Button btn = (Button) e.getSource(); // get an instance of the button clicked on
-        //System.out.println(btn.getId());
+    public void menuItemSelected(Event e) throws IOException {
+        btn = (Button) e.getSource(); // get an instance of the button clicked on
         btn.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");// set button border color to red.
-        gameCtr.setCurrentOrgan(btn.getId());
+        setCurrentOrgan(btn.getId()); // set variable currentOrgan to the value of current button ID e.g. "brain".
     }
 
+    @FXML
+    private void setCurrentOrgan(String organ){
+        currentOrgan = organ;
+    }
+
+    @FXML
+    public static String getCurrentOrgan(){
+        return currentOrgan;
+    }
 
     /*
      * this method switch from menu scene to the next questioning scene
@@ -39,11 +50,18 @@ public class MenuSceneController {
         try {
             Parent openingSceneFXML = FXMLLoader.load(getClass().getResource("/GUI/views/gameScene.fxml")); // transition to game scene.
             Scene questioningScene = new Scene(openingSceneFXML);
-
             // gets the stage information.
             Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();
             window.setScene(questioningScene);
             window.show();
+
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/views/gameScene.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/views/gameScene.fxml"));
+            GameSceneController gController = loader.getController();
+
+            gController.setCurrentOrgan(getCurrentOrgan());
+
         } catch (Exception event) {
             System.out.println(event.getMessage());
         }

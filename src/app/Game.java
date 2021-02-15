@@ -19,7 +19,7 @@ public class Game {
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
    // private final MusicPlayer mpTheme = new MusicPlayer("extras/Away - Patrick Patrikios.wav");
-    private Pathogen pathogen;
+    private Pathogen currentPathogen;
     private int winningPointsReq;
 
     public Game() {
@@ -37,26 +37,19 @@ public class Game {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList,
+    public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
                      TextArea text, TextField field, Label playerStatus, Player player) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         List<Pathogen> pathogensForChosenOrgan;
         //       mpTheme.startMusic();
         this.player = player;
-        //  player.setHealth(120);
-        pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, "mouth");
-        pathogen = pathogensForChosenOrgan.get(1);
-        askPathogenQuestion(pathogen, text);
+        // return questions specific to the organ that player pick from the menu scene.
+        System.out.println(currentOrgan);
+        pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, currentOrgan);
+        currentPathogen = pathogensForChosenOrgan.get(1);
+        askPathogenQuestion(currentPathogen, text);
         playerStatus.setText(player.toString());
-        // String userAnswer = field.getText();
-
-//        try {
-//            playIntroduction(player.getName());
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
 
     }
 
@@ -135,7 +128,6 @@ public class Game {
 //        }
 //    }
 
-
     public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox) {
 //        //if chances < 1, return false
 //        if (chances <= 1) {
@@ -179,14 +171,14 @@ public class Game {
         organslist = Arrays.asList("brain", "mouth", "throat", "lungs", "heart", "liver", "stomach", "colon");
 
         if (userAnswer.length() > 0) {
-            if (isCorrect(pathogen, userAnswer)) {
+            if (isCorrect(currentPathogen, userAnswer)) {
 
-                player.addPoints(pathogen.getPoints());
+                player.addPoints(currentPathogen.getPoints());
                 playerStatus.setText(player.toString());
                 // List<Pathogen>  newPath = questionsInCurrentOrgan(pathogenList, "mouth");
                 pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), userAnswer);
                 //pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
-                askPathogenQuestion(pathogen, storyBox);
+                askPathogenQuestion(currentPathogen, storyBox);
 
                 if (isWin(player, winningPointsReq)) {
                     storyBox.setText("WINNER");
@@ -194,7 +186,7 @@ public class Game {
 
             } else {
 
-                pathogen.attack(player);
+                currentPathogen.attack(player);
                 playerStatus.setText(player.toString());
                 System.out.println("wrong");
                 if (isLose(player)) {
@@ -208,9 +200,6 @@ public class Game {
 
     private void askPathogenQuestion(Pathogen currentThreat, TextArea textarea) {
         String location = currentThreat.getLocation();
-//        Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
-//        Output.printColor("Where you find:  " + currentThreat.getDescription() + "\n", Colors.ANSI_BLUE, true);
-//        Output.printColor(currentThreat.getQuestion() + "\n Type your answer >> ", Colors.ANSI_YELLOW, false);
         textarea.clear();
         textarea.setText(currentThreat.getDescription());
         textarea.appendText("\n" + currentThreat.getQuestion());
