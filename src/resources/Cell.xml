@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<list>
+    <cell>
+        <name>NK Cell</name>
+        <description>Natural Killer (NK) cells 'shake hands' with other cells to check for abnormalities.
+            Cells unable to 'shake' back are deemed unsafe. The NK cell will kill itself in order to destroy the target cell.</description>
+        <delay>False</delay>
+        <self-damage>True</self-damage>
+        <defeats>salmonella,c. difficile,chlamydia psittaci</defeats>
+        <location>liver</location>
+    </cell>
+    <cell>
+        <name>Granulocyte</name>
+        <description>Neutrophils, basophils, and eosinophils--this panoply of cells contains many grains specialized to
+            take down parasites, allergens, and bacteria.</description>
+        <delay>False</delay>
+        <self-damage>False</self-damage>
+        <defeats>c. difficile</defeats>
+        <location>bone marrow</location>
+    </cell>
+    <cell>
+        <name>B Cell</name>
+        <description>Expresses immunoglobulin (Ig) on its surface. The type of Ig determines the cell's specialty
+            (highly effective and specialized cell). These cells also have the ability to pass the blood-brain barrier.</description>
+        <delay>True</delay>
+        <self-damage>False</self-damage>
+        <defeats>salmonella,c. difficile,chlamydia psittaci,fungal meningitis</defeats>
+        <location>bone marrow</location>
+    </cell>
+    <cell>
+        <name>Macrophage</name>
+        <description>A large cell that eats pathogens, particularly bacteria and parasites.</description>
+        <delay>False</delay>
+        <self-damage>False</self-damage>
+        <defeats>chlamydia psittaci</defeats>
+        <location>tissue</location>
+    </cell>
+</list>
