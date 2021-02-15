@@ -22,9 +22,7 @@ public class MenuSceneController {
     public TextField inputBox;
     public TextArea storyBox;
     Button btn;
-    /*
-    * //TODO: button border change to color red after being ever selected.
-    * */
+
     @FXML
     public void menuItemSelected(Event e) throws IOException {
         btn = (Button) e.getSource(); // get an instance of the button clicked on
@@ -54,13 +52,6 @@ public class MenuSceneController {
             Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();
             window.setScene(questioningScene);
             window.show();
-
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/views/gameScene.fxml"));
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/GUI/views/gameScene.fxml"));
-            GameSceneController gController = loader.getController();
-
-            gController.setCurrentOrgan(getCurrentOrgan());
 
         } catch (Exception event) {
             System.out.println(event.getMessage());

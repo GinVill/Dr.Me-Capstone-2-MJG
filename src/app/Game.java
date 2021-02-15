@@ -23,7 +23,6 @@ public class Game {
    // private final MusicPlayer mpTheme = new MusicPlayer("extras/Away - Patrick Patrikios.wav");
     private Pathogen currentPathogen;
 
-
     //private Pathogen pathogen;
 
     private int winningPointsReq;
@@ -43,10 +42,6 @@ public class Game {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-//<<<<<<< HEAD
-//    public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
-//                     TextArea text, TextField field, Label playerStatus, Player player) {
-//=======
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
                      TextArea text, TextField field, Label playerStatus, Player player, MusicPlayer mpTheme) {
         // Initiate primary game loop, check game ending conditions each time
