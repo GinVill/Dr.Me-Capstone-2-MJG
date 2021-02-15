@@ -30,14 +30,15 @@ public class GUIMainController {
 
 
     public void onClickOne(MouseEvent mouseEvent) {
-        System.out.println("button 1 pressed");
+        game.checkAnswer("A", labelPlayer, player, storyBox, playerLocation);
     }
 
     public void onClickTwo(MouseEvent mouseEvent) {
-        labelPlayer.setText("hello");
+        game.checkAnswer("B", labelPlayer, player, storyBox, playerLocation);
     }
 
     public void onClickThree(MouseEvent mouseEvent) {
+        game.checkAnswer("C", labelPlayer, player, storyBox, playerLocation);
     }
 
     public void startGame(MouseEvent mouseEvent) {
@@ -49,12 +50,13 @@ public class GUIMainController {
         Commands.loadWordXMLfile();
         // Read and load Cell XML file
         XMLController.readCellXML();
-        game.play(100, 120, XMLController.readXML(), storyBox, inputBox, labelPlayer, playerLocation, player);
+        game.play(100, 120, XMLController.readPathogenXML(), storyBox, inputBox, labelPlayer, playerLocation, player);
     }
 
     public void submitInputBox(ActionEvent keyEvent) {
 
         String text = inputBox.getText();
+        game.checkAnswer(text, labelPlayer, player, storyBox, playerLocation);
        // game.setUserAnswer(text);
         inputBox.clear();
 
@@ -69,7 +71,7 @@ public class GUIMainController {
     @FXML
     private void handleLocation(ActionEvent event) throws FileNotFoundException {
         String organ = ((MenuItem) event.getSource()).getText();
-        System.out.println(organ);
+        //System.out.println(organ); // helped me to test whether the action event was capturing data
 
         try {
             InputStream stream = new FileInputStream("src/GUI/resources/" + organ + ".png");
@@ -77,8 +79,6 @@ public class GUIMainController {
             //Setting image to the image view
             bodyMap.setImage(image);
 
-            System.out.println(stream);
-            System.out.println(image);
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();

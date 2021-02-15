@@ -13,14 +13,15 @@ import util.Output;
 import java.util.*;
 
 public class Game {
-    private static Player player;
+    private Player player;
     // Fields
     private int id = UUID.randomUUID().hashCode();
-   // private Player player;
+    // private Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
-
+    private Pathogen pathogen;
+    private int winningPointsReq;
 
     public Game() {
         super();
@@ -40,94 +41,103 @@ public class Game {
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList,
                      TextArea text, TextField field, Label playerStatus, Label playerLocal, Player player) {
         // Initiate primary game loop, check game ending conditions each time
-        String userAnswer = "";
+        this.winningPointsReq = winningPointsRequired;
         List<Pathogen> pathogensForChosenOrgan;
- //       mpTheme.startMusic();
-        Game.player = player;
-        player.setHealth(120);
+        //       mpTheme.startMusic();
+        this.player = player;
+        //  player.setHealth(120);
+        pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, "mouth");
+        pathogen = pathogensForChosenOrgan.get(1);
+        askPathogenQuestion(pathogen, text);
+        playerStatus.setText(player.toString());
+        // String userAnswer = field.getText();
+
 //        try {
 //            playIntroduction(player.getName());
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
 
-        while (!isGameEnd(getPlayer(), winningPointsRequired)) {
-            boolean isAsking = true;
-            Output.printColor("\nwhere you want to go next? \n[brain, mouth, throat, lungs, heart, liver, colon]\n>> ", Colors.ANSI_YELLOW, false);
-            //  String chosenOrgan = sc.nextLine().strip();
-            String chosenOrgan = "mouth";
-//            ReadFile.displayBodyMap(chosenOrgan);
-            Output.printColor("Now you are in the " + chosenOrgan, Colors.ANSI_YELLOW, false);
-            pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, chosenOrgan);
 
-            int counter = pathogensForChosenOrgan.size();
-            for (Pathogen question : pathogensForChosenOrgan) {
-                if (counter > 0) {
-                    System.out.println("\n" + counter);
-                    System.out.printf("questions remain in " + question.getLocation() + ":[" + (counter - 1) + "]");
-                    System.out.printf("%70s%n%n", player.getPoints());
-
-                    Pathogen currentThreat = question;
-                    askPathogenQuestion(currentThreat, text);
-                    playerStatus.setText(player.toString());
-
-                    int chances = 2;
-                    // Continue waiting until valid command/answer has been entered
-                    // Get players answer
-                    // askPathogenQuestion(currentThreat);
-                    //String userAnswer = sc.next().strip();
-                    //  userAnswer = sc.nextLine().strip().toLowerCase();
-//            if (userAnswer.equalsIgnoreCase("quit")) {
-//                quitGame();
-//            }
-
-                    switch (userAnswer) {
-                        case "quit":
-                            quitGame();
-                            break;
-                        case "hint":
-                        case "cells":
-                        case "help":
-                            isValidUserInput(currentThreat, userAnswer, chances);
-                            break;
-                        case "exit":
-
-                        default:
-
-                            System.out.println(player.getHealth());
-                            while (chances > 0) {
-                                if (checkAnswer(currentThreat, userAnswer, chances)) {
-                                    // Correct answer, add to player points
-                                    this.getPlayer().addPoints(currentThreat.getPoints());
-                                    this.getPlayer().setHealth(120);
-                                    break;
-                                } else {
-                                    chances--;
-                                    // Wrong answer, subtract player health
-                                    currentThreat.attack(this.getPlayer());
-                                    if (!(chances == 0)) {
-                                        Output.printColor("Incorrect. Be careful your health is "
-                                                        + player.getHealth() + " enter your answer \n>> ",
-                                                Colors.ANSI_YELLOW, false);
-                                        // userAnswer = sc.nextLine().strip();
-                                    }
-                                }
-
-                            }
-                    }
-                }
-//                else {
-//                    System.out.println("you are exit the " + question.getLocation() + "now\n");
-//                    break;
-//                }
-                counter--;
-            }
-
-        }
     }
 
+//        while (!isGameEnd(getPlayer(), winningPointsRequired)) {
+//            boolean isAsking = true;
+//            Output.printColor("\nwhere you want to go next? \n[brain, mouth, throat, lungs, heart, liver, colon]\n>> ", Colors.ANSI_YELLOW, false);
+//            //  String chosenOrgan = sc.nextLine().strip();
+//            String chosenOrgan = "mouth";
+////            ReadFile.displayBodyMap(chosenOrgan);
+//            Output.printColor("Now you are in the " + chosenOrgan, Colors.ANSI_YELLOW, false);
+//            pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, chosenOrgan);
+//
+//            int counter = pathogensForChosenOrgan.size();
+//            for (Pathogen question : pathogensForChosenOrgan) {
+//                if (counter > 0) {
+//                    System.out.println("\n" + counter);
+//                    System.out.printf("questions remain in " + question.getLocation() + ":[" + (counter - 1) + "]");
+//                    System.out.printf("%70s%n%n", player.getPoints());
+//
+    //Pathogen currentThreat = question;
+//                    askPathogenQuestion(currentThreat, text);
+//                    playerStatus.setText(player.toString());
+//
+//                    int chances = 2;
+//                    // Continue waiting until valid command/answer has been entered
+//                    // Get players answer
+//                    // askPathogenQuestion(currentThreat);
+//                    //String userAnswer = sc.next().strip();
+//                    //  userAnswer = sc.nextLine().strip().toLowerCase();
+////            if (userAnswer.equalsIgnoreCase("quit")) {
+////                quitGame();
+////            }
+//
+//                    switch (userAnswer) {
+//                        case "quit":
+//                            quitGame();
+//                            break;
+//                        case "hint":
+//                        case "cells":
+//                        case "help":
+//                            isValidUserInput(currentThreat, userAnswer, chances);
+//                            break;
+//                        case "exit":
+//
+//                        default:
+//
+//                            System.out.println(player.getHealth());
+//                            while (chances > 0) {
+//                                if (checkAnswer(currentThreat, userAnswer, chances)) {
+//                                    // Correct answer, add to player points
+//                                    this.getPlayer().addPoints(currentThreat.getPoints());
+//                                    this.getPlayer().setHealth(120);
+//                                    break;
+//                                } else {
+//                                    chances--;
+//                                    // Wrong answer, subtract player health
+//                                    currentThreat.attack(this.getPlayer());
+//                                    if (!(chances == 0)) {
+//                                        Output.printColor("Incorrect. Be careful your health is "
+//                                                        + player.getHealth() + " enter your answer \n>> ",
+//                                                Colors.ANSI_YELLOW, false);
+//                                        // userAnswer = sc.nextLine().strip();
+//                                    }
+//                                }
+//
+//                            }
+//                    }
+//                }
+////                else {
+////                    System.out.println("you are exit the " + question.getLocation() + "now\n");
+////                    break;
+////                }
+//                counter--;
+//            }
+//
+//        }
+//    }
 
-    private boolean checkAnswer(Pathogen pathogen, String userAnswer, int chances) {
+
+    public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox, Label playerLocal) {
 //        //if chances < 1, return false
 //        if (chances <= 1) {
 //            return false;
@@ -165,9 +175,35 @@ public class Game {
 //                checkAnswer(pathogen, userAnswer, chances);
 //            }
 //        }
+        List<Pathogen> pathogensForChosenOrgan;
+        List<String> organslist;
+        organslist = Arrays.asList("brain", "mouth", "throat", "lungs", "heart", "liver", "stomach", "colon");
+
 
         if (userAnswer.length() > 0) {
-            return isCorrect(pathogen, userAnswer);
+            if (isCorrect(pathogen, userAnswer)) {
+
+                player.addPoints(pathogen.getPoints());
+                playerStatus.setText(player.toString());
+                //  List<Pathogen>  newPath = questionsInCurrentOrgan(pathogenList, "mouth");
+                pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), organslist.get(getRandomNumber(0, organslist.size())));
+                pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
+                askPathogenQuestion(pathogen, storyBox);
+                playerLocal.setText(pathogen.getLocation());
+                if (isWin(player, winningPointsReq)) {
+                    storyBox.setText("WINNER");
+                }
+
+            } else {
+
+                pathogen.attack(player);
+                playerStatus.setText(player.toString());
+                System.out.println("wrong");
+                if (isLose(player)) {
+                    storyBox.setText("Game Over!");
+                }
+
+            }
         }
         return false;
     }
@@ -177,8 +213,9 @@ public class Game {
 //        Output.printColor("You find yourself in the:  " + location, Colors.ANSI_BLUE, true);
 //        Output.printColor("Where you find:  " + currentThreat.getDescription() + "\n", Colors.ANSI_BLUE, true);
 //        Output.printColor(currentThreat.getQuestion() + "\n Type your answer >> ", Colors.ANSI_YELLOW, false);
+        textarea.clear();
         textarea.setText(currentThreat.getDescription());
-        textarea.appendText("\n" +currentThreat.getQuestion());
+        textarea.appendText("\n" + currentThreat.getQuestion());
     }
 
     // public method used to test private method of questionsInCurrentOrgan.
@@ -294,12 +331,12 @@ public class Game {
         return result;
     }
 
-    public static Player getPlayer() {
-        return player;
+    public Player getPlayer() {
+        return this.player;
     }
 
-    public static void setPlayer(Player playerParam) {
-        player = playerParam;
+    public void setPlayer(Player playerParam) {
+        this.player = playerParam;
     }
 
     public int getDifficulty() {
