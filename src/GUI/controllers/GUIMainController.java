@@ -24,26 +24,26 @@ public class GUIMainController {
     public String playerInfo;
     public TextField inputBox;
     public TextArea storyBox;
-    public Label playerLocation;
+
     Player player = new Player();
     Game game = new Game(player);
 
     @FXML
     void onClickOne(MouseEvent mouseEvent) {
         //Sends click event to Game logic to check answer
-        game.checkAnswer("A", labelPlayer, player, storyBox, playerLocation);
+        game.checkAnswer("A", labelPlayer, player, storyBox);
     }
 
     @FXML
     void onClickTwo(MouseEvent mouseEvent) {
         //Sends click event to Game logic to check answer
-        game.checkAnswer("B", labelPlayer, player, storyBox, playerLocation);
+        game.checkAnswer("B", labelPlayer, player, storyBox);
     }
 
     @FXML
     void onClickThree(MouseEvent mouseEvent) {
         //Sends click event to Game logic to check answer
-        game.checkAnswer("C", labelPlayer, player, storyBox, playerLocation);
+        game.checkAnswer("C", labelPlayer, player, storyBox);
     }
 
     @FXML
@@ -52,14 +52,14 @@ public class GUIMainController {
         // Read and load Cell XML file
         XMLController.readCellXML();
         //Calls play() to load the game screen
-        game.play(100, 120, XMLController.readPathogenXML(), storyBox, inputBox, labelPlayer, playerLocation, player);
+        game.play(100, 120, XMLController.readPathogenXML(), storyBox, inputBox, labelPlayer,  player);
     }
 
     @FXML
     void submitInputBox(ActionEvent keyEvent) {
 
         String text = inputBox.getText();
-        game.checkAnswer(text, labelPlayer, player, storyBox, playerLocation);
+        game.checkAnswer(text, labelPlayer, player, storyBox);
         // game.setUserAnswer(text);
         inputBox.clear();
 
@@ -72,7 +72,7 @@ public class GUIMainController {
     @FXML
     private void handleLocation(ActionEvent event) throws FileNotFoundException {
         String organ = ((MenuItem) event.getSource()).getText();
-        System.out.println(organ); // helped me to test whether the action event was capturing data
+        //System.out.println(organ); // helped me to test whether the action event was capturing data
 
         try {
             InputStream stream = new FileInputStream("src/GUI/resources/" + organ + ".png");
