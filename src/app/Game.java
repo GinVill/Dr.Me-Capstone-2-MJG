@@ -187,7 +187,11 @@ public class Game {
                 pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), userAnswer);
                 //pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
                 askPathogenQuestion(pathogen, storyBox);
-                playerLocal.setText(pathogen.getLocation());
+                try {
+                    playerLocal.setText(pathogen.getLocation());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 if (isWin(player, winningPointsReq)) {
                     storyBox.setText("WINNER");
                 }

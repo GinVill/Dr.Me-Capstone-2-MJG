@@ -26,6 +26,7 @@ public class GameSceneController {
     public TextField inputBox;
     public TextArea storyBox;
     public Label playerLocation;
+    public String currentOrgan;
     Player player = new Player();
     Game game = new Game(player);
 
@@ -54,6 +55,10 @@ public class GameSceneController {
         XMLController.readCellXML();
         //Calls play() to load the game screen
         game.play(100, 120, XMLController.readPathogenXML(), storyBox, inputBox, labelPlayer, playerLocation, player);
+    }
+
+    public void setCurrentOrgan(String organ){
+        currentOrgan = organ;
     }
 
     @FXML
