@@ -5,6 +5,7 @@ import app.Game;
 import app.XMLController;
 import entities.Player;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -20,39 +21,40 @@ public class GUIMainController {
     Player player = new Player();
     Game game = new Game(player);
 
-
-    public void onClickOne(MouseEvent mouseEvent) {
+    @FXML
+    void onClickOne(MouseEvent mouseEvent) {
+        //Sends click event to Game logic to check answer
         game.checkAnswer("A", labelPlayer, player, storyBox, playerLocation);
     }
 
-    public void onClickTwo(MouseEvent mouseEvent) {
+    @FXML
+    void onClickTwo(MouseEvent mouseEvent) {
+        //Sends click event to Game logic to check answer
         game.checkAnswer("B", labelPlayer, player, storyBox, playerLocation);
     }
 
-    public void onClickThree(MouseEvent mouseEvent) {
+    @FXML
+    void onClickThree(MouseEvent mouseEvent) {
+        //Sends click event to Game logic to check answer
         game.checkAnswer("C", labelPlayer, player, storyBox, playerLocation);
     }
 
-    public void startGame(MouseEvent mouseEvent) {
-        labelPlayer.setText("Game.getPlayer().toString()");
-        // Create the game object, passing in one player with "normal"
-        // difficulty represented as 50
-        // game.playIntroduction(playerName);
-        // Read and Load Word XML file
+    @FXML
+    void startGame(MouseEvent mouseEvent) {
         Commands.loadWordXMLfile();
         // Read and load Cell XML file
         XMLController.readCellXML();
+        //Calls play() to load the game screen
         game.play(100, 120, XMLController.readPathogenXML(), storyBox, inputBox, labelPlayer, playerLocation, player);
     }
 
-    public void submitInputBox(ActionEvent keyEvent) {
+    @FXML
+    void submitInputBox(ActionEvent keyEvent) {
 
         String text = inputBox.getText();
         game.checkAnswer(text, labelPlayer, player, storyBox, playerLocation);
-       // game.setUserAnswer(text);
+        // game.setUserAnswer(text);
         inputBox.clear();
-
-//            inputBox.clear();
 
     }
 }

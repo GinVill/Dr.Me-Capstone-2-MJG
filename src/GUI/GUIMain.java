@@ -27,7 +27,8 @@ public class GUIMain extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         // set the initial scene to opening scene
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/openingScene.fxml"));
+        //TODO changed filepath and now jar opens
+        Parent root = FXMLLoader.load(getClass().getResource("resources/openingScene.fxml"));
 
         primaryStage.setTitle("Doctor Me");
         primaryStage.setScene(new Scene(root));
