@@ -18,8 +18,16 @@ public class GUIMain extends Application {
 
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/GUIMain.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Dr. Me");
+
+//        InputStream stream = new FileInputStream("src/GUI/resources/whole.png");
+//        Image image = new Image(stream);
+//        ImageView bodyMap = new ImageView(image);
+
+
         primaryStage.setScene(new Scene(root, 750, 700));
         primaryStage.show();
+
+
     }
 }
