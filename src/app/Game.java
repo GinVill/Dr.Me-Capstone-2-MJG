@@ -38,7 +38,7 @@ public class Game {
     }
 
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList,
-                     TextArea text, TextField field, Label playerStatus, Label playerLocal, Player player) {
+                     TextArea text, TextField field, Label playerStatus, Player player) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         List<Pathogen> pathogensForChosenOrgan;
@@ -136,7 +136,7 @@ public class Game {
 //    }
 
 
-    public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox, Label playerLocal) {
+    public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox) {
 //        //if chances < 1, return false
 //        if (chances <= 1) {
 //            return false;
@@ -187,11 +187,7 @@ public class Game {
                 pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), userAnswer);
                 //pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
                 askPathogenQuestion(pathogen, storyBox);
-                try {
-                    playerLocal.setText(pathogen.getLocation());
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+
                 if (isWin(player, winningPointsReq)) {
                     storyBox.setText("WINNER");
                 }
