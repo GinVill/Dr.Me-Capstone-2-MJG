@@ -11,7 +11,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class GUIMainController {
+public class GameSceneController {
 
     public Label labelPlayer;
     public String playerInfo;

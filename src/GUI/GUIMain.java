@@ -30,7 +30,7 @@ public class GUIMain extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/openingScene.fxml"));
 
         //TODO changed filepath and now jar opens
-        Parent root = FXMLLoader.load(getClass().getResource("resources/openingScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/openingScene.fxml"));
 
         primaryStage.setTitle("Doctor Me");
         primaryStage.setScene(new Scene(root));

@@ -178,15 +178,14 @@ public class Game {
         List<String> organslist;
         organslist = Arrays.asList("brain", "mouth", "throat", "lungs", "heart", "liver", "stomach", "colon");
 
-
         if (userAnswer.length() > 0) {
             if (isCorrect(pathogen, userAnswer)) {
 
                 player.addPoints(pathogen.getPoints());
                 playerStatus.setText(player.toString());
-                //  List<Pathogen>  newPath = questionsInCurrentOrgan(pathogenList, "mouth");
-                pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), organslist.get(getRandomNumber(0, organslist.size())));
-                pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
+                // List<Pathogen>  newPath = questionsInCurrentOrgan(pathogenList, "mouth");
+                pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), userAnswer);
+                //pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
                 askPathogenQuestion(pathogen, storyBox);
                 playerLocal.setText(pathogen.getLocation());
                 if (isWin(player, winningPointsReq)) {
