@@ -5,7 +5,9 @@ import util.Colors;
 import util.Output;
 
 import java.util.Scanner;
-
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.application.Application;
 
 public class DoctorMeApp{
 
@@ -15,7 +17,6 @@ public class DoctorMeApp{
     private final int DIFFICULTY = 50;
 
     private Scanner sc = new Scanner(System.in);
-
 
     public void playDrMe() throws InterruptedException {
         Output.printColor("Hello! What is your name? \n>> ", Colors.ANSI_YELLOW, false);
