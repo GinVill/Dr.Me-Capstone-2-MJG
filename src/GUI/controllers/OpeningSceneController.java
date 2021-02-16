@@ -14,22 +14,21 @@ import java.io.IOException;
 
 public class OpeningSceneController {
 
-    public Button startButton;
+    public Button startGameButton = new Button();
 
     @FXML
-    public void enableStartButton(Event e){
-        startButton.setDisable(false);
-        System.out.println("Start button clicked!");
+    public void enableStartGameButton(Event e){
+        startGameButton.setDisable(false);
+        //TODO: get player name.
     }
 
-
     /*
-    * this method switch opening scene to the next scene
+    * this method switch opening scene to the menu scene
     * */
     @FXML
-    public void changeScreenButtonPushed(ActionEvent e) throws IOException {
+    public void changeToMenuSceneButtonPushed(ActionEvent e) throws IOException {
         try {
-            Parent openingSceneFXML = FXMLLoader.load(getClass().getResource("/GUI/resources/GUIMain.fxml"));
+            Parent openingSceneFXML = FXMLLoader.load(getClass().getResource("/GUI/views/menuScene.fxml")); // transition to menu scene.
         Scene questioningScene = new Scene(openingSceneFXML);
 
         // gets the stage information.
