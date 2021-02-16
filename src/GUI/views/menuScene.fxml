@@ -16,7 +16,7 @@
             <Font size="17.0" />
          </font></ToggleButton>
       <Label layoutX="14.0" layoutY="14.0" text="Welcome" />
-      <Label layoutX="74.0" layoutY="14.0" text="player name" />
+      <Label id="playerName" fx:id="playerName" layoutX="74.0" layoutY="14.0" text="player name" />
       <Label layoutX="149.0" layoutY="14.0" text="Where you want to start?" />
       <GridPane layoutX="14.0" layoutY="44.0" prefHeight="312.0" prefWidth="580.0">
         <columnConstraints>
@@ -42,6 +42,21 @@
                </font>
             </Button>
             <Button id="throat" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#menuItemSelected" prefHeight="58.0" prefWidth="191.0" snapToPixel="false" text="Throat" textAlignment="CENTER" GridPane.columnIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button id="lungs" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#menuItemSelected" prefHeight="58.0" prefWidth="191.0" snapToPixel="false" text="Lungs" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button id="heart" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#menuItemSelected" prefHeight="58.0" prefWidth="191.0" snapToPixel="false" text="Heart" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button id="colon" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#menuItemSelected" prefHeight="58.0" prefWidth="191.0" snapToPixel="false" text="Colon" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
