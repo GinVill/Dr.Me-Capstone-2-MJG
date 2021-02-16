@@ -19,11 +19,11 @@ public class OpeningSceneController {
     @FXML
     public void enableStartGameButton(Event e){
         startGameButton.setDisable(false);
-        //System.out.println("Start button clicked!");
+        //TODO: get player name.
     }
 
     /*
-    * this method switch opening scene to the next scene
+    * this method switch opening scene to the menu scene
     * */
     @FXML
     public void changeToMenuSceneButtonPushed(ActionEvent e) throws IOException {

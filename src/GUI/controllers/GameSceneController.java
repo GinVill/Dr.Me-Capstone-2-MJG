@@ -35,7 +35,7 @@ public class GameSceneController {
 
     @FXML
     void adjustVolume(){
-       // volumeSlider.setValue(mpTheme.getVolume() * 100);
+        // volumeSlider.setValue(mpTheme.getVolume() * 100);
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
@@ -68,7 +68,6 @@ public class GameSceneController {
         // Read and load Cell XML file
         XMLController.readCellXML();
         //Calls play() to load the game screen
-
         game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player, mpTheme);
     }
 
@@ -81,7 +80,6 @@ public class GameSceneController {
         inputBox.clear();
 
     }
-
 
     @FXML
     public ImageView bodyMap = new ImageView();
