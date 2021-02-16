@@ -87,10 +87,12 @@ public class GameSceneController {
     @FXML
     private void handleLocation(ActionEvent event) throws FileNotFoundException {
         String organ = ((MenuItem) event.getSource()).getText();
-        //System.out.println(organ); // helped me to test whether the action event was capturing data
+        /**System.out.println(organ); // helped me to test whether the action event was capturing data
+        System.out.println("/GUI/views/" + organ + ".png");*/
 
         try {
-            InputStream stream = new FileInputStream("src/GUI/resources/" + organ + ".png");
+            InputStream stream = new FileInputStream("src/GUI/views/" + organ + ".png");// ths 'src' is required for images to working.
+
             Image image = new Image(stream);
             //Setting image to the image view
             bodyMap.setImage(image);
