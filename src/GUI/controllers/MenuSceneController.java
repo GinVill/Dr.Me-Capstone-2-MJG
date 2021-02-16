@@ -17,11 +17,13 @@ import java.io.IOException;
 
 public class MenuSceneController {
     private static String currentOrgan;
-    public Label labelPlayer;
+    public Label playerName;
     public String playerInfo;
     public TextField inputBox;
     public TextArea storyBox;
     Button btn;
+
+
 
     @FXML
     public void menuItemSelected(Event e) throws IOException {
@@ -52,9 +54,12 @@ public class MenuSceneController {
             Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();
             window.setScene(questioningScene);
             window.show();
-
         } catch (Exception event) {
             System.out.println(event.getMessage());
         }
     }
+
+//    public void setPlayerName(String playerName) {
+//        this.playerName.setText(playerName);
+//    }
 }
