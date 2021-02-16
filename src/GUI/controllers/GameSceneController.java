@@ -12,11 +12,12 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
 import util.MusicPlayer;
-import java.io.FileInputStream;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.IOException;
 
 
 public class GameSceneController {
@@ -91,18 +92,16 @@ public class GameSceneController {
         System.out.println("/GUI/views/" + organ + ".png");*/
 
         try {
-            InputStream stream = new FileInputStream("src/GUI/views/" + organ + ".png");// ths 'src' is required for images to working.
-
-            Image image = new Image(stream);
+            //InputStream stream = new FileInputStream("src/GUI/views/" + organ + ".png");// ths 'src' is required for images to working.
+            BufferedImage stream = ImageIO.read(getClass().getResourceAsStream("src/GUI/views/\" + organ + \".png\""));
+            Image image = new Image(String.valueOf(stream));
             //Setting image to the image view
             bodyMap.setImage(image);
-
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
-
-
 }
