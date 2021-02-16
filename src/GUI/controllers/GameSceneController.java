@@ -24,6 +24,7 @@ public class GameSceneController {
     public TextField inputBox;
     public TextArea storyBox;
     public Slider volumeSlider;
+    public ImageView bodyMap;
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
 
     Player player = new Player();
@@ -77,13 +78,13 @@ public class GameSceneController {
         inputBox.clear();
 
     }
-
-
-    public ImageView bodyMap;
-
+    /*
+     * This method takes the location from the menuButton items and sets the filepath to
+     * various map images.
+     */
     @FXML
     private void handleLocation(ActionEvent event) {
-        String organ = ((MenuItem) event.getSource()).getText();
+        String organ = ((MenuItem) event.getSource()).getText(); //gets the text from the MenuItem selected on MenuButton
         bodyMap.setImage(new Image(getClass().getResource("/GUI/views/" + organ + ".png").toExternalForm()));
     }
 }
