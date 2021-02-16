@@ -39,6 +39,9 @@ public class Player extends CombatEntity {
         setPoints(currPoints + newPoints);
         return true;
     }
+public void setPlayerPoints(int points){
+        setPoints(points);
+}
 
     private void setName(String name) {
         this.name = name;

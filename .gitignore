@@ -25,3 +25,6 @@ hs_err_pid*
 
 # directory
 /out/
+/mods/
+*/.DS_Store
+
