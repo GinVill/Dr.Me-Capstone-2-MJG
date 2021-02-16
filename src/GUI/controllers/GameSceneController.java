@@ -14,10 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import util.MusicPlayer;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 
 public class GameSceneController {
@@ -82,26 +78,12 @@ public class GameSceneController {
 
     }
 
-    @FXML
-    public ImageView bodyMap = new ImageView();
+
+    public ImageView bodyMap;
 
     @FXML
-    private void handleLocation(ActionEvent event) throws FileNotFoundException {
+    private void handleLocation(ActionEvent event) {
         String organ = ((MenuItem) event.getSource()).getText();
-        /**System.out.println(organ); // helped me to test whether the action event was capturing data
-        System.out.println("/GUI/views/" + organ + ".png");*/
-
-        try {
-            //InputStream stream = new FileInputStream("src/GUI/views/" + organ + ".png");// ths 'src' is required for images to working.
-            BufferedImage stream = ImageIO.read(getClass().getResourceAsStream("src/GUI/views/\" + organ + \".png\""));
-            Image image = new Image(String.valueOf(stream));
-            //Setting image to the image view
-            bodyMap.setImage(image);
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        bodyMap.setImage(new Image(getClass().getResource("/GUI/views/" + organ + ".png").toExternalForm()));
     }
 }
