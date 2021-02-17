@@ -18,12 +18,12 @@ public class OpeningSceneController {
     public static String playerName;
     public Button startGameButton;
     public TextField nameInput ;
-    //public MenuSceneController menuctr;
+
+    private static Stage menuScene;
 
     @FXML
     public void enableStartGameButton(Event e){
         startGameButton.setDisable(false);
-        //TODO: get player name.
     }
 
     /*
@@ -45,6 +45,17 @@ public class OpeningSceneController {
             System.out.println(event.getMessage());
         }
 
+    }
+     // TODO: maybe later.
+    public static void changeBackToMenu(String fxml){
+        try {
+            Parent pane = FXMLLoader.load(OpeningSceneController.class.getResource("/GUI/views/menuScene.fxml"));
+            Scene scene = new Scene(pane);
+            menuScene.setScene(scene);
+            menuScene.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

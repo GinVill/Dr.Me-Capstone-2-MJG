@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 public class Commands {
     private static HashMap<String, List<String>> wordList = new HashMap<>();
-    private static String name;
 
     // Starting point of handling commands
     // Command is the raw user input
@@ -72,44 +71,6 @@ public class Commands {
 
 
     }
-
-//    // Handles commands specifically requiring one or more arguments
-//
-//    private static boolean handleMultipleArgumentCommand(List<String> task) {
-//
-////        String wordmatch = wordMatch(task); // this checks if what the player sent has a valid verb
-////
-////        if (wordmatch == "no match") {
-////            System.out.println("No match");
-//
-//        // TODO need to send player back where they came from
-//
-//        // XXX at this point the verb is seperated, now need to determine
-//        // if the other words in the list are good
-//        try {
-//            // TODO seperate verb from rest and send rest on
-//            //List<String> commandArg = task.remove(wordmatch) ;
-////                switch (wordmatch) {
-////                    //TODO Handle synonyms for the commands
-////                    case "get":
-////                        get(task);
-////                        break;
-////                    case "move":
-////                        //TODO Also handle 'walk' or 'go' etc.
-////                        move(task);
-////                        break;
-////                    default:
-////                        System.out.println("Bad command entered");
-////                        break;
-////                }
-//        } catch (IndexOutOfBoundsException e) {
-////                System.out.println("Please enter subsequent arguments for " + wordmatch);
-//            helpWithCommandUsage();
-//        }
-//
-//        // Bad input received, return false and send up method call stack
-//        return false;
-//    }
 
     private static boolean cells() { // this tells player what Tools(cells) they have to fight the Pathogens with
         Output.printColor("Here are the Fighting Cells you have at your disposal,", Colors.ANSI_GREEN, true);

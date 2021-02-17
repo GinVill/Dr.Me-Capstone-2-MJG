@@ -32,7 +32,7 @@ public class MenuSceneController {
     }
 
     @FXML
-    private void setCurrentOrgan(String organ){
+    public static void setCurrentOrgan(String organ){
         currentOrgan = organ;
     }
 
@@ -62,9 +62,5 @@ public class MenuSceneController {
     public void initialize() { // initialize scene when windows loaded.
        playerName.setText(OpeningSceneController.playerName);
     }
-
-//    public void setPlayerName(String playerName) {
-//        this.playerName.setText(playerName);
-//    }
 
 }
