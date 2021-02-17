@@ -5,7 +5,6 @@ import entities.Pathogen;
 import entities.Player;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import util.MusicPlayer;
 import util.PopupBox;
 
@@ -35,12 +34,10 @@ public class Game {
 
     // Methods
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
-                     TextArea text, TextField field, Label playerStatus, Player player, MusicPlayer mpTheme) {
+                     TextArea text, TextArea feedback, Label playerStatus, Player player, MusicPlayer mpTheme) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         this.storyBox = text;
-
-
         mpTheme.startMusic();
 
         this.player = player;
@@ -52,7 +49,6 @@ public class Game {
         playerStatus.setText(player.toString());
 
     }
-
 
 
     public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox, TextArea feedbackTextArea) {
@@ -100,7 +96,7 @@ public class Game {
     private void askPathogenQuestion(Pathogen currentThreat, TextArea textarea) {
         String location = currentThreat.getLocation();
         textarea.clear();
-        textarea.setText(currentThreat.getDescription());
+        textarea.setText(currentThreat.getDescription() + "\n");
         textarea.appendText("\n" + currentThreat.getQuestion());
     }
 
@@ -162,7 +158,7 @@ public class Game {
         this.pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
                 , MenuSceneController.getCurrentOrgan());
         this.currentPathogen = pathogensForChosenOrgan.get(0);
-        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox);
+        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox, this.feedbackTextArea);
     }
 
     public Player getPlayer() {

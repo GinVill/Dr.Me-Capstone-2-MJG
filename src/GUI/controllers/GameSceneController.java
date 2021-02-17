@@ -88,6 +88,6 @@ public class GameSceneController {
         // Read and load Cell XML file
         XMLController.readCellXML();
         //Calls play() to load the game screen
-        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player, mpTheme);
+        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, feedbackTextArea, labelPlayer, player, mpTheme);
     }
 }
