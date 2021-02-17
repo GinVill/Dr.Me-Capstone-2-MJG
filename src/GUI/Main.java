@@ -1,6 +1,6 @@
 package GUI;
 
-public class FakeMain {
+public class Main {
     public static void main(String[] args) {
         try {
             GUIMain.main(args);

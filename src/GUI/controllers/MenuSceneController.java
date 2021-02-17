@@ -63,8 +63,4 @@ public class MenuSceneController {
        playerName.setText(OpeningSceneController.playerName);
     }
 
-//    public void setPlayerName(String playerName) {
-//        this.playerName.setText(playerName);
-//    }
-
 }
