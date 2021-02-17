@@ -15,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import util.MusicPlayer;
 
 
-
 public class GameSceneController {
 
 
@@ -27,12 +26,13 @@ public class GameSceneController {
     public ImageView bodyMap;
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
 
-    Player player = new Player();
-    Game game = new Game(player);
+    public static Player player = new Player();
+
+    public static Game game = new Game(player);
 
 
     @FXML
-    void adjustVolume(){
+    void adjustVolume() {
         // volumeSlider.setValue(mpTheme.getVolume() * 100);
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
             @Override
@@ -62,11 +62,7 @@ public class GameSceneController {
 
     @FXML
     void startGame(MouseEvent mouseEvent) {
-        Commands.loadWordXMLfile();
-        // Read and load Cell XML file
-        XMLController.readCellXML();
-        //Calls play() to load the game screen
-        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player, mpTheme);
+
     }
 
     @FXML
@@ -86,5 +82,15 @@ public class GameSceneController {
     private void handleLocation(ActionEvent event) {
         String organ = ((MenuItem) event.getSource()).getText(); //gets the text from the MenuItem selected on MenuButton
         bodyMap.setImage(new Image(getClass().getResource("/GUI/views/" + organ + ".png").toExternalForm()));
+        MenuSceneController.setCurrentOrgan(organ);
+    }
+
+    @FXML
+    public void initialize() { // initialize scene when windows loaded.
+        Commands.loadWordXMLfile();
+        // Read and load Cell XML file
+        XMLController.readCellXML();
+        //Calls play() to load the game screen
+        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player, mpTheme);
     }
 }

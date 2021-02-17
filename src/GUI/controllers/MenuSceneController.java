@@ -32,7 +32,7 @@ public class MenuSceneController {
     }
 
     @FXML
-    private void setCurrentOrgan(String organ){
+    public static void setCurrentOrgan(String organ){
         currentOrgan = organ;
     }
 
