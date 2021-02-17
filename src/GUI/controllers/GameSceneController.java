@@ -22,6 +22,7 @@ public class GameSceneController {
     public String playerInfo;
     public TextField inputBox;
     public TextArea storyBox;
+    public TextArea feedbackTextArea;
     public Slider volumeSlider;
     public ImageView bodyMap;
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
@@ -45,19 +46,19 @@ public class GameSceneController {
     @FXML
     void onClickOne(MouseEvent mouseEvent) {
         //Sends click event to Game logic to check answer
-        game.checkAnswer("A", labelPlayer, player, storyBox);
+        game.checkAnswer("A", labelPlayer, player, storyBox, feedbackTextArea);
     }
 
     @FXML
     void onClickTwo(MouseEvent mouseEvent) {
         //Sends click event to Game logic to check answer
-        game.checkAnswer("B", labelPlayer, player, storyBox);
+        game.checkAnswer("B", labelPlayer, player, storyBox, feedbackTextArea);
     }
 
     @FXML
     void onClickThree(MouseEvent mouseEvent) {
         //Sends click event to Game logic to check answer
-        game.checkAnswer("C", labelPlayer, player, storyBox);
+        game.checkAnswer("C", labelPlayer, player, storyBox, feedbackTextArea);
     }
 
 
@@ -65,7 +66,7 @@ public class GameSceneController {
     void submitInputBox(ActionEvent keyEvent) {
 
         String text = inputBox.getText();
-        game.checkAnswer(text, labelPlayer, player, storyBox);
+        game.checkAnswer(text, labelPlayer, player, storyBox, feedbackTextArea);
         // game.setUserAnswer(text);
         inputBox.clear();
 

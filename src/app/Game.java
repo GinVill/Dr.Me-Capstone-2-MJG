@@ -6,12 +6,12 @@ import entities.Player;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import util.Colors;
 import util.MusicPlayer;
-import util.Output;
 import util.PopupBox;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Game {
 
@@ -55,11 +55,11 @@ public class Game {
 
 
 
-    public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox) {
+    public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox, TextArea feedbackTextArea) {
 
         try {
             if (userAnswer.length() > 0) {
-                if (isCorrect(currentPathogen, userAnswer)) {
+                if (isCorrect(currentPathogen, userAnswer, feedbackTextArea)) {
                     int idx = pathogensForChosenOrgan.indexOf(currentPathogen);
                     player.addPoints(currentPathogen.getPoints());
                     playerStatus.setText(player.toString());
@@ -82,7 +82,8 @@ public class Game {
 
                     currentPathogen.attack(player);
                     playerStatus.setText(player.toString());
-                    System.out.println("wrong");
+                    //System.out.println("wrong");
+                    feedbackTextArea.setText("Wrong, but It's ok please try again");
                     if (isLose(player)) {
                         storyBox.setText("Game Over!");
                         PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
@@ -144,11 +145,12 @@ public class Game {
         }
     }
 
-    private boolean isCorrect(Pathogen pathogenWithQuestion, String answer) {
+    private boolean isCorrect(Pathogen pathogenWithQuestion, String answer, TextArea feedbackTextArea) {
         String correctAnswer = pathogenWithQuestion.getCorrectAnswer().toLowerCase().trim();
         answer = answer.toLowerCase().trim();
         if (correctAnswer.contains(answer)) {
-            Output.printColor(answer.toUpperCase() + " is correct", Colors.ANSI_CYAN, true);
+            //Output.printColor(answer.toUpperCase() + " is correct", Colors.ANSI_CYAN, true);
+            feedbackTextArea.setText(answer.toUpperCase() + " is correct");
             return true;
         } else {
             return false;
