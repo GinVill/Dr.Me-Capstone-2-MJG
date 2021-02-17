@@ -19,6 +19,7 @@ public class OpeningSceneController {
     public Button startGameButton;
     public TextField nameInput ;
     //public MenuSceneController menuctr;
+    private static Stage menuScene;
 
     @FXML
     public void enableStartGameButton(Event e){
@@ -32,9 +33,11 @@ public class OpeningSceneController {
     @FXML
     public void changeToMenuSceneButtonPushed(ActionEvent e) throws IOException {
         playerName = nameInput.getText();
+        //System.out.println("player is: " + playerName);
         try {
             Parent openingSceneFXML = FXMLLoader.load(getClass().getResource("/GUI/views/menuScene.fxml")); // transition to menu scene.
             Scene questioningScene = new Scene(openingSceneFXML);
+
             // gets the stage information.
             Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();
             window.setScene(questioningScene);
@@ -43,7 +46,17 @@ public class OpeningSceneController {
             System.out.println(event.getMessage());
         }
 
+    }
 
+    public static void changeBackToMenu(String fxml){
+        try {
+            Parent pane = FXMLLoader.load(OpeningSceneController.class.getResource("/GUI/views/menuScene.fxml"));
+            Scene scene = new Scene(pane);
+            menuScene.setScene(scene);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
