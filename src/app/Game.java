@@ -158,7 +158,7 @@ public class Game {
         this.pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
                 , MenuSceneController.getCurrentOrgan());
         this.currentPathogen = pathogensForChosenOrgan.get(0);
-        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox, this.feedbackTextArea);
+        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox);
     }
 
     public Player getPlayer() {
