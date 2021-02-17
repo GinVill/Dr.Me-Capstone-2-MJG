@@ -1,5 +1,6 @@
 package app;
 
+import GUI.controllers.MenuSceneController;
 import entities.Pathogen;
 import entities.Player;
 import javafx.scene.control.Label;
@@ -19,9 +20,10 @@ public class Game {
     // private Player player;
     private int difficulty;
     private Scanner sc = new Scanner(System.in);
-
-   // private final MusicPlayer mpTheme = new MusicPlayer("extras/Away - Patrick Patrikios.wav");
+    private TextArea storyBox;
+    // private final MusicPlayer mpTheme = new MusicPlayer("extras/Away - Patrick Patrikios.wav");
     private Pathogen currentPathogen;
+    List<Pathogen> pathogensForChosenOrgan = new ArrayList<>();
 
     //private Pathogen pathogen;
 
@@ -46,15 +48,16 @@ public class Game {
                      TextArea text, TextField field, Label playerStatus, Player player, MusicPlayer mpTheme) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
-        List<Pathogen> pathogensForChosenOrgan;
+        this.storyBox = text;
+
 
         mpTheme.startMusic();
 
         this.player = player;
         // return questions specific to the organ that player pick from the menu scene.
         System.out.println(currentOrgan);
-        pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, currentOrgan);
-        currentPathogen = pathogensForChosenOrgan.get(1);
+        this.pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, currentOrgan);
+        currentPathogen = pathogensForChosenOrgan.get(0);
         askPathogenQuestion(currentPathogen, text);
         playerStatus.setText(player.toString());
 
@@ -173,36 +176,47 @@ public class Game {
 //                checkAnswer(pathogen, userAnswer, chances);
 //            }
 //        }
-        List<Pathogen> pathogensForChosenOrgan;
+        //List<Pathogen> pathogensForChosenOrgan;
         List<String> organslist;
         organslist = Arrays.asList("brain", "mouth", "throat", "lungs", "heart", "liver", "stomach", "colon");
 
-        if (userAnswer.length() > 0) {
-            if (isCorrect(currentPathogen, userAnswer)) {
+        try {
+            if (userAnswer.length() > 0) {
+                if (isCorrect(currentPathogen, userAnswer)) {
+                    int idx = pathogensForChosenOrgan.indexOf(currentPathogen);
+                    player.addPoints(currentPathogen.getPoints());
+                    playerStatus.setText(player.toString());
+                    // List<Pathogen>  newPath = questionsInCurrentOrgan(pathogenList, "mouth");
+                    //  pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), userAnswer);
+                    //pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
+                    if (idx != pathogensForChosenOrgan.size()) {
+                        askPathogenQuestion(pathogensForChosenOrgan.get(idx + 1), storyBox);
+                        currentPathogen = pathogensForChosenOrgan.get(idx + 1);
+                        idx++;
+                    }
 
-                player.addPoints(currentPathogen.getPoints());
-                playerStatus.setText(player.toString());
-                // List<Pathogen>  newPath = questionsInCurrentOrgan(pathogenList, "mouth");
-                pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML(), userAnswer);
-                //pathogen = pathogensForChosenOrgan.get(getRandomNumber(0, pathogensForChosenOrgan.size()));
-                askPathogenQuestion(currentPathogen, storyBox);
+                    if (isWin(player, winningPointsReq)) {
+                        storyBox.setText("WINNER");
+                        PopupBox.popUp("WINNER!", "If you would like to play again select YES otherwise select NO", player);
+                    }
+                    if (idx == pathogensForChosenOrgan.size()) {
+                        PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
 
-                if (isWin(player, winningPointsReq)) {
-                    storyBox.setText("WINNER");
-                    PopupBox.popUp("WINNER!", "If you would like to play again select YES otherwise select NO", player);
+                    }
+                } else {
+
+                    currentPathogen.attack(player);
+                    playerStatus.setText(player.toString());
+                    System.out.println("wrong");
+                    if (isLose(player)) {
+                        storyBox.setText("Game Over!");
+                        PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
+                    }
+
                 }
-
-            } else {
-
-                currentPathogen.attack(player);
-                playerStatus.setText(player.toString());
-                System.out.println("wrong");
-                if (isLose(player)) {
-                    storyBox.setText("Game Over!");
-                    PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
-                }
-
             }
+        } catch (IndexOutOfBoundsException e) {
+            PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
         }
         return false;
     }
@@ -314,6 +328,14 @@ public class Game {
         } else {
             return false;
         }
+    }
+
+    public void organChange(String organ) {
+        MenuSceneController.setCurrentOrgan(organ);
+        this.pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
+                , MenuSceneController.getCurrentOrgan());
+        this.currentPathogen = pathogensForChosenOrgan.get(0);
+        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox);
     }
 
 
