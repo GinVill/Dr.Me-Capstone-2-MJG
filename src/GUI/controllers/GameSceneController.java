@@ -60,10 +60,6 @@ public class GameSceneController {
         game.checkAnswer("C", labelPlayer, player, storyBox);
     }
 
-    @FXML
-    void startGame(MouseEvent mouseEvent) {
-
-    }
 
     @FXML
     void submitInputBox(ActionEvent keyEvent) {

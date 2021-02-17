@@ -1,6 +1,5 @@
 package GUI;
 
-import app.DoctorMeApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,20 +17,13 @@ public class GUIMain extends Application {
 
     // A JavaFX application needs a primary launch class.
     public static void main(String[] args) throws InterruptedException {
-        DoctorMeApp app = new DoctorMeApp();
         launch(args);// this method launches the JavaFX runtime and your JavaFX application.
-        // app.playDrMe();
     }
 
     // All subclasses of the JavaFXApplication class must implement the abstract start() method of the Application class.
     public void start(Stage primaryStage) throws Exception{
         // set the initial scene to opening scene
-
-        //Parent root = FXMLLoader.load(getClass().getResource("../GUI/resources/openingScene.fxml"));
-
-        //TODO changed filepath and now jar opens
         Parent root = FXMLLoader.load(getClass().getResource("views/openingScene.fxml"));
-
         primaryStage.setTitle("Doctor Me");
         primaryStage.setScene(new Scene(root));
         primaryStage.show(); // make primaryStage visible.

@@ -28,6 +28,7 @@ hs_err_pid*
 
 # directory
 /out/
+/src/META-INF/
 /mods/
-*/.DS_Store
+.DS_Store
 
