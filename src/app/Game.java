@@ -83,7 +83,7 @@ public class Game {
                     currentPathogen.attack(player);
                     playerStatus.setText(player.toString());
                     //System.out.println("wrong");
-                    feedbackTextArea.setText("Wrong, but It's ok please try again");
+                    feedbackTextArea.setText("Wrong, please try again");
                     if (isLose(player)) {
                         storyBox.setText("Game Over!");
                         PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
