@@ -17,12 +17,11 @@ import java.io.IOException;
 
 public class MenuSceneController {
     private static String currentOrgan;
-    public Label playerName;
+    public Label playerName ;
     public String playerInfo;
     public TextField inputBox;
     public TextArea storyBox;
     Button btn;
-
 
 
     @FXML
@@ -59,7 +58,13 @@ public class MenuSceneController {
         }
     }
 
+    @FXML
+    public void initialize() { // initialize scene when windows loaded.
+       playerName.setText(OpeningSceneController.playerName);
+    }
+
 //    public void setPlayerName(String playerName) {
 //        this.playerName.setText(playerName);
 //    }
+
 }
