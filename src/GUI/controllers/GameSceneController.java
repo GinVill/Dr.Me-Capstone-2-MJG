@@ -15,21 +15,15 @@ import util.MusicPlayer;
 
 public class GameSceneController {
 
-
     public Label labelPlayer;
-    public String playerInfo;
-    public TextField inputBox;
     public TextArea storyBox;
     public TextArea feedbackTextArea;
     public Slider volumeSlider;
     public ImageView bodyMap;
 
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
-
     public static Player player = new Player();
-
     public static Game game = new Game(player);
-
 
     @FXML
     void adjustVolume() {
@@ -55,16 +49,6 @@ public class GameSceneController {
         game.checkAnswer("C", labelPlayer, player, storyBox, feedbackTextArea);
     }
 
-
-    @FXML
-    void submitInputBox(ActionEvent keyEvent) {
-
-        String text = inputBox.getText();
-        game.checkAnswer(text, labelPlayer, player, storyBox, feedbackTextArea);
-        // game.setUserAnswer(text);
-        inputBox.clear();
-
-    }
     /*
      * This method takes the location from the menuButton items and sets the filepath to
      * various map images.
