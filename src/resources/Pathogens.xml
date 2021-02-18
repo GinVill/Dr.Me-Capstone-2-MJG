@@ -54,7 +54,7 @@
     </pathogen>
     <pathogen>
         <name>Tonsillitis</name>
-        <description>2.	Tonsils are lymph glands at the back of the throat on either side. They are an important defense again germs that come in through the nose and mouth. These tonsils appear red and inflamed, with some whitish streaks and patches. And the breath in here is bad.</description>
+        <description>Tonsils are lymph glands at the back of the throat on either side. They are an important defense again germs that come in through the nose and mouth. These tonsils appear red and inflamed, with some whitish streaks and patches. And the breath in here is bad.</description>
         <hint>This is not normal, this is tonsillitis. While viral infections usually clear on their own in about a week, some bacterial infections may require medication. Chronic tonsillitis can lead to a peritonsillar abcess, which is a pocket of infection around the tonsil. Yup, the human body is disgusting.</hint>
         <location>throat</location>
         <question>Is this normal?
@@ -252,7 +252,7 @@
     <pathogen>
         <name>Giardia lamblia</name>
         <description>This colon is a wreck. There is diarrhea, bleeding and cramping. Back in the stomach there was nausea and vomiting. Ugh. Many different pathogens affect the digestive system in the same way, but parasitic infections are extra disgusting. Could that swim in the public pool have exposed you to Giardia lamblia? This pathogen, which is found in feces, is chlorine-tolerant, after all.</description>
-        <hint>This parasite, which is contracted by contact with feces in some form, can last 2 to 6 weeks. It could delay physical and mental development in children.</hint>
+        <hint>This parasite, which is contracted by contact with feces in some form, can last 2 to 6 weeks. It could delay physical and mental development in children. </hint>
         <location>colon</location>
         <question>How would you treat giardiasis?
         A. It's also called beaver fever because they pollute lakes with their feces. It's just nature!

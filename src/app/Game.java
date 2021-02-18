@@ -6,12 +6,15 @@ import entities.Player;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import util.Colors;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import util.MusicPlayer;
-import util.Output;
 import util.PopupBox;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Game {
 
@@ -19,6 +22,8 @@ public class Game {
     private TextArea storyBox;
     private Pathogen currentPathogen;
     List<Pathogen> pathogensForChosenOrgan = new ArrayList<>();
+    //private Game g;
+    private ImageView body;
 
 
     private int winningPointsReq;
@@ -35,10 +40,14 @@ public class Game {
 
     // Methods
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
-                     TextArea text, TextField field, Label playerStatus, Player player, MusicPlayer mpTheme) {
+                     TextArea text, TextField field, Label playerStatus, Player player, MusicPlayer mpTheme, ImageView bodyMap) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         this.storyBox = text;
+        this.body = bodyMap;
+
+        body.setImage(new Image(getClass().getResource("/GUI/views/" + currentOrgan + ".png").toExternalForm()));
+
 
 
         mpTheme.startMusic();
@@ -55,11 +64,11 @@ public class Game {
 
 
 
-    public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox) {
+    public boolean checkAnswer(String userAnswer, Label playerStatus, Player player, TextArea storyBox, TextArea feedbackTextArea) {
 
         try {
             if (userAnswer.length() > 0) {
-                if (isCorrect(currentPathogen, userAnswer)) {
+                if (isCorrect(currentPathogen, userAnswer, feedbackTextArea)) {
                     int idx = pathogensForChosenOrgan.indexOf(currentPathogen);
                     player.addPoints(currentPathogen.getPoints());
                     playerStatus.setText(player.toString());
@@ -72,7 +81,7 @@ public class Game {
 
                     if (isWin(player, winningPointsReq)) {
                         storyBox.setText("WINNER");
-                        PopupBox.popUp("WINNER!", "If you would like to play again select YES otherwise select NO", player);
+                        PopupBox.popUp("WINNER!", "If you would like to play again select YES otherwise select NO",player);
                     }
                     if (idx == pathogensForChosenOrgan.size()) {
                         PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
@@ -82,16 +91,17 @@ public class Game {
 
                     currentPathogen.attack(player);
                     playerStatus.setText(player.toString());
-                    System.out.println("wrong");
+                    //System.out.println("wrong");
+                    feedbackTextArea.setText("Wrong, please try again");
                     if (isLose(player)) {
                         storyBox.setText("Game Over!");
-                        PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
+                       PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
                     }
 
                 }
             }
         } catch (IndexOutOfBoundsException e) {
-            PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
+           PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
         }
         return false;
     }
@@ -112,19 +122,17 @@ public class Game {
     }
 
     private List<Pathogen> questionsInCurrentOrgan(ArrayList<Pathogen> pathogenList, String organ) {
-        List<Pathogen> currentOrganList = new ArrayList<>();
-        List<String> organslist;
-        organslist = Arrays.asList("brain", "mouth", "throat", "lungs", "heart", "liver", "colon");
+        Set<Pathogen> currentOrganSet = new HashSet<>();
 
-        if (organslist.contains(organ)) { // if the organs is valid organ.
-            // iterate through PathogenList
+
+        // iterate through PathogenList
             for (Pathogen pathogen : pathogenList) {
                 if (pathogen.getLocation().equals(organ)) {
-                    currentOrganList.add(pathogen);
+                    currentOrganSet.add(pathogen);
                 }
             }
-        }
-        return currentOrganList;
+
+        return new ArrayList<>(currentOrganSet);
     }
 
 
@@ -144,11 +152,12 @@ public class Game {
         }
     }
 
-    private boolean isCorrect(Pathogen pathogenWithQuestion, String answer) {
+    private boolean isCorrect(Pathogen pathogenWithQuestion, String answer, TextArea feedbackTextArea) {
         String correctAnswer = pathogenWithQuestion.getCorrectAnswer().toLowerCase().trim();
         answer = answer.toLowerCase().trim();
         if (correctAnswer.contains(answer)) {
-            Output.printColor(answer.toUpperCase() + " is correct", Colors.ANSI_CYAN, true);
+            //Output.printColor(answer.toUpperCase() + " is correct", Colors.ANSI_CYAN, true);
+            feedbackTextArea.setText(answer.toUpperCase() + " is correct");
             return true;
         } else {
             return false;
@@ -157,9 +166,10 @@ public class Game {
 
     public void organChange(String organ) {
         MenuSceneController.setCurrentOrgan(organ);
-        this.pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
-                , MenuSceneController.getCurrentOrgan());
-        this.currentPathogen = pathogensForChosenOrgan.get(0);
+        body.setImage(new Image(getClass().getResource("/GUI/views/" + organ + ".png").toExternalForm()));
+        pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
+                , organ);
+        currentPathogen = pathogensForChosenOrgan.get(0);
         askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox);
     }
 
@@ -170,6 +180,7 @@ public class Game {
     public void setPlayer(Player playerParam) {
         this.player = playerParam;
     }
+
 
 
 }
