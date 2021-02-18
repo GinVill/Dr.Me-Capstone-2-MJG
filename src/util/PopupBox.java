@@ -7,8 +7,13 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.StageStyle;
 
+/**
+ * This class provide static method for pop up message.
+ * It consists of two methods
+ * makeASelection()
+ * popUp()
+ */
 public class PopupBox {
-
 
     public static void makeASelection(String title, String message){
         ButtonType brain = new ButtonType("Brain", ButtonBar.ButtonData.OTHER);
@@ -30,21 +35,27 @@ public class PopupBox {
                 GameSceneController.game.organChange("brain");
             }else if (type == mouth){
                 GameSceneController.game.organChange("mouth");
+
             }else if (type == heart){
                 GameSceneController.game.organChange("heart");
+
             }else if (type == throat){
                 GameSceneController.game.organChange("throat");
+
             }else if (type == lungs){
                 GameSceneController.game.organChange("lungs");
+
             }else if (type == colon){
                 GameSceneController.game.organChange("colon");
+
             }
+
         });
     }
+
     public static void popUp(String title, String message, Player p){
         ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
         ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
-
 
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.initStyle(StageStyle.UTILITY);
@@ -57,13 +68,10 @@ public class PopupBox {
                 makeASelection("Welcome Back", "Make a selection of where to start");
                 p.setHealth(120);
                 p.setPlayerPoints(0);
-
             }else if (type == noButton){
-
                 System.exit(0);
             }
         });
     }
-
 
 }
