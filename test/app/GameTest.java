@@ -70,7 +70,6 @@ public class GameTest {
     public void testisDeadWithPlayerHealthAboveZero() {
         //player health is set to death threshold
         testPlayer.setHealth(1);
-
         assertFalse(testGame.checkForDeath(testPlayer));
     }
 
@@ -78,7 +77,6 @@ public class GameTest {
     public void testisDeadWithPlayerHealthBelowZero() {
         //player health is set to death threshold
         testPlayer.setHealth(-1);
-
         assertTrue(testGame.checkForDeath(testPlayer));
     }
 
