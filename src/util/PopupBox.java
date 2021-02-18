@@ -22,9 +22,10 @@ public class PopupBox {
 
         alert.showAndWait().ifPresent(type -> {
             if (type == yesButton){
-                System.out.println("Yes I want to play");
+                makeASelection("Welcome Back", "Make a selection of where to start");
                 player.setHealth(120);
                 player.setPlayerPoints(0);
+
             }else if (type == noButton){
                 System.out.println("I dont want to play anymore");
                 System.exit(0);

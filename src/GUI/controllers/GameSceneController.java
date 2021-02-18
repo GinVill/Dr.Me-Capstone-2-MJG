@@ -91,4 +91,8 @@ public class GameSceneController {
         //Calls play() to load the game screen
         game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, feedbackTextArea, labelPlayer, player, mpTheme);
     }
+
+    public void updatePlayerStatus(MouseEvent mouseEvent) {
+        labelPlayer.setText(player.toString());
+    }
 }
