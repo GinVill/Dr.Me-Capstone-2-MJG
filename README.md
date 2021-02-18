@@ -1,4 +1,4 @@
-![image of game scene] (src/resources/BasicGame.png)
+![image of game scene] (https://github.com/GinVill/Dr.Me-Capstone-2-MJG/blob/main/src/resources/BasicGame.png)
 
 # DR. ME: Common Edition
 ______________________________________________________
@@ -43,7 +43,7 @@ Contributors:
 | <a href="https://github.com/JASONG2G" target="_blank">**Jason**</a> | <a href="https://github.com/GitStux" target="_blank">**Matt**</a> | <a href="https://github.com/GinVill" target="_blank">**Gina**</a> |
 | :---: |:---:| :---:|
 | [![jason](https://avatars.githubusercontent.com/u/51686756?s=400&u=40128922a8fcf5941e22b97984e76a5f97299b64&v=4)https://avatars.githubusercontent.com/u/50122081?s=400&u=5055720cbf329b3d410076be00524b5c579842fe&v=](https://github.com/JASONG2G)    | [![matt](https://avatars.githubusercontent.com/u/63031851?s=400&v=4)](https://github.com/GitStux) | [![gina](https://avatars.githubusercontent.com/u/67494318?s=400&v=4)](https://github.com/GinVill)  |
-| <a href="https://github.com/cronan-sde" target="_blank">`github.com/cronan-sde`</a> | <a href="https://github.com/javasmuse" target="_blank">`github.com/javasmuse`</a> | <a href="https://github.com/JASONG2G" target="_blank">`github.com/JASONG2G`</a> |
+| <a href="https://github.com/JASONG2G" target="_blank">`github.com/JASONG2G`</a> | <a href="https://github.com/GitStux" target="_blank">`github.com/GitStux`</a> | <a href="https://github.com/GinVill" target="_blank">`github.com/GinVill`</a> |
 
 
 
