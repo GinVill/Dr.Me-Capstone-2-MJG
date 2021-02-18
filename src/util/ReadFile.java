@@ -1,4 +1,8 @@
 package util;
+/**
+ * legacy code for console/terminal IO.
+ * .txt reader.
+ * */
 
 import java.io.IOException;
 import java.nio.file.Files;

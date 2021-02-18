@@ -1,4 +1,7 @@
 package util;
+/**
+ * legacy code for console/terminal IO.
+ * */
 
 public class Colors {
 

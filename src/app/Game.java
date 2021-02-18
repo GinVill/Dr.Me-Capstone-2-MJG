@@ -15,6 +15,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * This class in charge of the game logic.
+ * It includes methods:
+ * play()
+ * checkAnswer()
+ * askPathogenQuestion()
+ * questionsInOrgan()
+ * questionsInCurrentOrgan()
+ * isWin()
+ * isDead()
+ * isCorrect()
+ * organChange()
+ * getPlayer()
+ * setPlayer()
+ */
+
 public class Game {
     //Fields
     private Player player;
@@ -112,7 +128,6 @@ public class Game {
             feedbackTextArea.setText("Good job! you just got all the question right!.");
             PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
             feedbackTextArea.clear();
-            PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
         }
         return false;
     }

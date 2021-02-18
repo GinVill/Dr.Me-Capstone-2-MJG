@@ -15,6 +15,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+/**
+ * This Class reads in xml file.
+ *
+ * */
+
 
 public class XMLController {
 
@@ -40,9 +45,6 @@ public class XMLController {
         Pathogen path;
 
         ClassLoader cl = XMLController.class.getClassLoader();
-
-
-
 
         // push into collection
         try {
@@ -94,12 +96,10 @@ public class XMLController {
 
         ClassLoader cl = XMLController.class.getClassLoader();
 
-
         try {
             InputStream xmlFile = cl.getResourceAsStream("resources/Cell.xml");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-           // File inputFile = new File("resources/Cell.xml");
             Document doc = db.parse(xmlFile);
             doc.getDocumentElement().normalize();
             nodeList = doc.getElementsByTagName("cell");
@@ -143,7 +143,6 @@ public class XMLController {
             System.out.println("An error occurred while loading the cell list from xml");
             e.printStackTrace();
         }
-        //  System.out.println("here is the list of cells  "+cells);// TODO delete after testing
         return cells;
     }
 
