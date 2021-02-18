@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
@@ -81,21 +79,7 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <MenuButton id="dropdownbtn" layoutX="542.0" layoutY="599.0" prefHeight="44.0" prefWidth="200.0" text="Player Location" textFill="#160af7">
-         <font>
-            <Font name="Berlin Sans FB" size="14.0" />
-         </font>
-         <items>
-            <MenuItem fx:id="brain" mnemonicParsing="false" onAction="#handleLocation" text="brain" />
-            <MenuItem fx:id="colon" mnemonicParsing="false" onAction="#handleLocation" text="colon" />
-            <MenuItem fx:id="heart" mnemonicParsing="false" onAction="#handleLocation" text="heart" />
-            <MenuItem fx:id="lungs" mnemonicParsing="false" onAction="#handleLocation" text="lungs" />
-            <MenuItem fx:id="liver" mnemonicParsing="false" onAction="#handleLocation" text="liver" />
-            <MenuItem fx:id="mouth" mnemonicParsing="false" onAction="#handleLocation" text="mouth" />
-            <MenuItem fx:id="throat" mnemonicParsing="false" onAction="#handleLocation" text="throat" />
-         </items>
-      </MenuButton>
-      <ImageView fx:id="bodyMap" fitHeight="224.0" fitWidth="177.0" layoutX="551.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bodyMap" fitHeight="308.0" fitWidth="209.0" layoutX="551.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@whole.png" />
          </image>
