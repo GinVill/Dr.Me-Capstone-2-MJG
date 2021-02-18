@@ -4,8 +4,6 @@ import app.Commands;
 import app.Game;
 import app.XMLController;
 import entities.Player;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -35,12 +33,7 @@ public class GameSceneController {
     @FXML
     void adjustVolume() {
         // volumeSlider.setValue(mpTheme.getVolume() * 100);
-        volumeSlider.valueProperty().addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                mpTheme.setVolume((float) volumeSlider.getValue());
-            }
-        });
+        volumeSlider.valueProperty().addListener(observable -> mpTheme.setVolume((float) volumeSlider.getValue()));
     }
 
     @FXML
@@ -78,7 +71,7 @@ public class GameSceneController {
     @FXML
     private void handleLocation(ActionEvent event) {
         String organ = ((MenuItem) event.getSource()).getText(); //gets the text from the MenuItem selected on MenuButton
-        bodyMap.setImage(new Image(getClass().getResource("/GUI/views/" + organ + ".png").toExternalForm()));
+        bodyMap.setImage(new Image(getClass().getResource("GUI/views/" + organ + ".png").toExternalForm()));
         MenuSceneController.setCurrentOrgan(organ);
     }
 
@@ -88,7 +81,7 @@ public class GameSceneController {
         // Read and load Cell XML file
         XMLController.readCellXML();
         //Calls play() to load the game screen
-        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player, mpTheme);
+        game.play(100, 120, XMLController.readPathogenXML(), MenuSceneController.getCurrentOrgan(), storyBox, inputBox, labelPlayer, player, mpTheme, bodyMap);
     }
 
     public void updatePlayerStatus(MouseEvent mouseEvent) {
