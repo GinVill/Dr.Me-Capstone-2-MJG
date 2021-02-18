@@ -5,12 +5,17 @@ import entities.Pathogen;
 import entities.Player;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import util.MusicPlayer;
 import util.PopupBox;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
 
@@ -19,6 +24,8 @@ public class Game {
     private TextArea feedback;
     private Pathogen currentPathogen;
     List<Pathogen> pathogensForChosenOrgan = new ArrayList<>();
+    //private Game g;
+    private ImageView body;
 
 
     private int winningPointsReq;
@@ -35,11 +42,14 @@ public class Game {
 
     // Methods
     public void play(int winningPointsRequired, int healthValue, ArrayList<Pathogen> pathogenList, String currentOrgan,
-                     TextArea text, TextArea feedback, Label playerStatus, Player player, MusicPlayer mpTheme) {
+                     TextArea text, Label playerStatus, Player player, MusicPlayer mpTheme, ImageView bodyMap) {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         this.storyBox = text;
-        this.feedback = feedback;
+        this.body = bodyMap;
+
+        body.setImage(new Image(getClass().getResource("/GUI/views/" + currentOrgan + ".png").toExternalForm()));
+
         mpTheme.startMusic();
 
         this.player = player;
@@ -47,7 +57,7 @@ public class Game {
         System.out.println(currentOrgan);
         this.pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, currentOrgan);
         currentPathogen = pathogensForChosenOrgan.get(0);
-        askPathogenQuestion(currentPathogen, text, feedback);
+        askPathogenQuestion(currentPathogen, text);
         playerStatus.setText(player.toString());
 
     }
@@ -65,14 +75,14 @@ public class Game {
 
 
                     if (idx != pathogensForChosenOrgan.size() ) {
-                        askPathogenQuestion(pathogensForChosenOrgan.get(idx + 1), storyBox, feedbackTextArea);
+                        askPathogenQuestion(pathogensForChosenOrgan.get(idx + 1), storyBox);
                         currentPathogen = pathogensForChosenOrgan.get(idx + 1);
                         idx++;
                     }
 
                     if (isWin(player, winningPointsReq)) {
                         storyBox.setText("WINNER");
-                        PopupBox.popUp("WINNER!", "If you would like to play again select YES otherwise select NO", player);
+                        PopupBox.popUp("WINNER!", "If you would like to play again select YES otherwise select NO",player);
                     }
                     if (idx == pathogensForChosenOrgan.size()) {
                         PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
@@ -86,7 +96,7 @@ public class Game {
                     feedbackTextArea.setText("Wrong, please try again");
                     if (isLose(player)) {
                         storyBox.setText("Game Over!");
-                        PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
+                       PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
                     }
 
                 }
@@ -95,11 +105,14 @@ public class Game {
             feedbackTextArea.setText("Good job! you just got all the question right!.");
             PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
             feedbackTextArea.clear();
+
+           PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
+
         }
         return false;
     }
 
-    private void askPathogenQuestion(Pathogen currentThreat, TextArea textarea, TextArea feedback) {
+    private void askPathogenQuestion(Pathogen currentThreat, TextArea textarea) {
         String location = currentThreat.getLocation();
         textarea.clear();
         textarea.setText(currentThreat.getDescription() + "\n");
@@ -115,19 +128,17 @@ public class Game {
     }
 
     private List<Pathogen> questionsInCurrentOrgan(ArrayList<Pathogen> pathogenList, String organ) {
-        List<Pathogen> currentOrganList = new ArrayList<>();
-        List<String> organslist;
-        organslist = Arrays.asList("brain", "mouth", "throat", "lungs", "heart", "liver", "colon");
+        Set<Pathogen> currentOrganSet = new HashSet<>();
 
-        if (organslist.contains(organ)) { // if the organs is valid organ.
-            // iterate through PathogenList
+
+        // iterate through PathogenList
             for (Pathogen pathogen : pathogenList) {
                 if (pathogen.getLocation().equals(organ)) {
-                    currentOrganList.add(pathogen);
+                    currentOrganSet.add(pathogen);
                 }
             }
-        }
-        return currentOrganList;
+
+        return new ArrayList<>(currentOrganSet);
     }
 
 
@@ -161,10 +172,12 @@ public class Game {
 
     public void organChange(String organ) {
         MenuSceneController.setCurrentOrgan(organ);
-        this.pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
-                , MenuSceneController.getCurrentOrgan());
-        this.currentPathogen = pathogensForChosenOrgan.get(0);
-        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox, this.feedback);
+
+        body.setImage(new Image(getClass().getResource("/GUI/views/" + organ + ".png").toExternalForm()));
+        pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
+                , organ);
+        currentPathogen = pathogensForChosenOrgan.get(0);
+        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox);
     }
 
     public Player getPlayer() {
@@ -174,5 +187,7 @@ public class Game {
     public void setPlayer(Player playerParam) {
         this.player = playerParam;
     }
+
+
 
 }
