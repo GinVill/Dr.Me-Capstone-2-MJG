@@ -1,10 +1,12 @@
 package GUI;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /*
 * The names for "stage" and "scene" are inspired by a theater.
@@ -27,6 +29,9 @@ public class GUIMain extends Application {
         primaryStage.setTitle("Doctor Me");
         primaryStage.setScene(new Scene(root));
         primaryStage.show(); // make primaryStage visible.
+
+        new FadeTransition(Duration.seconds(2000),root).play();
+
     }
 
 }

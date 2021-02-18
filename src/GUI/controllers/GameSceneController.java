@@ -25,6 +25,7 @@ public class GameSceneController {
     public TextArea feedbackTextArea;
     public Slider volumeSlider;
     public ImageView bodyMap;
+
     private final MusicPlayer mpTheme = new MusicPlayer("resources/Away - Patrick Patrikios.wav");
 
     public static Player player = new Player();
@@ -56,7 +57,7 @@ public class GameSceneController {
     }
 
     @FXML
-    void onClickThree(MouseEvent mouseEvent) {
+    public void onClickThree(MouseEvent mouseEvent) {
         //Sends click event to Game logic to check answer
         game.checkAnswer("C", labelPlayer, player, storyBox, feedbackTextArea);
     }

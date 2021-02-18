@@ -60,6 +60,7 @@ public class PopupBox {
             }else if (type == colon){
                 GameSceneController.game.organChange("colon");
             }
+
         });
     }
 }

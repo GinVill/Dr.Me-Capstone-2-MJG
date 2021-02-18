@@ -16,6 +16,7 @@ public class Game {
 
     private Player player;
     private TextArea storyBox;
+    private TextArea feedback;
     private Pathogen currentPathogen;
     List<Pathogen> pathogensForChosenOrgan = new ArrayList<>();
 
@@ -38,6 +39,7 @@ public class Game {
         // Initiate primary game loop, check game ending conditions each time
         this.winningPointsReq = winningPointsRequired;
         this.storyBox = text;
+        this.feedback = feedback;
         mpTheme.startMusic();
 
         this.player = player;
@@ -45,7 +47,7 @@ public class Game {
         System.out.println(currentOrgan);
         this.pathogensForChosenOrgan = questionsInCurrentOrgan(pathogenList, currentOrgan);
         currentPathogen = pathogensForChosenOrgan.get(0);
-        askPathogenQuestion(currentPathogen, text);
+        askPathogenQuestion(currentPathogen, text, feedback);
         playerStatus.setText(player.toString());
 
     }
@@ -56,12 +58,14 @@ public class Game {
         try {
             if (userAnswer.length() > 0) {
                 if (isCorrect(currentPathogen, userAnswer, feedbackTextArea)) {
+
                     int idx = pathogensForChosenOrgan.indexOf(currentPathogen);
                     player.addPoints(currentPathogen.getPoints());
                     playerStatus.setText(player.toString());
 
-                    if (idx != pathogensForChosenOrgan.size()) {
-                        askPathogenQuestion(pathogensForChosenOrgan.get(idx + 1), storyBox);
+
+                    if (idx != pathogensForChosenOrgan.size() ) {
+                        askPathogenQuestion(pathogensForChosenOrgan.get(idx + 1), storyBox, feedbackTextArea);
                         currentPathogen = pathogensForChosenOrgan.get(idx + 1);
                         idx++;
                     }
@@ -88,12 +92,14 @@ public class Game {
                 }
             }
         } catch (IndexOutOfBoundsException e) {
+            feedbackTextArea.setText("Good job! you just got all the question right!.");
             PopupBox.makeASelection("HALT", "Look to the smartest man in the Universe for more questions");
+            feedbackTextArea.clear();
         }
         return false;
     }
 
-    private void askPathogenQuestion(Pathogen currentThreat, TextArea textarea) {
+    private void askPathogenQuestion(Pathogen currentThreat, TextArea textarea, TextArea feedback) {
         String location = currentThreat.getLocation();
         textarea.clear();
         textarea.setText(currentThreat.getDescription() + "\n");
@@ -158,7 +164,7 @@ public class Game {
         this.pathogensForChosenOrgan = questionsInCurrentOrgan(XMLController.readPathogenXML()
                 , MenuSceneController.getCurrentOrgan());
         this.currentPathogen = pathogensForChosenOrgan.get(0);
-        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox);
+        askPathogenQuestion(pathogensForChosenOrgan.get(0), this.storyBox, this.feedback);
     }
 
     public Player getPlayer() {
