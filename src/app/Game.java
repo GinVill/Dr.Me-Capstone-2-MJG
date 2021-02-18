@@ -33,7 +33,7 @@ public class Game {
     }
 
     /**
-     * stars the game flow.
+     *  <P>This method stars the game flow.</P>
      * @param winningPointsRequired the points that player needs to reach to win the game.
      * @param healthValue initial the healthValue of player.
      * @param pathogenList a List of all pathogen questions from Pathogens.xml.{@link GUI.controllers.GameSceneController#initialize()}

@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import util.MusicPlayer;
 
-/*
+/**
  * This class loads the game scene for play
  * It includes methods:
  * adjustVolume()
@@ -34,7 +34,7 @@ public class GameSceneController {
     public static Player player = new Player();
     public static Game game = new Game(player);
 
-    /*
+    /**
      * Allows player to adjust music volume in game
      */
 
@@ -44,7 +44,7 @@ public class GameSceneController {
         volumeSlider.valueProperty().addListener(observable -> mpTheme.setVolume((float) volumeSlider.getValue()));
     }
 
-    /*
+    /**
      * Captures player input on click
      */
     @FXML
@@ -52,7 +52,7 @@ public class GameSceneController {
         //Sends click event to Game logic to check answer
         game.checkAnswer("A", labelPlayer, player, storyBox, feedbackTextArea);
     }
-    /*
+    /**
      * Captures player input on click
      */
     @FXML
@@ -60,7 +60,7 @@ public class GameSceneController {
         //Sends click event to Game logic to check answer
         game.checkAnswer("B", labelPlayer, player, storyBox, feedbackTextArea);
     }
-    /*
+    /**
      * Captures player input on click
      */
     @FXML
@@ -69,7 +69,7 @@ public class GameSceneController {
         game.checkAnswer("C", labelPlayer, player, storyBox, feedbackTextArea);
     }
 
-    /*
+    /**
      * Initializes GameSceneController for game play
      */
     @FXML
