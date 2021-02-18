@@ -20,7 +20,7 @@
         <location>mouth</location>
         <question>What can this body do?
          A. Keep an eye on it. It should go away in a few weeks.
-         B. Pack it with salt to help fight bacteria.
+         B. Pack it with salt to help fight bacteria. Pain, what is pain?
          C. Have a strong drink. Alcohol kills lots of things.</question>
         <antibiotic>doxycycline</antibiotic>
         <correctAnswer>a</correctAnswer>
@@ -59,7 +59,7 @@
         <location>throat</location>
         <question>Is this normal?
         A. Yes, this is totally normal. The human body is disgusting.
-        B. Meh. Use gargles or lozenges to ease the pain and most viral infections clear up in a week or two.
+        B. Meh. Use gargles or lozenges to ease the pain. Most viral infections clear up in a week or two.
         C. No, this is not normal. Have some crunchy sushi roll with wasabi, a natural antibacterial.</question>
         <antibiotic>penicillin, amoxicillin</antibiotic>
         <correctAnswer>b</correctAnswer>
@@ -159,6 +159,32 @@
         <points>20</points>
     </pathogen>
     <pathogen>
+        <name>coxsackievirus</name>
+        <description>This heart is inflamed and is definitely experiencing some extreme drama. Like, above and beyond normal heart drama. Based on the high number of cytokines you've seen, and the remnants of a stomach flu, you suspect an enterovirus has settled in this heart. The most common enterovirus to affect the heart is coxsackie, and you are convinced it has caused this myocarditis. Heart infections are rare, but always have a few risk factors to consider.</description>
+        <hint>While heart infections are rare because the constant flow of blood usually prevents infectious cells from adhering, once an infection has started, it will likely need treatment ASAP.</hint>
+        <location>heart</location>
+        <question>What in the world does a body do for myocarditis?
+        A. Hmmmm, let's vape on it. Maybe skip the flavored vape because this could be serious.
+        B. The heart is a major organ, so immediately get it checked by a doctor.
+        C. Maybe start exercising for a change....or could that spread the disease?</question>
+        <antibiotic>acyclovir, azathioprine, prednisone</antibiotic>
+        <correctAnswer>B, b</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>pericarditis</name>
+        <description>The membrane around this heart is swollen and inflamed. This inflammation causes the layers of membranes to rub against each other, causing sharp chest pain. Nothing will alleviate the pain. Lying down, leaning forward, deep breaths all make it worse. You are thinking periocarditis, which can be caused by viruses, trauma, medications or a heart attack.</description>
+        <hint>While heart infections are rare, they need immediate attention because they can be difficult to treat and may become severe.</hint>
+        <location>heart</location>
+        <question>What in the world does a body do for pericarditis?
+        A. Get to a doctor ASAP. The heart is kinda necessary, right?
+        B. Rest up, finish Game of Thrones and this heart will be hating Joffrey Baratheon full-strength.
+        C. Maybe see a doctor in a few weeks...if this steak and bourbon don't help.</question>
+        <antibiotic>acyclovir, azathioprine, prednisone</antibiotic>
+        <correctAnswer>A, a</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
         <name>Staphylococci</name>
         <description>This heart has some issues with its inner lining. It looks infected and inflamed. On top of that, these heart valves are abnormal. And is that a pacemaker lead? Hmmmm, you are thinking endocarditis. Although heart infections are rare, this heart has a few risk factors to consider with those symptoms.</description>
         <hint>While heart infections are rare because the constant flow of blood usually prevents infectious cells from adhering, once an infection has started, it will likely need treatment ASAP.</hint>
@@ -172,16 +198,42 @@
         <points>20</points>
     </pathogen>
     <pathogen>
-        <name>Hepatitis</name>
-        <description>This liver is looking pretty shady. The urine is dark and the body is fatigued. These factors, coupled with the nausea and vomiting, have you thinking Hepatitis A, B or C. Come to think of it, this body looked a little jaundiced on your way in, and wasn't that a fresh tattoo?</description>
-        <hint>While not all Hepatitis viruses are the same, some can lead to liver failure, cirrhosis or liver cancer.</hint>
+        <name>Hepatitis C</name>
+        <description>This liver is looking pretty shady. The urine is dark and the body is fatigued. These factors, coupled with the nausea and vomiting, have you thinking Hepatitis C. Come to think of it, this body looked a little jaundiced on your way in, and wasn't that a fresh tattoo?</description>
+        <hint>While not all Hepatitis viruses are the same, some can lead to liver failure, cirrhosis or liver cancer. </hint>
         <location>liver</location>
         <question>What is the treatment for Hepatitis C?
-            A. Plenty of water, no more booze and a regular exercise regimen should fix it..
-            B. A doctor can prescribe medication to suppress the virus, but it cannot be cured.
-            C. Just slap a little ointment on that tattoo and this body will be fine in a few days.</question>
+        A. Plenty of water, no more booze and a regular exercise regimen should fix it..
+        B. A doctor can prescribe medication to suppress the virus, but it cannot be cured.
+        C. Just slap a little ointment on that tattoo and this body will be fine in a few days.</question>
         <antibiotic>sofosbuvir, interferon, ribavirin</antibiotic>
         <correctAnswer>B, b</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Hepatitis B</name>
+        <description>This liver is under duress. There are no obvious symptoms, but that is the case with Hepatitis B - the most common serious liver infection in the world. Hepatitis B is transmitted by contact with infected body fluids, so it isn't impossible.</description>
+        <hint>While not all Hepatitis viruses are the same, some can lead to liver failure, cirrhosis or liver cancer. </hint>
+        <location>liver</location>
+        <question>What is the treatment for Hepatitis B?
+        A. Just put an extra scoop of supplements in your smoothie and you'll be fin.
+        B. A doctor can test to see if medication will help. Only certain cases require treatment but a doctor must determine that.
+        C. You have some old medications somewhere...just try those. Reduce. Reuse. Recycle.</question>
+        <antibiotic>tenofovir, interferon, encetavir</antibiotic>
+        <correctAnswer>B, b</correctAnswer>
+        <points>20</points>
+    </pathogen>
+    <pathogen>
+        <name>Hepatitis A</name>
+        <description>This liver is definitely sketch. The urine is dark and the body is fatigued. These factors, coupled with the nausea and vomiting, have you thinking Hepatitis A.</description>
+        <hint>While not all Hepatitis viruses are the same, some can lead to liver failure, cirrhosis or liver cancer. </hint>
+        <location>liver</location>
+        <question>What is the treatment for Hepatitis A?
+        A. Rest, plenty of liquids, including juice and milk for nutrients. It should heal itself in 6 months.
+        B. You are convinced that booze helps everything.
+        C. Virus, shmirus. Just continue with all normal activities and see what happens.</question>
+        <antibiotic>NONE</antibiotic>
+        <correctAnswer>A, a</correctAnswer>
         <points>20</points>
     </pathogen>
     <pathogen>
@@ -190,9 +242,9 @@
         <hint>Norovirus has a duration of about 3 days, with symptoms starting after a day or two.</hint>
         <location>colon</location>
         <question>Hmmm, what should this body do for norovirus?
-            A. Definitely see a doctor right away. This game has made you a hypochondriac.
-            B. Plenty of cheese, don't drink any coffee and manage norovirus like a rockstar...of mediocrity.
-            C. Drink lots of water, rest up and this body will be better in a few days.</question>
+        A. Definitely see a doctor right away. This game has made you a hypochondriac.
+        B. Plenty of cheese, don't drink any coffee and manage norovirus like a rockstar...of mediocrity.
+        C. Drink lots of water, rest up and this body will be better in a few days.</question>
         <antibiotic>NONE</antibiotic>
         <correctAnswer>C, c</correctAnswer>
         <points>20</points>
@@ -203,9 +255,9 @@
         <hint>This parasite, which is contracted by contact with feces in some form, can last 2 to 6 weeks. It could delay physical and mental development in children. </hint>
         <location>colon</location>
         <question>How would you treat giardiasis?
-            A. It's also called beaver fever because they pollute lakes with their feces. It's just nature!
-            B. Lots of water, to avoid dehydration, and a visit to the doctor.
-            C. Do nothing and it will clear itself up in about a month. Like a cleanse.</question>
+        A. It's also called beaver fever because they pollute lakes with their feces. It's just nature!
+        B. Lots of water, to avoid dehydration, and a visit to the doctor.
+        C. Do nothing and it will clear itself up in about a month. Like a cleanse.</question>
         <antibiotic>nitazoxanide, tinidazole, metronidazole</antibiotic>
         <correctAnswer>B, b</correctAnswer>
         <points>20</points>
@@ -216,9 +268,9 @@
         <hint>Left untreated, H. pylori could cause inflammation of the stomach lining, ulcers or cancer.</hint>
         <location>colon</location>
         <question>How would you treat H. pylori?
-            A. Good old Pepto Bismol solves all your stomach problems. Just chug away.
-            B. Coating the stomach will be soothing, and nothing soothes like a creamy, thick milkshake.
-            C. Definitely see a doctor. This looks serious and might need two different antibiotics.</question>
+        A. Good old Pepto Bismol solves all your stomach problems. Just chug away.
+        B. Coating the stomach will be soothing, and nothing soothes like a creamy, thick milkshake.
+        C. Definitely see a doctor. This looks serious and might need two different antibiotics.</question>
         <antibiotic>omeprazole, pantoprazole, cimetidine</antibiotic>
         <correctAnswer>C, c</correctAnswer>
         <points>20</points>

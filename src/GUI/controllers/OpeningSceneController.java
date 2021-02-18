@@ -12,7 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+/*
+ * This class is the opening scene, which then loads the menu scene
+ * It consists of two methods
+ * enableStartGameButton()
+ * changeToMenuSceneButtonPushed()
+ */
 public class OpeningSceneController {
 
     public static String playerName;
@@ -20,7 +25,9 @@ public class OpeningSceneController {
     public TextField nameInput ;
 
     private static Stage menuScene;
-
+    /*
+     * This method enables Start button on opening scene
+     */
     @FXML
     public void enableStartGameButton(Event e){
         startGameButton.setDisable(false);

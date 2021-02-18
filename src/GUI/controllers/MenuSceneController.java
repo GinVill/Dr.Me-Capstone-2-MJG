@@ -14,6 +14,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+/*
+ * This class loads the menu scene controller. It is launched by
+ * the opening scene controller. This controller launches the
+ * GameScene controller on action.
+ * It contains:
+ * menuItemSelected()
+ * setCurrentOrgan()
+ * getCurrentOrgan()
+ * changeToGameSceneButtonPushed()
+ * initialize()
+ */
 
 public class MenuSceneController {
     private static String currentOrgan;
@@ -23,19 +34,26 @@ public class MenuSceneController {
     public TextArea storyBox;
     Button btn;
 
-
+    /*
+     * This method captures user input and sets current organ on click
+     */
     @FXML
     public void menuItemSelected(Event e) throws IOException {
         btn = (Button) e.getSource(); // get an instance of the button clicked on
         btn.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");// set button border color to red.
         setCurrentOrgan(btn.getId()); // set variable currentOrgan to the value of current button ID e.g. "brain".
     }
-
+    /*
+     * This method sets the current organ
+     * This method is called by menuItemSelected()
+     */
     @FXML
     public static void setCurrentOrgan(String organ){
         currentOrgan = organ;
     }
-
+    /*
+     * This method gets the current organ
+     */
     @FXML
     public static String getCurrentOrgan(){
         return currentOrgan;
@@ -58,6 +76,10 @@ public class MenuSceneController {
         }
     }
 
+    /*
+     * This method initializes the opening scene controller with the
+     * player's name
+     */
     @FXML
     public void initialize() { // initialize scene when windows loaded.
        playerName.setText(OpeningSceneController.playerName);
