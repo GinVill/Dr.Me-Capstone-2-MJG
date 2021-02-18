@@ -1,4 +1,4 @@
-![image of game scene] (https://github.com/GinVill/Dr.Me-Capstone-2-MJG/blob/main/src/resources/BasicGame.png)
+![image of game scene](https://github.com/GinVill/Dr.Me-Capstone-2-MJG/blob/main/src/resources/BasicGame.png)
 
 # DR. ME: Common Edition
 ______________________________________________________
