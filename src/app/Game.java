@@ -93,7 +93,7 @@ public class Game {
                     playerStatus.setText(player.toString());
                     //System.out.println("wrong");
                     feedbackTextArea.setText("Wrong, please try again");
-                    if (isLose(player)) {
+                    if (isDead(player)) {
                         storyBox.setText("Game Over!");
                        PopupBox.popUp("LOSER", "Sorry you've lost. Would you like to play again?", player);
                     }
@@ -136,6 +136,12 @@ public class Game {
     }
 
 
+    public boolean checkForWin(Player player, int points){
+
+        return isWin(player, points);
+    }
+
+
     private boolean isWin(Player player, int requiredPoints) {
         if (player.getPoints() >= requiredPoints) {
             return true;
@@ -144,12 +150,20 @@ public class Game {
         }
     }
 
-    private boolean isLose(Player player) {
+    public boolean checkForDeath(Player player){
+        return isDead(player);
+    }
+
+    private boolean isDead(Player player) {
         if (player.getHealth() < 1) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public boolean isAnswerCorrect(Pathogen path, String ans, TextArea feedback){
+        return isCorrect(path, ans, feedback);
     }
 
     private boolean isCorrect(Pathogen pathogenWithQuestion, String answer, TextArea feedbackTextArea) {
