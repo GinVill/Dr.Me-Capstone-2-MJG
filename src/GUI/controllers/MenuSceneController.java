@@ -9,40 +9,52 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+/**
+ * This class loads the menu scene controller. It is launched by
+ * the opening scene controller. This controller launches the
+ * GameScene controller on action.
+ * It contains:
+ * menuItemSelected()
+ * setCurrentOrgan()
+ * getCurrentOrgan()
+ * changeToGameSceneButtonPushed()
+ * initialize()
+ */
 
 public class MenuSceneController {
     private static String currentOrgan;
-    public Label playerName;
-    public String playerInfo;
-    public TextField inputBox;
-    public TextArea storyBox;
-    Button btn;
+    public Label playerName ;
+    private Button btn;
 
-
-
+    /**
+     * This method captures user input and sets current organ on click
+     */
     @FXML
     public void menuItemSelected(Event e) throws IOException {
         btn = (Button) e.getSource(); // get an instance of the button clicked on
         btn.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");// set button border color to red.
         setCurrentOrgan(btn.getId()); // set variable currentOrgan to the value of current button ID e.g. "brain".
     }
-
+    /**
+     * This method sets the current organ
+     * This method is called by menuItemSelected()
+     */
     @FXML
-    private void setCurrentOrgan(String organ){
+    public static void setCurrentOrgan(String organ){
         currentOrgan = organ;
     }
-
+    /**
+     * This method gets the current organ
+     */
     @FXML
     public static String getCurrentOrgan(){
         return currentOrgan;
     }
 
-    /*
+    /**
      * this method switch from menu scene to the next questioning scene
      * */
     @FXML
@@ -59,7 +71,13 @@ public class MenuSceneController {
         }
     }
 
-//    public void setPlayerName(String playerName) {
-//        this.playerName.setText(playerName);
-//    }
+    /**
+     * This method initializes the opening scene controller with the
+     * player's name
+     */
+    @FXML
+    public void initialize() { // initialize scene when windows loaded.
+       playerName.setText(OpeningSceneController.playerName);
+    }
+
 }

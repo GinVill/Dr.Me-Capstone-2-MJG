@@ -1,4 +1,7 @@
 package util;
+/**
+ * legacy code for console/terminal IO.
+ * */
 
 public class Output {
 
@@ -12,7 +15,6 @@ public class Output {
         printNewLines(2);
 
     }
-
 
     public static void printColor(String text, String color, boolean newLine){
         if(newLine){

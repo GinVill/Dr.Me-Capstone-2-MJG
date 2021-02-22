@@ -13,25 +13,33 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class is the opening scene, which then loads the menu scene
+ * It consists of two methods
+ * enableStartGameButton()
+ * changeToMenuSceneButtonPushed()
+ */
 public class OpeningSceneController {
 
     public static String playerName;
     public Button startGameButton;
     public TextField nameInput ;
-    //public MenuSceneController menuctr;
 
+    /**
+     * This method enables Start button on opening scene
+     */
     @FXML
     public void enableStartGameButton(Event e){
         startGameButton.setDisable(false);
-        //TODO: get player name.
     }
 
-    /*
+    /**
     * this method switch opening scene to the menu scene
     * */
     @FXML
     public void changeToMenuSceneButtonPushed(ActionEvent e) throws IOException {
         playerName = nameInput.getText();
+
         try {
             Parent openingSceneFXML = FXMLLoader.load(getClass().getResource("/GUI/views/menuScene.fxml")); // transition to menu scene.
             Scene questioningScene = new Scene(openingSceneFXML);
@@ -42,7 +50,6 @@ public class OpeningSceneController {
         } catch (Exception event) {
             System.out.println(event.getMessage());
         }
-
 
     }
 
