@@ -65,7 +65,6 @@ public class GameSceneController {
      */
     @FXML
     public void onClickThree(MouseEvent mouseEvent) {
-        //Sends click event to Game logic to check answer
         game.checkAnswer("C", labelPlayer, player, storyBox, feedbackTextArea);
     }
 
